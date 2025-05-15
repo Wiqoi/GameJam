@@ -170,17 +170,17 @@ motion_mode = 1
 script = ExtResource("1_6t5aa")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(5.68434e-14, -11)
+position = Vector2(0, 9.53674e-07)
 scale = Vector2(1.65625, 1.52718)
 sprite_frames = SubResource("SpriteFrames_ph33w")
 animation = &"IdleUp"
 autoplay = "Idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 1)
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_cvnsp")
