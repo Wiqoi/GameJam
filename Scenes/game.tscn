@@ -2968,7 +2968,7 @@ sources/8 = SubResource("TileSetAtlasSource_tgy6u")
 [node name="Player" parent="." instance=ExtResource("1_ebmjs")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(140, 79)
+position = Vector2(509, 322)
 movement_speed = 185.0
 
 [node name="Backgroundish" type="TileMapLayer" parent="."]
