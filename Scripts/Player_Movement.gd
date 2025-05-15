@@ -31,9 +31,7 @@ func _physics_process(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration)
 		if $Sprite.animation == "WalkingUp":
 			$Sprite.animation = "IdleUp"
-		if $Sprite.animation == "WalkingDown":
-			$Sprite.animation = "IdleDown"
-		else:
+		if $Sprite.animation == "WalkingDown" || $Sprite.animation == "Walking":
 			$Sprite.animation = "IdleDown"
 	
 	move_and_slide()
