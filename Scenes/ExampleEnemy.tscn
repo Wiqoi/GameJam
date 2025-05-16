@@ -1,8 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://mgtlquokidw1"]
 
 [ext_resource type="Texture2D" uid="uid://dbulbs2tyq6ue" path="res://Assets/Particle FX 1.3 Free/Spritesheets/Water Vortex Splash-Sheet.png" id="1_0j3b3"]
-[ext_resource type="Script" uid="uid://qur0dnhr3oyx" path="res://Scripts/EnemyHitBox.gd" id="2_as6ki"]
-[ext_resource type="Script" uid="uid://5tmb4ooc72vq" path="res://Scripts/EnemyHurtboxCollision.gd" id="3_j2dix"]
+[ext_resource type="Script" uid="uid://ccba8ljxnrr3l" path="res://Scripts/ExampleEnemy.gd" id="1_as6ki"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_as6ki"]
 atlas = ExtResource("1_0j3b3")
@@ -226,9 +225,13 @@ animations = [{
 radius = 8.06226
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_as6ki"]
-radius = 30.0
+radius = 8.06226
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j2dix"]
+radius = 38.0132
 
 [node name="ExampleEnemy" type="CharacterBody2D"]
+script = ExtResource("1_as6ki")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_w28ut")
@@ -239,9 +242,12 @@ frame_progress = 0.224856
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0j3b3")
 
-[node name="Hitbox" type="Area2D" parent="."]
-script = ExtResource("2_as6ki")
+[node name="Hurtbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="Collision" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_as6ki")
-script = ExtResource("3_j2dix")
+
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_j2dix")

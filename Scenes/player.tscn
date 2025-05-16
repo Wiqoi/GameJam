@@ -1,6 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://bunmeh8jxgkjj"]
+[gd_scene load_steps=24 format=3 uid="uid://bunmeh8jxgkjj"]
 
-[ext_resource type="Script" uid="uid://lvoh8mxuovtb" path="res://Scripts/Player_Movement.gd" id="1_6t5aa"]
+[ext_resource type="Script" uid="uid://lvoh8mxuovtb" path="res://Scripts/Player.gd" id="1_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://c07gjexk13b4g" path="res://Assets/Snoblin_Prototype_Character/Assets/Prototype_Character/Prototype_Character.png" id="2_cvnsp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
@@ -165,6 +165,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(10, 19)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6t5aa"]
+size = Vector2(20, 22)
+
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_6t5aa")
@@ -173,7 +176,7 @@ script = ExtResource("1_6t5aa")
 position = Vector2(0, 9.53674e-07)
 scale = Vector2(1.65625, 1.52718)
 sprite_frames = SubResource("SpriteFrames_ph33w")
-animation = &"IdleUp"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -184,3 +187,8 @@ position_smoothing_speed = 8.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cvnsp")
+
+[node name="PlayerHurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]
+shape = SubResource("RectangleShape2D_6t5aa")
