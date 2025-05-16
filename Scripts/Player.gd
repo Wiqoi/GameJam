@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var cursor_size : float = 2.0
 @export var smooth_rotation : float = 0.4
 @export var line_width : float = 1.2
+@export var attacking = false
+
 
 var enemy_in_attack_range = false
 var hp = 3
@@ -17,6 +19,10 @@ var cursor_outline : Line2D
 
 func _ready():
 	create_cursor()
+
+func _process(delta):
+	if Input.is_action_just_pressed("Attack"):
+		attack()
 
 func create_cursor():
 	cursor_polygon = Polygon2D.new()
@@ -37,6 +43,10 @@ func create_cursor():
 	cursor_outline.default_color = Color.WHITE
 	cursor_outline.width = line_width
 	cursor_outline.z_index = 2
+
+func attack():
+	attacking = true
+	$AnimationPlayer.play("Attack")
 
 func _physics_process(delta):
 	character_direction.x = Input.get_axis("Player_Left", "Player_Right")
@@ -83,11 +93,6 @@ func update_cursor():
 		var target_angle = direction.angle() + PI/2
 		cursor_polygon.rotation = target_angle
 		cursor_outline.rotation = target_angle
-
-func _unhandled_key_input(event: "Attack") -> void:
-	pass
-	$PlayerAttack 
-
 
 func _on_player_hurt_box_area_entered(area: Area2D) -> void:
 	pass # Replace with function body.
