@@ -1,8 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://smsqxk61lv3w"]
+[gd_scene load_steps=28 format=3 uid="uid://bunmeh8jxgkjj"]
 
 [ext_resource type="Script" uid="uid://lvoh8mxuovtb" path="res://Scripts/Player.gd" id="1_6t5aa"]
-[ext_resource type="Texture2D" path="res://Assets/Snoblin_Prototype_Character/Assets/Prototype_Character/Prototype_Character.png" id="2_cvnsp"]
-[ext_resource type="PackedScene" uid="uid://btcptscboys7f" path="res://Scenes/player_attack.tscn" id="3_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://c07gjexk13b4g" path="res://Assets/Snoblin_Prototype_Character/Assets/Prototype_Character/Prototype_Character.png" id="2_cvnsp"]
+[ext_resource type="PackedScene" uid="uid://re6trr2pusfs" path="res://Scenes/player_attack.tscn" id="3_6t5aa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
 atlas = ExtResource("2_cvnsp")
@@ -198,12 +198,6 @@ size = Vector2(20, 22)
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_6t5aa")
-movement_speed = null
-deceleration = null
-cursor_distance = null
-cursor_size = null
-smooth_rotation = null
-line_width = null
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 9.53674e-07)
@@ -211,7 +205,7 @@ scale = Vector2(1.65625, 1.52718)
 sprite_frames = SubResource("SpriteFrames_ph33w")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.204884
+frame_progress = 0.393931
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 1)

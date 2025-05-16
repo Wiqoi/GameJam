@@ -7,6 +7,10 @@ extends CharacterBody2D
 @export var smooth_rotation : float = 0.4
 @export var line_width : float = 1.2
 
+var enemy_in_attack_range = false
+var hp = 3
+var player_alive = true
+
 var character_direction : Vector2
 var cursor_polygon : Polygon2D
 var cursor_outline : Line2D
@@ -79,3 +83,15 @@ func update_cursor():
 		var target_angle = direction.angle() + PI/2
 		cursor_polygon.rotation = target_angle
 		cursor_outline.rotation = target_angle
+
+func _unhandled_key_input(event: "Attack") -> void:
+	pass
+	$PlayerAttack 
+
+
+func _on_player_hurt_box_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_player_hurt_box_area_exited(area: Area2D) -> void:
+	pass # Replace with function body.

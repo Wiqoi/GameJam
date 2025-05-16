@@ -1,6 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://cq2o7tq0utgu0"]
+[gd_scene load_steps=37 format=3 uid="uid://mgtlquokidw1"]
 
-[ext_resource type="Texture2D" path="res://Assets/Particle FX 1.3 Free/Spritesheets/Water Vortex Splash-Sheet.png" id="1_0j3b3"]
+[ext_resource type="Texture2D" uid="uid://dbulbs2tyq6ue" path="res://Assets/Particle FX 1.3 Free/Spritesheets/Water Vortex Splash-Sheet.png" id="1_0j3b3"]
 [ext_resource type="Script" uid="uid://ccba8ljxnrr3l" path="res://Scripts/ExampleEnemy.gd" id="1_as6ki"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_as6ki"]

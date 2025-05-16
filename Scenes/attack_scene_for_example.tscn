@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf2y6ijvlfmap"]
+[gd_scene load_steps=3 format=3 uid="uid://d1304qe6c7o3u"]
 
-[ext_resource type="PackedScene" uid="uid://bunmeh8jxgkjj" path="res://Scenes/player.tscn" id="1_yvjy0"]
-[ext_resource type="PackedScene" uid="uid://mgtlquokidw1" path="res://Scenes/ExampleEnemy.tscn" id="2_03gv5"]
+[ext_resource type="PackedScene" uid="uid://smsqxk61lv3w" path="res://Scenes/player.tscn" id="1_yvjy0"]
+[ext_resource type="PackedScene" uid="uid://cq2o7tq0utgu0" path="res://Scenes/ExampleEnemy.tscn" id="2_03gv5"]
 
 [node name="AttackSceneForExample" type="Node2D"]
 
