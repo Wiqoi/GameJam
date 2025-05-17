@@ -27,8 +27,23 @@ var character_direction : Vector2
 var cursor_polygon : Polygon2D
 var cursor_outline : Line2D
 
+@export var dash_speed: float = 300.0
+@export var dash_duration: float = 0.2
+@export var dash_cooldown: float = 1.0 
+
+var is_dashing: bool = false
+var dash_timer: float = 0.0
+var dash_cooldown_timer: float = 0.0
+
+@export var footstep_scene: PackedScene = preload("res://Scenes/Player/playerFootsteps.tscn") 
+@export var footstep_interval: float = 0.5
+
+var footstep_timer: float = 0.0
+var is_moving: bool = false  # Track if the player is moving
+
 func _ready():
 	create_cursor()
+	footstep_timer = footstep_interval
 
 func _process(delta):
 	if Input.is_action_just_pressed("Attack") and not attacking:
@@ -39,6 +54,26 @@ func _process(delta):
 		if attack_timer <= 0:
 			attacking = false
 			character_direction = pre_attack_direction
+	
+	handle_dash_input()
+	
+func handle_dash_input():
+	if Input.is_action_just_pressed("Dash") and !is_dashing and dash_cooldown_timer <= 0:
+		start_dash()
+		
+func start_dash():
+	is_dashing = true
+	dash_timer = dash_duration
+	dash_cooldown_timer = dash_cooldown  # Start cooldown
+	
+	# Get dash direction from cursor position
+	var mouse_pos = get_global_mouse_position()
+	attack_direction = (mouse_pos - global_position).normalized()  # Reuse attack direction
+	
+	# Play dash animation (add "Dash" animation to your sprite)
+	if $Sprite:
+		$Sprite.play("Dash")
+		$Sprite.flip_h = attack_direction.x < 0
 
 func create_cursor():
 	cursor_polygon = Polygon2D.new()
@@ -92,43 +127,71 @@ func _physics_process(delta):
 		damage_NoMove_Timer += delta
 		if damage_NoMove_Timer >= damage_NoMove_Duration:
 			damaged = false
-	if not attacking && not damaged:
-		character_direction.x = Input.get_axis("Player_Left", "Player_Right")
-		character_direction.y = Input.get_axis("Player_Up", "Player_Down")
-		
-		character_direction = character_direction.normalized()
-		
-		if character_direction.x > 0:
-			$Sprite.flip_h = false
-		elif character_direction.x < 0:
-			$Sprite.flip_h = true
-		
-		if character_direction:
-			velocity = character_direction * movement_speed
-			if abs(character_direction.y) > abs(character_direction.x):
-				if character_direction.y < 0:
-					if $Sprite.animation != "WalkingUp":
-						$Sprite.animation = "WalkingUp"
+	is_moving = character_direction.length() > 0.1
+	if is_moving:
+		footstep_timer -= delta
+		if footstep_timer <= 0:
+			spawn_footstep()
+			footstep_timer = footstep_interval
+	else:
+		footstep_timer = footstep_interval
+	if not is_dashing:
+		if dash_cooldown_timer > 0:
+			dash_cooldown_timer -= delta
+	if is_dashing:
+		handle_dash_movement(delta)
+	else:
+		if not attacking && not damaged:
+			character_direction.x = Input.get_axis("Player_Left", "Player_Right")
+			character_direction.y = Input.get_axis("Player_Up", "Player_Down")
+			
+			character_direction = character_direction.normalized()
+			
+			if character_direction.x > 0:
+				$Sprite.flip_h = false
+			elif character_direction.x < 0:
+				$Sprite.flip_h = true
+			
+			if character_direction:
+				velocity = character_direction * movement_speed
+				if abs(character_direction.y) > abs(character_direction.x):
+					if character_direction.y < 0:
+						if $Sprite.animation != "WalkingUp":
+							$Sprite.animation = "WalkingUp"
+					else:
+						if $Sprite.animation != "WalkingDown":
+							$Sprite.animation = "WalkingDown"
 				else:
-					if $Sprite.animation != "WalkingDown":
-						$Sprite.animation = "WalkingDown"
+					if $Sprite.animation != "Walking":
+						$Sprite.animation = "Walking"
 			else:
-				if $Sprite.animation != "Walking":
-					$Sprite.animation = "Walking"
-		else:
-			velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
-			if $Sprite.animation == "WalkingUp":
-				$Sprite.animation = "IdleUp"
-			elif $Sprite.animation == "WalkingDown" or $Sprite.animation == "Walking" or $Sprite.animation == "Attack" or $Sprite.animation == "AttackUp" or $Sprite.animation == "AttackDown":
-				$Sprite.animation = "IdleDown"
-	elif attacking && not damaged:
-		velocity = attack_direction * attack_force
-	elif damaged:
-		velocity = Vector2(0, 0)
+				velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
+				if $Sprite.animation == "WalkingUp":
+					$Sprite.animation = "IdleUp"
+				elif $Sprite.animation == "WalkingDown" or $Sprite.animation == "Walking" or $Sprite.animation == "Attack" or $Sprite.animation == "AttackUp" or $Sprite.animation == "AttackDown":
+					$Sprite.animation = "IdleDown"
+		elif attacking && not damaged:
+			velocity = attack_direction * attack_force
+		elif damaged:
+			velocity = Vector2(0, 0)
 		
 	
 	update_cursor()
 	move_and_slide()
+
+func handle_dash_movement(delta):
+	dash_timer -= delta
+	velocity = attack_direction * dash_speed
+	
+	if dash_timer <= 0:
+		is_dashing = false
+		velocity = Vector2.ZERO
+		
+		character_direction = pre_attack_direction
+
+func _on_dash_animation_finished():
+	if $Sprite.animation == "Dash":
+		$Sprite.animation = "IdleDown"
 
 func update_cursor():
 	if cursor_polygon and cursor_outline:
@@ -146,8 +209,13 @@ func update_cursor():
 func _on_player_hurt_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("EnemyHitbox"):
 		take_damage()
-		
-			
+
+func spawn_footstep():
+	if footstep_scene:
+		var footstep = footstep_scene.instantiate() as AnimatedSprite2D
+		footstep.global_position = global_position + Vector2(0, -19)
+		get_tree().get_root().add_child(footstep)
+		footstep.play()
 			
 func take_damage() -> void:
 	if!is_invincible and hp > 0:
@@ -161,7 +229,7 @@ func take_damage() -> void:
 			die()
 			
 func die() -> void:
-	$Sprite.animation = "PlayerDeath"
+	$Sprite.play("PlayerDeath")
 	damaged = true
 	queue_free()
 

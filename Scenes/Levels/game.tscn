@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ba50n6dr6ipau"]
 
-[ext_resource type="Script" uid="uid://b1ld6yf22v3sq" path="res://Scripts/Game.gd" id="1_7l4mf"]
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_7l4mf"]
 [ext_resource type="PackedScene" uid="uid://bunmeh8jxgkjj" path="res://Scenes/Player/player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://nylbh3fa82tl" path="res://Scenes/Levels/tile_map.tscn" id="3_b2ers"]
 
@@ -16,15 +16,7 @@ script = ExtResource("1_7l4mf")
 [node name="Player" parent="." instance=ExtResource("1_ebmjs")]
 unique_name_in_owner = true
 z_index = 1
-movement_speed = 105.0
-deceleration = 1000.0
-cursor_distance = 25.0
-cursor_size = 2.0
-smooth_rotation = 0.4
 line_width = 1.0
-attacking = false
-attack_force = 50.0
-attack_duration = 0.2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false

@@ -9,8 +9,12 @@ var limit : int = 150
 var isJumping : bool = false
 var offset = Vector2(randf_range(-45, 45), randf_range(-45, 45))
 
+var hitbox
+var hitbox_enabled : bool = false
+
 func _ready() -> void:
 	add_to_group("enemies")
+	hitbox = $Hitbox
 	if $Hitbox:
 		$Hitbox.add_to_group("EnemyHitbox")
 
@@ -75,7 +79,3 @@ func jumpToPlayer():
 		#queue_free()
 	#elif frame_counter2 >= 30:
 		#$EnemySprite.scale = Vector2(1.5, 1.5)
-		
-		
-	
-	
