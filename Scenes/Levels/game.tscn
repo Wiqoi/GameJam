@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=4 uid="uid://ba50n6dr6ipau"]
+[gd_scene load_steps=27 format=4 uid="uid://ba50n6dr6ipau"]
 
+[ext_resource type="Script" uid="uid://b1ld6yf22v3sq" path="res://Scripts/Enemy_Spawn.gd" id="1_7l4mf"]
 [ext_resource type="PackedScene" uid="uid://bunmeh8jxgkjj" path="res://Scenes/Player/player.tscn" id="1_ebmjs"]
 [ext_resource type="Texture2D" uid="uid://0ix1lhgbxkdg" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Plant.png" id="3_o5yvi"]
 [ext_resource type="Texture2D" uid="uid://bqhdf3kmlx7bn" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Player.png" id="4_rku1e"]
@@ -10,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bo7w6od57u22w" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Grass.png" id="9_ewbju"]
 [ext_resource type="Texture2D" uid="uid://va7tncvmg86s" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Stone Ground.png" id="10_85qyi"]
 [ext_resource type="Texture2D" uid="uid://df4tr3f3iab7i" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Wall.png" id="11_iivbl"]
+[ext_resource type="PackedScene" uid="uid://btwsnu1lwi4qw" path="res://Scenes/enemy.tscn" id="12_xdwyp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ldgsr"]
 texture = ExtResource("9_ewbju")
@@ -2963,7 +2965,14 @@ sources/6 = SubResource("TileSetAtlasSource_fkdbe")
 sources/7 = SubResource("TileSetAtlasSource_81klo")
 sources/8 = SubResource("TileSetAtlasSource_tgy6u")
 
+[sub_resource type="Curve2D" id="Curve2D_7l4mf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -74, -27, 0, 0, 0, 0, -79, 610, 0, 0, 0, 0, 1128, 616, 0, 0, 0, 0, 1122, -29, 0, 0, 0, 0, -74, -27)
+}
+point_count = 5
+
 [node name="Game" type="Node2D"]
+script = ExtResource("1_7l4mf")
 
 [node name="Player" parent="." instance=ExtResource("1_ebmjs")]
 unique_name_in_owner = true
@@ -2982,3 +2991,18 @@ tile_set = SubResource("TileSet_cwurv")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0172887, 0.0566401, 0.0551317, 1)
+
+[node name="SpawnPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_7l4mf")
+
+[node name="SpawnPathFollow" type="PathFollow2D" parent="SpawnPath"]
+unique_name_in_owner = true
+position = Vector2(-74, -27)
+rotation = 1.57865
+
+[node name="Enemy" parent="." instance=ExtResource("12_xdwyp")]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
