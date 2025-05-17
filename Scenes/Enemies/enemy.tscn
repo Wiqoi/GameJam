@@ -176,6 +176,7 @@ shape = SubResource("RectangleShape2D_1f0kj")
 [node name="Hitbox" parent="." instance=ExtResource("3_x1rqp")]
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="Hitbox"]
+unique_name_in_owner = true
 position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_x1rqp")
 
