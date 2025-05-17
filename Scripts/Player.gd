@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var smooth_rotation : float = 0.4
 @export var line_width : float = 1.2
 @export var attacking = false
-@export var attack_force : float = 80.0     # 减小攻击推力
+@export var attack_force : float = 50.0     # 减小攻击推力
 @export var attack_duration : float = 0.2  # 攻击持续时间
 
 var enemy_in_attack_range = false
@@ -108,7 +108,7 @@ func _physics_process(delta):
 			velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 			if $Sprite.animation == "WalkingUp":
 				$Sprite.animation = "IdleUp"
-			elif $Sprite.animation == "WalkingDown" or $Sprite.animation == "Walking":
+			elif $Sprite.animation == "WalkingDown" or $Sprite.animation == "Walking" or $Sprite.animation == "Attack" or $Sprite.animation == "AttackUp" or $Sprite.animation == "AttackDown":
 				$Sprite.animation = "IdleDown"
 	else:
 		# 攻击时的轻微移动

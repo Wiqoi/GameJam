@@ -6,6 +6,12 @@
 [node name="AttackSceneForExample" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_yvjy0")]
+movement_speed = 105.0
+deceleration = 1000.0
+cursor_distance = 25.0
+cursor_size = 2.0
+smooth_rotation = 0.4
+line_width = 1.2
 
 [node name="ExampleEnemy" parent="." instance=ExtResource("2_03gv5")]
 position = Vector2(87, 25)
