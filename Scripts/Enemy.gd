@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var player: CharacterBody2D
+var health : float = 4.0
 var speed : float = 50.0
 var speedJump : float = 200.0
 var frame_counter1 : int = 0
@@ -8,6 +9,7 @@ var frame_counter2 : int = 0
 var limit : int = 150
 var isJumping : bool = false
 var offset = Vector2(randf_range(-45, 45), randf_range(-45, 45))
+var dying : bool = false
 
 var hitbox
 var hitbox_enabled : bool = false
@@ -19,7 +21,7 @@ func _ready() -> void:
 		$Hitbox.add_to_group("EnemyHitbox")
 
 func _physics_process(_delta: float) -> void:
-	if player:
+	if player && not dying:
 		var direction = (player.global_position - global_position + offset).normalized()
 		var separation = get_separation_force()
 		
@@ -79,3 +81,18 @@ func jumpToPlayer():
 		#queue_free()
 	#elif frame_counter2 >= 30:
 		#$EnemySprite.scale = Vector2(1.5, 1.5)
+
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	if area.is_in_group("PlayerAttack"):
+		health -= Global.playerDmg
+		if health <= 0:
+			die()
+
+func die():
+	dying = true
+	$EnemySprite.play("Death")
+
+func _on_enemy_sprite_animation_finished() -> void:
+	if $EnemySprite.animation == "Death":
+		queue_free()

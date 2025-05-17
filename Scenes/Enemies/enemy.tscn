@@ -1,8 +1,28 @@
-[gd_scene load_steps=20 format=3 uid="uid://btwsnu1lwi4qw"]
+[gd_scene load_steps=25 format=3 uid="uid://btwsnu1lwi4qw"]
 
 [ext_resource type="Script" uid="uid://dxufikl6pufsa" path="res://Scripts/Enemy.gd" id="1_jcvw6"]
 [ext_resource type="Texture2D" uid="uid://8niyel4sinrm" path="res://Assets/FreeOnlineAssets/Cute_Fantasy_Free/Enemies/Slime.png" id="2_x1rqp"]
 [ext_resource type="PackedScene" uid="uid://bxt5q06ej56kg" path="res://Scenes/Enemies/hitbox.tscn" id="3_x1rqp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1rqp"]
+atlas = ExtResource("2_x1rqp")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubio8"]
+atlas = ExtResource("2_x1rqp")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_miwey"]
+atlas = ExtResource("2_x1rqp")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8da7"]
+atlas = ExtResource("2_x1rqp")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_haj6g"]
+atlas = ExtResource("2_x1rqp")
+region = Rect2(128, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rku1e"]
 atlas = ExtResource("2_x1rqp")
@@ -54,6 +74,26 @@ region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iifgy"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1rqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubio8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_miwey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8da7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_haj6g")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rku1e")
@@ -119,7 +159,7 @@ script = ExtResource("1_jcvw6")
 [node name="EnemySprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_iifgy")
-animation = &"Jumping"
+animation = &"Death"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -138,3 +178,6 @@ shape = SubResource("RectangleShape2D_1f0kj")
 [node name="HitboxCollision" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_x1rqp")
+
+[connection signal="animation_finished" from="EnemySprite" to="." method="_on_enemy_sprite_animation_finished"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

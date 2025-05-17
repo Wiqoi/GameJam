@@ -43,22 +43,26 @@ var is_moving: bool = false  # Track if the player is moving
 
 func _ready():
 	create_cursor()
+	if $PlayerHitBox:
+		$PlayerHitBox.add_to_group("PlayerAttack")
 	footstep_timer = footstep_interval
 
 func _process(delta):
 	if Input.is_action_just_pressed("Attack") and not attacking:
 		attack()
-	
+		$PlayerHitBox.get_node("CollisionShape2D").disabled = false
 	if attack_timer > 0:
 		attack_timer -= delta
 		if attack_timer <= 0:
 			attacking = false
+			$PlayerHitBox.get_node("CollisionShape2D").disabled = true
 			character_direction = pre_attack_direction
 	
 	handle_dash_input()
 	
 func handle_dash_input():
 	if Input.is_action_just_pressed("Dash") and !is_dashing and dash_cooldown_timer <= 0:
+		
 		start_dash()
 		
 func start_dash():
