@@ -8,7 +8,8 @@ extends CharacterBody2D
 @export var line_width : float = 1.2
 @export var attacking = false
 @export var attack_force : float = 50.0
-@export var attack_duration : float = 0.2
+@export var attack_movement = false
+@export var attack_duration : float = 0.5
 
 var enemy_in_attack_range = false
 var hp = 3
@@ -49,10 +50,13 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("Attack") and not attacking:
+		attack_movement = true
 		attack()
 		$PlayerHitBox.get_node("CollisionShape2D").disabled = false
 	if attack_timer > 0:
 		attack_timer -= delta
+		if attack_timer <= 0.3:
+			attack_movement = false
 		if attack_timer <= 0:
 			attacking = false
 			$PlayerHitBox.get_node("CollisionShape2D").disabled = true
@@ -110,15 +114,25 @@ func attack():
 	if abs(attack_direction.x) > abs(attack_direction.y):
 		if attack_direction.x > 0:
 			$Sprite.play("Attack")
+			$Attack.visible = true
+			$Attack.play("Attack")
 			$Sprite.flip_h = false
+			$Attack.flip_h = false
 		else:
 			$Sprite.play("Attack")
+			$Attack.visible = true
+			$Attack.play("AttackLeft")
 			$Sprite.flip_h = true
+			$Attack.flip_h = true
 	else:
 		if attack_direction.y < 0:
 			$Sprite.play("AttackUp")
+			$Attack.visible = true
+			$Attack.play("Attack")
 		else:
 			$Sprite.play("AttackDown")
+			$Attack.visible = true
+			$Attack.play("Attack")
 
 func _physics_process(delta):
 	if is_invincible:
@@ -175,7 +189,11 @@ func _physics_process(delta):
 				elif $Sprite.animation == "WalkingDown" or $Sprite.animation == "Walking" or $Sprite.animation == "Attack" or $Sprite.animation == "AttackUp" or $Sprite.animation == "AttackDown":
 					$Sprite.animation = "IdleDown"
 		elif attacking && not damaged:
-			velocity = attack_direction * attack_force
+			if attack_movement == true:
+				velocity = attack_direction * attack_force
+			else:
+				velocity = Vector2(0, 0)
+			
 		elif damaged:
 			velocity = Vector2(0, 0)
 		
@@ -237,4 +255,5 @@ func die() -> void:
 	damaged = true
 	queue_free()
 
-			
+func _on_attack_animation_finished() -> void:
+	$Attack.visible = false
