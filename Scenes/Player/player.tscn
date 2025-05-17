@@ -69,7 +69,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 2.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -80,7 +80,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"IdleDown",
-"speed": 2.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -91,7 +91,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"IdleUp",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [],
 "loop": true,
@@ -159,7 +159,7 @@ script = ExtResource("1_6t5aa")
 position = Vector2(0.999998, 2.93488)
 scale = Vector2(0.625, 0.591715)
 sprite_frames = SubResource("SpriteFrames_ph33w")
-animation = &"WalkingUp"
+animation = &"IdleDown"
 autoplay = "Idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]

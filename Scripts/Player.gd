@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var movement_speed : float = 185
+@export var movement_speed : float = 105
 @export var deceleration : float = 1000
 @export var cursor_distance : float = 25.0
 @export var cursor_size : float = 2.0
