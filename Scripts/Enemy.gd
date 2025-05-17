@@ -6,25 +6,27 @@ var speedJump : float = 200.0
 var frame_counter1 : int = 0
 var frame_counter2 : int = 0
 var limit : int = 150
-#var isJumping : bool = false
+var isJumping : bool = false
 var offset = Vector2(randf_range(-45, 45), randf_range(-45, 45))
 
 func _ready() -> void:
 	add_to_group("enemies")
+	if $Hitbox:
+		$Hitbox.add_to_group("EnemyHitbox")
 
 func _physics_process(_delta: float) -> void:
 	if player:
 		var direction = (player.global_position - global_position + offset).normalized()
 		var separation = get_separation_force()
 		
-		#if isJumping and frame_counter2 >= 30 and frame_counter2 <= 40:
-			#velocity = (player.global_position - global_position).normalized() * speedJump
-			#frame_counter2 += 1
-		#elif (frame_counter2 < 30 or frame_counter2 > 40) and isJumping:
-			#frame_counter2 += 1
-			#velocity = Vector2.ZERO
-		#else:
-		velocity = (direction + separation * 20).normalized() * speed
+		if isJumping and frame_counter2 >= 30 and frame_counter2 <= 40:
+			velocity = (player.global_position - global_position).normalized() * speedJump
+			frame_counter2 += 1
+		elif (frame_counter2 < 30 or frame_counter2 > 40) and isJumping:
+			frame_counter2 += 1
+			velocity = Vector2.ZERO
+		else:
+			velocity = (direction + separation * 20).normalized() * speed
 		
 		frame_counter1 += 1
 		if frame_counter1 % 60 == 0:
@@ -32,8 +34,8 @@ func _physics_process(_delta: float) -> void:
 			update_offset()
 			
 		var distToPlayer = (global_position - player.global_position).length()
-		#if distToPlayer < 41 or isJumping:
-			#jumpToPlayer()
+		if distToPlayer < 41 or isJumping:
+			jumpToPlayer()
 		if distToPlayer < 80:
 			limit = 0
 		elif distToPlayer < 151:
@@ -64,15 +66,15 @@ func get_separation_force() -> Vector2:
 	else:
 		return Vector2.ZERO
 
-#func jumpToPlayer():
-	#isJumping = true
-	#if $EnemySprite.animation != "Jumping":
-	#	$EnemySprite.animation = "Jumping"
+func jumpToPlayer():
+	isJumping = true
+	if $EnemySprite.animation != "Jumping":
+		$EnemySprite.animation = "Jumping"
 	
 	#if frame_counter2 >= 55:
-	#	queue_free()
+		#queue_free()
 	#elif frame_counter2 >= 30:
-	#	$EnemySprite.scale = Vector2(1.5, 1.5)
+		#$EnemySprite.scale = Vector2(1.5, 1.5)
 		
 		
 	

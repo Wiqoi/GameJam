@@ -7,15 +7,18 @@ extends CharacterBody2D
 @export var smooth_rotation : float = 0.4
 @export var line_width : float = 1.2
 @export var attacking = false
-@export var attack_force : float = 50.0     # 减小攻击推力
-@export var attack_duration : float = 0.2  # 攻击持续时间
+@export var attack_force : float = 50.0
+@export var attack_duration : float = 0.2
 
 var enemy_in_attack_range = false
 var hp = 3
 var player_alive = true
-var attack_direction = Vector2.RIGHT      # 记录攻击方向
-var attack_timer = 0.0                    # 攻击计时器
-var pre_attack_direction = Vector2.ZERO   # 记录攻击前的移动方向
+var attack_direction = Vector2.RIGHT
+var attack_timer = 0.0 
+var pre_attack_direction = Vector2.ZERO
+var is_invincible: bool = false  # Invincibility after damage
+var invincibility_duration: float = 2.0  #Seconds
+var invincibility_timer: float = 0.0
 
 var character_direction : Vector2
 var cursor_polygon : Polygon2D
@@ -28,12 +31,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("Attack") and not attacking:
 		attack()
 	
-	# 处理攻击计时器
 	if attack_timer > 0:
 		attack_timer -= delta
 		if attack_timer <= 0:
 			attacking = false
-			# 恢复攻击前的移动方向
 			character_direction = pre_attack_direction
 
 func create_cursor():
@@ -59,29 +60,30 @@ func create_cursor():
 func attack():
 	attacking = true
 	attack_timer = attack_duration
-	pre_attack_direction = character_direction  # 保存攻击前的移动方向
-	
-	# 获取光标方向并确定攻击动画
+	pre_attack_direction = character_direction
+
 	var mouse_position = get_global_mouse_position()
 	attack_direction = (mouse_position - global_position).normalized()
-	
-	# 确定主要攻击方向
+
 	if abs(attack_direction.x) > abs(attack_direction.y):
 		if attack_direction.x > 0:
-			$Sprite.play("Attack")  # 向右攻击
+			$Sprite.play("Attack")
 			$Sprite.flip_h = false
 		else:
-			$Sprite.play("Attack")  # 向左攻击
+			$Sprite.play("Attack")
 			$Sprite.flip_h = true
 	else:
 		if attack_direction.y < 0:
-			$Sprite.play("AttackUp")  # 向上攻击
+			$Sprite.play("AttackUp")
 		else:
-			$Sprite.play("AttackDown")  # 向下攻击
+			$Sprite.play("AttackDown")
 
 func _physics_process(delta):
+	if is_invincible:
+		invincibility_timer -= delta
+		if invincibility_timer <= 0:
+			is_invincible = false
 	if not attacking:
-		# 常规移动控制
 		character_direction.x = Input.get_axis("Player_Left", "Player_Right")
 		character_direction.y = Input.get_axis("Player_Up", "Player_Down")
 		
@@ -111,7 +113,6 @@ func _physics_process(delta):
 			elif $Sprite.animation == "WalkingDown" or $Sprite.animation == "Walking" or $Sprite.animation == "Attack" or $Sprite.animation == "AttackUp" or $Sprite.animation == "AttackDown":
 				$Sprite.animation = "IdleDown"
 	else:
-		# 攻击时的轻微移动
 		velocity = attack_direction * attack_force
 	
 	update_cursor()
@@ -131,7 +132,23 @@ func update_cursor():
 		cursor_outline.rotation = target_angle
 
 func _on_player_hurt_box_area_entered(area: Area2D) -> void:
-	pass # 处理受伤逻辑
+	if area.is_in_group("EnemyHitbox"):
+		take_damage()
+		
+			
+			
+func take_damage() -> void:
+	if !is_invincible and hp > 0:
+		hp -= 1
+		is_invincible = true
+		invincibility_timer = invincibility_duration
 
-func _on_player_hurt_box_area_exited(area: Area2D) -> void:
-	pass # 处理受伤逻辑    
+		$Sprite.animation = "PlayerHit"
+		if hp <= 0:
+			die()
+			
+func die() -> void:
+	$Sprite.animation = "PlayerDeath"
+	queue_free()
+
+			

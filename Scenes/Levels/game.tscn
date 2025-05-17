@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=4 uid="uid://ba50n6dr6ipau"]
 
-[ext_resource type="Script" uid="uid://b1ld6yf22v3sq" path="res://Scripts/Enemy_Spawn.gd" id="1_7l4mf"]
+[ext_resource type="Script" uid="uid://b1ld6yf22v3sq" path="res://Scripts/Game.gd" id="1_7l4mf"]
 [ext_resource type="PackedScene" uid="uid://bunmeh8jxgkjj" path="res://Scenes/Player/player.tscn" id="1_ebmjs"]
 [ext_resource type="Texture2D" uid="uid://0ix1lhgbxkdg" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Plant.png" id="3_o5yvi"]
 [ext_resource type="Texture2D" uid="uid://bqhdf3kmlx7bn" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Player.png" id="4_rku1e"]
