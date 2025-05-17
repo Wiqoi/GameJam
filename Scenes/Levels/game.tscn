@@ -6,7 +6,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_7l4mf"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -74, -27, 0, 0, 0, 0, -79, 610, 0, 0, 0, 0, 1128, 616, 0, 0, 0, 0, 1122, -29, 0, 0, 0, 0, -74, -27)
+"points": PackedVector2Array(0, 0, 0, 0, -796, -502, 0, 0, 0, 0, 720, -504, 0, 0, 0, 0, 741, 512, 0, 0, 0, 0, -787, 505, 0, 0, 0, 0, -796, -502)
 }
 point_count = 5
 
@@ -27,8 +27,8 @@ curve = SubResource("Curve2D_7l4mf")
 
 [node name="SpawnPathFollow" type="PathFollow2D" parent="SpawnPath"]
 unique_name_in_owner = true
-position = Vector2(-74, -27)
-rotation = 1.57865
+position = Vector2(-796, -502)
+rotation = -0.00131926
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
