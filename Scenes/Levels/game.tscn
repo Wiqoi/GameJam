@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bo7w6od57u22w" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Grass.png" id="9_ewbju"]
 [ext_resource type="Texture2D" uid="uid://va7tncvmg86s" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Stone Ground.png" id="10_85qyi"]
 [ext_resource type="Texture2D" uid="uid://df4tr3f3iab7i" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Wall.png" id="11_iivbl"]
-[ext_resource type="PackedScene" uid="uid://btwsnu1lwi4qw" path="res://Scenes/enemy.tscn" id="12_xdwyp"]
+[ext_resource type="PackedScene" uid="uid://btwsnu1lwi4qw" path="res://Scenes/Enemies/enemy.tscn" id="12_xdwyp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ldgsr"]
 texture = ExtResource("9_ewbju")
