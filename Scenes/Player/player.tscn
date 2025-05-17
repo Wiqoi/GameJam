@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://bunmeh8jxgkjj"]
+[gd_scene load_steps=31 format=3 uid="uid://bunmeh8jxgkjj"]
 
 [ext_resource type="Script" uid="uid://lvoh8mxuovtb" path="res://Scripts/Player.gd" id="1_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://c07gjexk13b4g" path="res://Assets/FreeOnlineAssets/Snoblin_Prototype_Character/Assets/Prototype_Character/Prototype_Character.png" id="2_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://b24y0noxnsn3m" path="res://Assets/HenryAssets/Player.png" id="2_mtuoh"]
 [ext_resource type="Texture2D" uid="uid://bn4rc532244i0" path="res://Assets/FreeOnlineAssets/FE1000_nyknck/FE1002/FE1002_02.png" id="3_htcer"]
 [ext_resource type="Texture2D" uid="uid://cf07xq0tqy76t" path="res://Assets/FreeOnlineAssets/light.png" id="3_xpcdj"]
+[ext_resource type="Texture2D" uid="uid://dodgg3jc4qy5d" path="res://Assets/FreeOnlineAssets/FE1000_nyknck/FE1001/FE1001_02.png" id="6_dd0ac"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oikmp"]
 atlas = ExtResource("2_mtuoh")
@@ -250,6 +251,11 @@ texture_scale = 0.6
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox"]
 position = Vector2(10, 0)
 shape = SubResource("RectangleShape2D_mtuoh")
+
+[node name="Invincible" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(11, 0)
+texture = ExtResource("6_dd0ac")
 
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]
 [connection signal="area_exited" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_exited"]

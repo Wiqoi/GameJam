@@ -83,9 +83,11 @@ func attack():
 
 func _physics_process(delta):
 	if is_invincible:
+		$Invincible.visible = true
 		invincibility_timer -= delta
 		if invincibility_timer <= 0:
 			is_invincible = false
+			$Invincible.visible = false
 	if damaged:
 		damage_NoMove_Timer += delta
 		if damage_NoMove_Timer >= damage_NoMove_Duration:
@@ -119,8 +121,11 @@ func _physics_process(delta):
 				$Sprite.animation = "IdleUp"
 			elif $Sprite.animation == "WalkingDown" or $Sprite.animation == "Walking" or $Sprite.animation == "Attack" or $Sprite.animation == "AttackUp" or $Sprite.animation == "AttackDown":
 				$Sprite.animation = "IdleDown"
-	else:
+	elif attacking && not damaged:
 		velocity = attack_direction * attack_force
+	elif damaged:
+		velocity = Vector2(0, 0)
+		
 	
 	update_cursor()
 	move_and_slide()
@@ -145,18 +150,19 @@ func _on_player_hurt_box_area_entered(area: Area2D) -> void:
 			
 			
 func take_damage() -> void:
-	if !is_invincible and hp > 0:
+	if!is_invincible and hp > 0:
 		hp -= 1
 		is_invincible = true
 		invincibility_timer = invincibility_duration
-
+		damage_NoMove_Timer = 0
+		damaged = true
 		$Sprite.animation = "PlayerHit"
 		if hp <= 0:
 			die()
 			
 func die() -> void:
 	$Sprite.animation = "PlayerDeath"
-	queue_free()
 	damaged = true
+	queue_free()
 
 			
