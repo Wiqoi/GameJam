@@ -16,8 +16,11 @@ var player_alive = true
 var attack_direction = Vector2.RIGHT
 var attack_timer = 0.0 
 var pre_attack_direction = Vector2.ZERO
-var is_invincible: bool = false  # Invincibility after damage
-var invincibility_duration: float = 2.0  #Seconds
+var damaged: bool = false
+var is_invincible: bool = false
+var damage_NoMove_Duration: float = 0.5
+var damage_NoMove_Timer: float = 0.0
+var invincibility_duration: float = 2.0
 var invincibility_timer: float = 0.0
 
 var character_direction : Vector2
@@ -83,7 +86,11 @@ func _physics_process(delta):
 		invincibility_timer -= delta
 		if invincibility_timer <= 0:
 			is_invincible = false
-	if not attacking:
+	if damaged:
+		damage_NoMove_Timer += delta
+		if damage_NoMove_Timer >= damage_NoMove_Duration:
+			damaged = false
+	if not attacking && not damaged:
 		character_direction.x = Input.get_axis("Player_Left", "Player_Right")
 		character_direction.y = Input.get_axis("Player_Up", "Player_Down")
 		
@@ -150,5 +157,6 @@ func take_damage() -> void:
 func die() -> void:
 	$Sprite.animation = "PlayerDeath"
 	queue_free()
+	damaged = true
 
 			
