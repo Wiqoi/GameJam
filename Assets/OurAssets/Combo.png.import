@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj11kwol5q0c5"
-path="res://.godot/imported/Ability.png-bcf296bae6b20bd92ff8067593512547.ctex"
+uid="uid://d1qhf0ongxlru"
+path="res://.godot/imported/Combo.png-54f7c134dd100ef6a0d062338c393e5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/HenryAssets/Ability.png"
-dest_files=["res://.godot/imported/Ability.png-bcf296bae6b20bd92ff8067593512547.ctex"]
+source_file="res://Assets/OurAssets/Combo.png"
+dest_files=["res://.godot/imported/Combo.png-54f7c134dd100ef6a0d062338c393e5e.ctex"]
 
 [params]
 

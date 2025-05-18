@@ -1926,7 +1926,7 @@ line_width = 1.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
-color = Color(0.0113026, 0.0585747, 0.0546291, 1)
+color = Color(0.00528596, 0.0628275, 0.0334928, 1)
 
 [node name="SpawnPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_7l4mf")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc7b1wmled1yt"
-path="res://.godot/imported/Arua.png-6ad60eb25cfa7e8206f7e1aff208c9b4.ctex"
+uid="uid://bj11kwol5q0c5"
+path="res://.godot/imported/Ability.png-955bc44e0363771386aaa74f9d8a5ae6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/HenryAssets/Arua.png"
-dest_files=["res://.godot/imported/Arua.png-6ad60eb25cfa7e8206f7e1aff208c9b4.ctex"]
+source_file="res://Assets/OurAssets/Ability.png"
+dest_files=["res://.godot/imported/Ability.png-955bc44e0363771386aaa74f9d8a5ae6.ctex"]
 
 [params]
 

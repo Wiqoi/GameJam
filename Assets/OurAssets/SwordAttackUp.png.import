@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chvfpsrpq14cs"
-path="res://.godot/imported/Health.png-5016162de540af0a19f14e442f74ef82.ctex"
+uid="uid://bk5i064r0imwe"
+path="res://.godot/imported/SwordAttackUp.png-c864c5e8e4e5e44eac27de0182dffb85.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/HenryAssets/Health.png"
-dest_files=["res://.godot/imported/Health.png-5016162de540af0a19f14e442f74ef82.ctex"]
+source_file="res://Assets/OurAssets/SwordAttackUp.png"
+dest_files=["res://.godot/imported/SwordAttackUp.png-c864c5e8e4e5e44eac27de0182dffb85.ctex"]
 
 [params]
 
