@@ -19,7 +19,7 @@ func _ready() -> void:
 	add_to_group("enemies")
 	hitbox = %HitboxCollisionDemon
 	hitbox.disabled = true
-	$Hitbox.add_to_group("EnemyHitbox")
+	%HitboxDemon.add_to_group("EnemyHitbox")
 	%HurtboxCollisionDemon.disabled = false
 
 func _physics_process(_delta: float) -> void:
@@ -96,13 +96,6 @@ func get_separation_force() -> Vector2:
 				count += 1
 	return force / count if count > 0 else Vector2.ZERO
 
-func _on_hurt_box_area_entered(area: Area2D) -> void:
-	if area.is_in_group("PlayerAttack"):
-		health -= Global.playerDmg
-		print(Global.playerDmg)
-		if health <= 0:
-			die()
-
 func die() -> void:
 	dying = true
 	$DemonSprite.play("Death")
@@ -110,3 +103,10 @@ func die() -> void:
 func _on_demon_sprite_animation_finished() -> void:
 	if $DemonSprite.animation == "Death":
 		queue_free()
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("PlayerAttack"):
+		health -= Global.playerDmg
+		if health <= 0:
+			die()

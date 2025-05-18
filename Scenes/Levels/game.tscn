@@ -1937,6 +1937,7 @@ position = Vector2(-796, -502)
 rotation = -0.00131926
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [node name="TileMap" parent="." instance=ExtResource("3_b2ers")]
