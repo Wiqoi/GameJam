@@ -114,25 +114,25 @@ func attack():
 	if abs(attack_direction.x) > abs(attack_direction.y):
 		if attack_direction.x > 0:
 			$Sprite.play("Attack")
-			$Attack.visible = true
-			$Attack.play("Attack")
+			$Sword.visible = true
+			$Sword.play("Attack")
 			$Sprite.flip_h = false
-			$Attack.flip_h = false
+			$Sword.flip_h = false
 		else:
 			$Sprite.play("Attack")
-			$Attack.visible = true
-			$Attack.play("AttackLeft")
+			$Sword.visible = true
+			$Sword.play("Attack")
 			$Sprite.flip_h = true
-			$Attack.flip_h = true
+			$Sword.flip_h = true
 	else:
 		if attack_direction.y < 0:
 			$Sprite.play("AttackUp")
-			$Attack.visible = true
-			$Attack.play("Attack")
+			$Sword.visible = true
+			$Sword.play("AttackUp")
 		else:
 			$Sprite.play("AttackDown")
-			$Attack.visible = true
-			$Attack.play("Attack")
+			$Sword.visible = true
+			$Sword.play("AttackDown")
 
 func _physics_process(delta):
 	if is_invincible:
@@ -262,5 +262,6 @@ func die() -> void:
 	queue_free()
 	get_tree().quit()
 
-func _on_attack_animation_finished() -> void:
-	$Attack.visible = false
+
+func _on_sword_animation_finished() -> void:
+	$Sword.play("Idle")
