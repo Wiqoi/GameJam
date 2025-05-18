@@ -10,13 +10,14 @@ var limit : int = 150
 var isJumping : bool = false
 var offset = Vector2(randf_range(-45, 45), randf_range(-45, 45))
 var dying : bool = false
+var jump_cooldown_frames = 90
+var jump_cooldown_counter = 0
 
-var hitbox
-var hitbox_enabled : bool = false
+var hitbox : CollisionShape2D
 
 func _ready() -> void:
 	add_to_group("enemies")
-	hitbox = $Hitbox
+	hitbox = $%HitboxCollision
 	if $Hitbox:
 		$Hitbox.add_to_group("EnemyHitbox")
 
@@ -25,14 +26,17 @@ func _physics_process(_delta: float) -> void:
 		var direction = (player.global_position - global_position + offset).normalized()
 		var separation = get_separation_force()
 		
-		if isJumping and frame_counter2 >= 30 and frame_counter2 <= 40:
+		if isJumping and frame_counter2 >= 20 and frame_counter2 <= 40:
 			velocity = (player.global_position - global_position).normalized() * speedJump
 			frame_counter2 += 1
-		elif (frame_counter2 < 30 or frame_counter2 > 40) and isJumping:
+			hitbox.disabled = false
+		elif frame_counter2 < 20 and isJumping:
+			hitbox.disabled = true
 			frame_counter2 += 1
 			velocity = Vector2.ZERO
 		else:
 			velocity = (direction + separation * 20).normalized() * speed
+			hitbox.disabled = true
 		
 		frame_counter1 += 1
 		if frame_counter1 % 60 == 0:
@@ -40,9 +44,11 @@ func _physics_process(_delta: float) -> void:
 			update_offset()
 			
 		var distToPlayer = (global_position - player.global_position).length()
-		if distToPlayer < 41 or isJumping:
+		if isJumping:
 			jumpToPlayer()
-		if distToPlayer < 80:
+		elif distToPlayer < 41 and jump_cooldown_counter <= 0:
+			jumpToPlayer()
+		elif distToPlayer < 80:
 			limit = 0
 		elif distToPlayer < 151:
 			limit = 80
@@ -50,8 +56,6 @@ func _physics_process(_delta: float) -> void:
 			limit = 150
 			
 		move_and_slide()
-	else: 
-		player = %Player
 		
 func update_offset():
 	offset = Vector2(randf_range(-limit, limit), randf_range(-limit, limit))
@@ -77,10 +81,16 @@ func jumpToPlayer():
 	if $EnemySprite.animation != "Jumping":
 		$EnemySprite.animation = "Jumping"
 	
-	#if frame_counter2 >= 55:
-		#queue_free()
-	#elif frame_counter2 >= 30:
-		#$EnemySprite.scale = Vector2(1.5, 1.5)
+	if frame_counter2 >= 35:
+		isJumping = false
+		$EnemySprite.scale = Vector2(1, 1)
+		$EnemySprite.animation = "Walking"
+		frame_counter2 = 0
+		jump_cooldown_counter = jump_cooldown_frames
+		frame_counter2 = 0
+	elif frame_counter2 >= 20:
+		$EnemySprite.scale = Vector2(1.5, 1.5)
+
 
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:

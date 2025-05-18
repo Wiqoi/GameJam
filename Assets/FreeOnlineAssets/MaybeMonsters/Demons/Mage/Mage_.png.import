@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d33s5sdxha22v"
-path="res://.godot/imported/Player.png-ab03600cd6e01cff285875840913ac80.ctex"
+uid="uid://g2gww4fnr0f1"
+path="res://.godot/imported/Mage_.png-1453a686985938e7973b708110210a6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/HenryAssets/Player.png"
-dest_files=["res://.godot/imported/Player.png-ab03600cd6e01cff285875840913ac80.ctex"]
+source_file="res://Assets/FreeOnlineAssets/MaybeMonsters/Demons/Mage/Mage_.png"
+dest_files=["res://.godot/imported/Mage_.png-1453a686985938e7973b708110210a6c.ctex"]
 
 [params]
 

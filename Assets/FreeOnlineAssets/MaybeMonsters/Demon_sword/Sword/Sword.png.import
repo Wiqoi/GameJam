@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d33s5sdxha22v"
-path="res://.godot/imported/Player.png-ab03600cd6e01cff285875840913ac80.ctex"
+uid="uid://b5kmifsk6x66n"
+path="res://.godot/imported/Sword.png-f4368c3ad5ad6b12f81000117f12ea72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/HenryAssets/Player.png"
-dest_files=["res://.godot/imported/Player.png-ab03600cd6e01cff285875840913ac80.ctex"]
+source_file="res://Assets/FreeOnlineAssets/MaybeMonsters/Demon_sword/Sword/Sword.png"
+dest_files=["res://.godot/imported/Sword.png-f4368c3ad5ad6b12f81000117f12ea72.ctex"]
 
 [params]
 
