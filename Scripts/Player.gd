@@ -14,12 +14,13 @@ extends CharacterBody2D
 var is_dashing: bool = false
 var dash_timer: float = 0.0
 var dash_cooldown_timer: float = 0.0
+var dash_direction: Vector2 = Vector2.RIGHT
 
 @export var footstep_scene: PackedScene = preload("res://Scenes/Player/playerFootsteps.tscn") 
 @export var footstep_interval: float = 0.5
 
 var footstep_timer: float = 0.0
-var is_moving: bool = false  # Track if the player is moving
+var is_moving: bool = false
 
 var hp = 3
 var player_alive = true
@@ -29,13 +30,12 @@ var damage_NoMove_Duration: float = 0.5
 var damage_NoMove_Timer: float = 0.0
 var invincibility_duration: float = 2.0
 var invincibility_timer: float = 0.0
-var dash_direction = Vector2.RIGHT
 
 var character_direction : Vector2
 var cursor_polygon : Polygon2D
 var cursor_outline : Line2D
 
-var sword : AnimatedSprite2D  # Removed attack-related references
+var sword : AnimatedSprite2D
 
 func _ready():
 	create_cursor()
@@ -46,22 +46,28 @@ func _process(delta):
 	handle_dash_input()
 
 func handle_dash_input():
-	if Input.is_action_just_pressed("Dash") and !is_dashing and dash_cooldown_timer <= 0:		
+	if Input.is_action_just_pressed("Dash") and !is_dashing and dash_cooldown_timer <= 0:
+		dash_direction = get_dash_direction()
 		start_dash()
-		
+
+func get_dash_direction():
+	var mouse_pos = get_global_mouse_position()
+	return (mouse_pos - global_position).normalized() if mouse_pos != Vector2.ZERO else character_direction.normalized()
+
 func start_dash():
 	is_dashing = true
 	dash_timer = dash_duration
-	dash_cooldown_timer = dash_cooldown  # Start cooldown
-	
-	# Get dash direction from cursor position
+	dash_cooldown_timer = dash_cooldown
+
 	var mouse_pos = get_global_mouse_position()
 	var dash_direction = (mouse_pos - global_position).normalized()
 	
-	# Play dash animation (add "Dash" animation to your sprite)
 	if $Sprite:
 		$Sprite.play("Dash")
 		$Sprite.flip_h = dash_direction.x < 0
+	
+	character_direction = Vector2.ZERO
+	velocity = Vector2.ZERO
 
 func create_cursor():
 	cursor_polygon = Polygon2D.new()
@@ -148,6 +154,7 @@ func handle_dash_movement(delta):
 		is_dashing = false
 		velocity = Vector2.ZERO		
 		character_direction = Vector2.ZERO
+		dash_cooldown_timer = max(dash_cooldown_timer, dash_cooldown)
 
 func _on_dash_animation_finished():
 	if $Sprite.animation == "Dash":
