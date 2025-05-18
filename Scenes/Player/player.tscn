@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://d33s5sdxha22v" path="res://Assets/HenryAssets/Player.png" id="2_mtuoh"]
 [ext_resource type="Texture2D" uid="uid://bn4rc532244i0" path="res://Assets/FreeOnlineAssets/FE1000_nyknck/FE1002/FE1002_02.png" id="3_htcer"]
 [ext_resource type="Texture2D" uid="uid://cf07xq0tqy76t" path="res://Assets/FreeOnlineAssets/light.png" id="3_xpcdj"]
+[ext_resource type="Texture2D" uid="uid://b6sor0u8aymgj" path="res://Assets/HenryAssets/Invincible.png" id="5_dd0ac"]
 [ext_resource type="PackedScene" uid="uid://ses2rjxjm7o4" path="res://Scenes/Player/sword.tscn" id="6_0u5uq"]
-[ext_resource type="Texture2D" uid="uid://dodgg3jc4qy5d" path="res://Assets/FreeOnlineAssets/FE1000_nyknck/FE1001/FE1001_02.png" id="6_dd0ac"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aqm4k"]
 atlas = ExtResource("2_mtuoh")
@@ -238,11 +238,10 @@ libraries = {
 }
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(2, -14)
-energy = 0.4
+energy = 1.2
 shadow_enabled = true
 texture = ExtResource("3_xpcdj")
-texture_scale = 0.6
+texture_scale = 1.2
 
 [node name="PlayerHitBox" type="Area2D" parent="."]
 
@@ -252,8 +251,8 @@ disabled = true
 
 [node name="Invincible" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(11, 0)
-texture = ExtResource("6_dd0ac")
+scale = Vector2(0.257813, 0.289063)
+texture = ExtResource("5_dd0ac")
 
 [node name="Sword" parent="." instance=ExtResource("6_0u5uq")]
 position = Vector2(4, 14.5)
