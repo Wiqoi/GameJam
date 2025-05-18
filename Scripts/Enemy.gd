@@ -1,101 +1,84 @@
-extends CharacterBody2D
+extends Node2D
 
-var player: CharacterBody2D
-var health : float = 4.0
-var speed : float = 50.0
-var speedJump : float = 200.0
-var frame_counter1 : int = 0
-var frame_counter2 : int = 0
-var limit : int = 150
-var isJumping : bool = false
-var offset = Vector2(randf_range(-45, 45), randf_range(-45, 45))
-var dying : bool = false
-var jump_cooldown_frames = 210
-var jump_cooldown_counter = 0
+@export var follow_speed: float = 200.0
+@export var stop_distance: float = 5.0
+@export var attack_duration: float = 0.8
 
-var hitbox : CollisionShape2D
+var target_position: Vector2 = Vector2.ZERO
+var is_following: bool = true
+var velocity: Vector2 = Vector2.ZERO
+var attacking = false
+var attack_direction = Vector2.RIGHT
+var attack_timer = 0.0
+var attack_base_rotation = 0.0
 
-func _ready() -> void:
-	add_to_group("enemies")
-	hitbox = %HitboxCollision
-	if $Hitbox:
-		$Hitbox.add_to_group("EnemyHitbox")
-	var hurtbox = %EnemyHurtBox
-	hurtbox.disabled = false
+func _ready():
+	position = Vector2(20, 0)
+	if $AttackHitbox:
+		$AttackHitbox.add_to_group("PlayerAttack")
 
-func _physics_process(_delta: float) -> void:
-	if player && not dying:
-		var direction = (player.global_position - global_position + offset).normalized()
-		var separation = get_separation_force()
+func _physics_process(delta):
+	target_position = Global.cursorPos
+	
+	if is_following:
+		var direction = target_position - position
+		var distance = direction.length()
 		
-		if isJumping and frame_counter2 >= 20 and frame_counter2 <= 35:
-			velocity = (player.global_position - global_position).normalized() * speedJump
-			frame_counter2 += 1
-			hitbox.disabled = false
-		elif frame_counter2 < 20 and isJumping:
-			hitbox.disabled = true
-			frame_counter2 += 1
+		if distance < stop_distance:
 			velocity = Vector2.ZERO
 		else:
-			velocity = (direction + separation * 20).normalized() * speed
-			hitbox.disabled = true
-		
-		frame_counter1 += 1
-		if frame_counter1 % 60 == 0:
-			frame_counter1 = 0
-			update_offset()
-			
-		var distToPlayer = (global_position - player.global_position).length()
-		if isJumping:
-			jumpToPlayer()
-		elif distToPlayer < 41 and jump_cooldown_counter <= 0:
-			jumpToPlayer()
-		elif distToPlayer < 80:
-			limit = 0
-		elif distToPlayer < 151:
-			limit = 80
-		else:
-			limit = 150
-			
-		if jump_cooldown_counter > 0:
-			jump_cooldown_counter -= 1
-			
-		move_and_slide()
-		
-func update_offset():
-	offset = Vector2(randf_range(-limit, limit), randf_range(-limit, limit))
-		
-func get_separation_force() -> Vector2:
-	var force = Vector2.ZERO
-	var nearby_enemies = get_tree().get_nodes_in_group("enemies")
-	var count = 0
-	for other in nearby_enemies:
-		if other != self:
-			var offsetTotal = global_position - other.global_position
-			var dist = offsetTotal.length()
-			if dist < 50 and dist > 0:
-				force += offsetTotal.normalized() / dist
-				count += 1
-	if count > 0:
-		return force / count
+			velocity = direction.normalized() * follow_speed
+			position += velocity * delta
 	else:
-		return Vector2.ZERO
+		velocity = velocity.move_toward(Vector2.ZERO, follow_speed * delta)
+		position += velocity * delta
+	
+	if attacking:
+		update_hitbox_rotation(delta)
 
-func jumpToPlayer():
-	$EnemySprite.animation = "Jumping"
-	isJumping = true
+func _process(delta):
+	if Input.is_action_just_pressed("Attack") and not attacking:
+		attack()
+	if attack_timer > 0:
+		attack_timer -= delta
+		if attack_timer <= 0:
+			attacking = false
+			reset_hitbox_rotation()
+			$Sword.play("Idle")
 
+func attack():
+	attacking = true
+	attack_timer = attack_duration
 
-func _on_hurt_box_area_entered(area: Area2D) -> void:
-	if area.is_in_group("PlayerAttack"):
-		health -= Global.playerDmg
-		if health <= 0:
-			die()
+	var mouse_position = get_global_mouse_position()
+	attack_direction = (mouse_position - global_position).normalized()
 
-func die():
-	dying = true
-	$EnemySprite.play("Death")
+	if abs(attack_direction.x) > abs(attack_direction.y):
+		if attack_direction.x > 0:
+			$Sword.play("Attack")
+			$Sword.flip_h = false
+			attack_base_rotation = 0.0
+		else:
+			$Sword.play("Attack")
+			$Sword.flip_h = true
+			attack_base_rotation = PI
+	else:
+		if attack_direction.y < 0:
+			$Sword.play("AttackUp")
+			attack_base_rotation = -PI/2
+		else:
+			$Sword.play("AttackDown")
+			attack_base_rotation = PI/2
 
-func _on_enemy_sprite_animation_finished() -> void:
-	if $EnemySprite.animation == "Death":
-		queue_free()
+func update_hitbox_rotation(delta):
+	if not $AttackHitbox:
+		return
+	
+	var attack_progress = 1.0 - (attack_timer / attack_duration)
+	
+	var rotation_offset = sin(attack_progress * PI) * PI/2
+	$AttackHitbox.rotation = attack_base_rotation + rotation_offset
+
+func reset_hitbox_rotation():
+	if $AttackHitbox:
+		$AttackHitbox.rotation = 0
