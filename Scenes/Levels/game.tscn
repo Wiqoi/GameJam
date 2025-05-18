@@ -1956,6 +1956,6 @@ tile_set = SubResource("TileSet_3dryh")
 [node name="Sword" parent="." instance=ExtResource("12_xdwyp")]
 follow_speed = 85.0
 
-[node name="Node2D" parent="." instance=ExtResource("13_ahqd5")]
+[node name="Abilities" parent="." instance=ExtResource("13_ahqd5")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
