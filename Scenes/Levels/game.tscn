@@ -1925,7 +1925,6 @@ z_index = 1
 line_width = 1.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.0113026, 0.0585747, 0.0546291, 1)
 
 [node name="SpawnPath" type="Path2D" parent="."]
@@ -1937,6 +1936,7 @@ position = Vector2(-796, -502)
 rotation = -0.00131926
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [node name="TileMap" parent="." instance=ExtResource("3_b2ers")]
