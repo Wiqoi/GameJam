@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://bunmeh8jxgkjj"]
+[gd_scene load_steps=31 format=3 uid="uid://bunmeh8jxgkjj"]
 
 [ext_resource type="Script" uid="uid://lvoh8mxuovtb" path="res://Scripts/Player.gd" id="1_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://cv0nvlkh2pa3u" path="res://Scenes/Player/playerCamera.tscn" id="3_0u5uq"]
 [ext_resource type="Texture2D" uid="uid://qtjsica8mxmw" path="res://Assets/HenryAssets/HopefullyPlayerFInal.png" id="3_dd0ac"]
 [ext_resource type="Texture2D" uid="uid://cf07xq0tqy76t" path="res://Assets/FreeOnlineAssets/light.png" id="3_xpcdj"]
 [ext_resource type="Texture2D" uid="uid://dc7b1wmled1yt" path="res://Assets/HenryAssets/Arua.png" id="4_mtuoh"]
@@ -227,15 +228,8 @@ sprite_frames = SubResource("SpriteFrames_ph33w")
 animation = &"Attack"
 autoplay = "Idle"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="PlayerCamera" parent="." instance=ExtResource("3_0u5uq")]
 position = Vector2(0, 1)
-zoom = Vector2(3, 3)
-limit_left = -685
-limit_top = -447
-limit_right = 685
-limit_bottom = 447
-position_smoothing_enabled = true
-position_smoothing_speed = 8.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cvnsp")
@@ -251,7 +245,6 @@ libraries = {
 }
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(0, -3)
 energy = 0.6
 shadow_enabled = true
 texture = ExtResource("3_xpcdj")

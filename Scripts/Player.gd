@@ -22,7 +22,7 @@ var dash_direction: Vector2 = Vector2.RIGHT
 var footstep_timer: float = 0.0
 var is_moving: bool = false
 
-var hp = 3
+var hp = 5
 var player_alive = true
 var damaged: bool = false
 var is_invincible: bool = false
@@ -142,7 +142,8 @@ func _physics_process(delta):
 					$Sprite.animation = "IdleDown"
 		elif damaged:
 			velocity = Vector2(0, 0)
-	
+	else:
+		handle_dash_movement(delta)
 	update_cursor()
 	move_and_slide()
 

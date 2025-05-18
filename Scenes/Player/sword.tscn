@@ -1,9 +1,11 @@
-[gd_scene load_steps=42 format=3 uid="uid://ses2rjxjm7o4"]
+[gd_scene load_steps=60 format=3 uid="uid://ses2rjxjm7o4"]
 
 [ext_resource type="Texture2D" uid="uid://dg5dnt5tws063" path="res://Assets/HenryAssets/Sword.png" id="1_pyplh"]
 [ext_resource type="Texture2D" uid="uid://cyaw0ynll8eiv" path="res://Assets/HenryAssets/SwordAttackDown.png" id="2_22dsp"]
 [ext_resource type="Texture2D" uid="uid://bk5i064r0imwe" path="res://Assets/HenryAssets/SwordAttackUp.png" id="2_dbc6b"]
 [ext_resource type="Texture2D" uid="uid://d1qhf0ongxlru" path="res://Assets/HenryAssets/Combo.png" id="3_f0r30"]
+[ext_resource type="Texture2D" uid="uid://bg5ojuntmefss" path="res://Assets/HenryAssets/ComboUp.png" id="4_2y5dp"]
+[ext_resource type="Texture2D" uid="uid://cajwgx6jt22k5" path="res://Assets/HenryAssets/ComboDown.png" id="4_il57v"]
 [ext_resource type="Script" uid="uid://chsmu6d44kg2y" path="res://Scripts/sword.gd" id="4_uf8ak"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lwi67"]
@@ -68,6 +70,70 @@ region = Rect2(0, 256, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_laxkr"]
 atlas = ExtResource("3_f0r30")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5lj2"]
+atlas = ExtResource("4_il57v")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luubn"]
+atlas = ExtResource("4_il57v")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbota"]
+atlas = ExtResource("4_il57v")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sed3g"]
+atlas = ExtResource("4_il57v")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5nr0"]
+atlas = ExtResource("4_il57v")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76b0x"]
+atlas = ExtResource("4_il57v")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqc3s"]
+atlas = ExtResource("4_il57v")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmqia"]
+atlas = ExtResource("4_il57v")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y843k"]
+atlas = ExtResource("4_2y5dp")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpswu"]
+atlas = ExtResource("4_2y5dp")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttl1o"]
+atlas = ExtResource("4_2y5dp")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrmgr"]
+atlas = ExtResource("4_2y5dp")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjfbq"]
+atlas = ExtResource("4_2y5dp")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4xx6"]
+atlas = ExtResource("4_2y5dp")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnssy"]
+atlas = ExtResource("4_2y5dp")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2mk3"]
+atlas = ExtResource("4_2y5dp")
 region = Rect2(128, 256, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1sfkq"]
@@ -204,6 +270,64 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_v5lj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luubn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbota")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sed3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5nr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76b0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqc3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmqia")
+}],
+"loop": true,
+"name": &"AttackComboDown",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y843k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpswu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttl1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrmgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjfbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4xx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnssy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2mk3")
+}],
+"loop": true,
+"name": &"AttackComboUp",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1sfkq")
 }, {
 "duration": 1.0,
@@ -281,7 +405,7 @@ script = ExtResource("4_uf8ak")
 [node name="Sword" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.347656, 0.375)
 sprite_frames = SubResource("SpriteFrames_dmtmw")
-animation = &"Attack"
+animation = &"AttackComboDown"
 autoplay = "Idle"
 
 [node name="AttackHitbox" type="Area2D" parent="."]
