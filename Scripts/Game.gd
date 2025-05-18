@@ -10,7 +10,5 @@ func spawn_enemy():
 	new_enemy.global_position = %SpawnPathFollow.global_position
 	add_child(new_enemy)
 	
-
-
 func _on_timer_timeout() -> void:
 	spawn_enemy()

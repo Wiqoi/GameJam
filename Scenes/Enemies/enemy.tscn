@@ -176,9 +176,10 @@ position = Vector2(-0.499999, 1)
 scale = Vector2(0.997932, 0.994899)
 shape = SubResource("RectangleShape2D_1f0kj")
 
-[node name="Hitbox" parent="." instance=ExtResource("3_x1rqp")]
+[node name="HitboxSlime" parent="." instance=ExtResource("3_x1rqp")]
+unique_name_in_owner = true
 
-[node name="HitboxCollision" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxCollision" type="CollisionShape2D" parent="HitboxSlime"]
 unique_name_in_owner = true
 position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_x1rqp")
