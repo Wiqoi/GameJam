@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d33s5sdxha22v"
-path="res://.godot/imported/Player.png-ab03600cd6e01cff285875840913ac80.ctex"
+uid="uid://dc7b1wmled1yt"
+path="res://.godot/imported/Arua.png-6ad60eb25cfa7e8206f7e1aff208c9b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/HenryAssets/Player.png"
-dest_files=["res://.godot/imported/Player.png-ab03600cd6e01cff285875840913ac80.ctex"]
+source_file="res://Assets/HenryAssets/Arua.png"
+dest_files=["res://.godot/imported/Arua.png-6ad60eb25cfa7e8206f7e1aff208c9b4.ctex"]
 
 [params]
 

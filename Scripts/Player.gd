@@ -42,10 +42,10 @@ var dash_cooldown_timer: float = 0.0
 var footstep_timer: float = 0.0
 var is_moving: bool = false  # Track if the player is moving
 
+var sword : AnimatedSprite2D
+
 func _ready():
 	create_cursor()
-	if $PlayerHitBox:
-		$PlayerHitBox.add_to_group("PlayerAttack")
 	footstep_timer = footstep_interval
 
 func _process(delta):
@@ -114,25 +114,15 @@ func attack():
 	if abs(attack_direction.x) > abs(attack_direction.y):
 		if attack_direction.x > 0:
 			$Sprite.play("Attack")
-			$Sword.visible = true
-			$Sword.play("Attack")
 			$Sprite.flip_h = false
-			$Sword.flip_h = false
 		else:
 			$Sprite.play("Attack")
-			$Sword.visible = true
-			$Sword.play("Attack")
 			$Sprite.flip_h = true
-			$Sword.flip_h = true
 	else:
 		if attack_direction.y < 0:
 			$Sprite.play("AttackUp")
-			$Sword.visible = true
-			$Sword.play("AttackUp")
 		else:
 			$Sprite.play("AttackDown")
-			$Sword.visible = true
-			$Sword.play("AttackDown")
 
 func _physics_process(delta):
 	if is_invincible:
@@ -223,6 +213,7 @@ func update_cursor():
 		var cursor_pos = global_position + direction * cursor_distance
 		cursor_polygon.global_position = cursor_pos
 		cursor_outline.global_position = cursor_pos
+		Global.cursorPos = cursor_pos
 		
 		var target_angle = direction.angle() + PI/2
 		cursor_polygon.rotation = target_angle
