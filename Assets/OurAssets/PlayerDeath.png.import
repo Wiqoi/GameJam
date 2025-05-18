@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://datgj7ucvxmwg"
-path="res://.godot/imported/GameJam (3).png-f69d81d5cb14a7fbe1c644ea74a71ee2.ctex"
+uid="uid://ca837rd4vqjxj"
+path="res://.godot/imported/PlayerDeath.png-531df5901531b74b5c31448731b33a3d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OurAssets/GameJam (3).png"
-dest_files=["res://.godot/imported/GameJam (3).png-f69d81d5cb14a7fbe1c644ea74a71ee2.ctex"]
+source_file="res://Assets/OurAssets/PlayerDeath.png"
+dest_files=["res://.godot/imported/PlayerDeath.png-531df5901531b74b5c31448731b33a3d.ctex"]
 
 [params]
 
