@@ -74,7 +74,6 @@ func jumpToPlayer():
 		return
 
 	jump_frame_counter += 1
-
 func update_offset():
 	offset = Vector2(randf_range(-limit, limit), randf_range(-limit, limit))
 

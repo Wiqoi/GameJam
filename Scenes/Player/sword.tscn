@@ -1,8 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://ses2rjxjm7o4"]
+[gd_scene load_steps=42 format=3 uid="uid://ses2rjxjm7o4"]
 
 [ext_resource type="Texture2D" uid="uid://dg5dnt5tws063" path="res://Assets/HenryAssets/Sword.png" id="1_pyplh"]
 [ext_resource type="Texture2D" uid="uid://cyaw0ynll8eiv" path="res://Assets/HenryAssets/SwordAttackDown.png" id="2_22dsp"]
 [ext_resource type="Texture2D" uid="uid://bk5i064r0imwe" path="res://Assets/HenryAssets/SwordAttackUp.png" id="2_dbc6b"]
+[ext_resource type="Texture2D" uid="uid://d1qhf0ongxlru" path="res://Assets/HenryAssets/Combo.png" id="3_f0r30"]
 [ext_resource type="Script" uid="uid://chsmu6d44kg2y" path="res://Scripts/sword.gd" id="4_uf8ak"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lwi67"]
@@ -36,6 +37,38 @@ region = Rect2(128, 256, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_j3xek"]
 atlas = ExtResource("1_pyplh")
 region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jeaai"]
+atlas = ExtResource("3_f0r30")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkd3g"]
+atlas = ExtResource("3_f0r30")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6md84"]
+atlas = ExtResource("3_f0r30")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3uit"]
+atlas = ExtResource("3_f0r30")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7mta"]
+atlas = ExtResource("3_f0r30")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8hhw"]
+atlas = ExtResource("3_f0r30")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_776a6"]
+atlas = ExtResource("3_f0r30")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_laxkr"]
+atlas = ExtResource("3_f0r30")
+region = Rect2(128, 256, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1sfkq"]
 atlas = ExtResource("2_22dsp")
@@ -142,6 +175,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_jeaai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkd3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6md84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3uit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7mta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8hhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_776a6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_laxkr")
+}],
+"loop": true,
+"name": &"AttackCombo",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1sfkq")
 }, {
 "duration": 1.0,
@@ -210,24 +272,21 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uf8ak"]
-size = Vector2(33, 47)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0r30"]
+size = Vector2(27, 45.5)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("4_uf8ak")
 
 [node name="Sword" type="AnimatedSprite2D" parent="."]
-position = Vector2(9.53674e-07, 9.53674e-07)
 scale = Vector2(0.347656, 0.375)
 sprite_frames = SubResource("SpriteFrames_dmtmw")
 animation = &"Attack"
 autoplay = "Idle"
-frame = 7
-frame_progress = 1.0
 
 [node name="AttackHitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
-position = Vector2(5, 0)
-shape = SubResource("RectangleShape2D_uf8ak")
+position = Vector2(8.5, 0.25)
+shape = SubResource("RectangleShape2D_f0r30")
 disabled = true
