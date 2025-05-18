@@ -6,27 +6,6 @@ extends CharacterBody2D
 @export var cursor_size : float = 2.0
 @export var smooth_rotation : float = 0.4
 @export var line_width : float = 1.2
-@export var attacking = false
-@export var attack_force : float = 50.0
-@export var attack_movement = false
-@export var attack_duration : float = 0.5
-
-var enemy_in_attack_range = false
-var hp = 3
-var player_alive = true
-var attack_direction = Vector2.RIGHT
-var attack_timer = 0.0 
-var pre_attack_direction = Vector2.ZERO
-var damaged: bool = false
-var is_invincible: bool = false
-var damage_NoMove_Duration: float = 0.5
-var damage_NoMove_Timer: float = 0.0
-var invincibility_duration: float = 2.0
-var invincibility_timer: float = 0.0
-
-var character_direction : Vector2
-var cursor_polygon : Polygon2D
-var cursor_outline : Line2D
 
 @export var dash_speed: float = 300.0
 @export var dash_duration: float = 0.2
@@ -42,31 +21,32 @@ var dash_cooldown_timer: float = 0.0
 var footstep_timer: float = 0.0
 var is_moving: bool = false  # Track if the player is moving
 
-var sword : AnimatedSprite2D
+var hp = 3
+var player_alive = true
+var damaged: bool = false
+var is_invincible: bool = false
+var damage_NoMove_Duration: float = 0.5
+var damage_NoMove_Timer: float = 0.0
+var invincibility_duration: float = 2.0
+var invincibility_timer: float = 0.0
+var dash_direction = Vector2.RIGHT
+
+var character_direction : Vector2
+var cursor_polygon : Polygon2D
+var cursor_outline : Line2D
+
+var sword : AnimatedSprite2D  # Removed attack-related references
 
 func _ready():
 	create_cursor()
 	footstep_timer = footstep_interval
+	Global.cursorPos = Vector2.ZERO
 
 func _process(delta):
-	if Input.is_action_just_pressed("Attack") and not attacking:
-		attack_movement = true
-		attack()
-		$PlayerHitBox.get_node("CollisionShape2D").disabled = false
-	if attack_timer > 0:
-		attack_timer -= delta
-		if attack_timer <= 0.3:
-			attack_movement = false
-		if attack_timer <= 0:
-			attacking = false
-			$PlayerHitBox.get_node("CollisionShape2D").disabled = true
-			character_direction = pre_attack_direction
-	
 	handle_dash_input()
-	
+
 func handle_dash_input():
-	if Input.is_action_just_pressed("Dash") and !is_dashing and dash_cooldown_timer <= 0:
-		
+	if Input.is_action_just_pressed("Dash") and !is_dashing and dash_cooldown_timer <= 0:		
 		start_dash()
 		
 func start_dash():
@@ -76,12 +56,12 @@ func start_dash():
 	
 	# Get dash direction from cursor position
 	var mouse_pos = get_global_mouse_position()
-	attack_direction = (mouse_pos - global_position).normalized()  # Reuse attack direction
+	var dash_direction = (mouse_pos - global_position).normalized()
 	
 	# Play dash animation (add "Dash" animation to your sprite)
 	if $Sprite:
 		$Sprite.play("Dash")
-		$Sprite.flip_h = attack_direction.x < 0
+		$Sprite.flip_h = dash_direction.x < 0
 
 func create_cursor():
 	cursor_polygon = Polygon2D.new()
@@ -102,27 +82,6 @@ func create_cursor():
 	cursor_outline.default_color = Color.WHITE
 	cursor_outline.width = line_width
 	cursor_outline.z_index = 2
-
-func attack():
-	attacking = true
-	attack_timer = attack_duration
-	pre_attack_direction = character_direction
-
-	var mouse_position = get_global_mouse_position()
-	attack_direction = (mouse_position - global_position).normalized()
-
-	if abs(attack_direction.x) > abs(attack_direction.y):
-		if attack_direction.x > 0:
-			$Sprite.play("Attack")
-			$Sprite.flip_h = false
-		else:
-			$Sprite.play("Attack")
-			$Sprite.flip_h = true
-	else:
-		if attack_direction.y < 0:
-			$Sprite.play("AttackUp")
-		else:
-			$Sprite.play("AttackDown")
 
 func _physics_process(delta):
 	if is_invincible:
@@ -146,10 +105,7 @@ func _physics_process(delta):
 	if not is_dashing:
 		if dash_cooldown_timer > 0:
 			dash_cooldown_timer -= delta
-	if is_dashing:
-		handle_dash_movement(delta)
-	else:
-		if not attacking && not damaged:
+		if not damaged:
 			character_direction.x = Input.get_axis("Player_Left", "Player_Right")
 			character_direction.y = Input.get_axis("Player_Up", "Player_Down")
 			
@@ -176,30 +132,22 @@ func _physics_process(delta):
 				velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 				if $Sprite.animation == "WalkingUp":
 					$Sprite.animation = "IdleUp"
-				elif $Sprite.animation == "WalkingDown" or $Sprite.animation == "Walking" or $Sprite.animation == "Attack" or $Sprite.animation == "AttackUp" or $Sprite.animation == "AttackDown":
+				else:
 					$Sprite.animation = "IdleDown"
-		elif attacking && not damaged:
-			if attack_movement == true:
-				velocity = attack_direction * attack_force
-			else:
-				velocity = Vector2(0, 0)
-			
 		elif damaged:
 			velocity = Vector2(0, 0)
-		
 	
 	update_cursor()
 	move_and_slide()
 
 func handle_dash_movement(delta):
 	dash_timer -= delta
-	velocity = attack_direction * dash_speed
+	velocity = dash_direction * dash_speed
 	
 	if dash_timer <= 0:
 		is_dashing = false
-		velocity = Vector2.ZERO
-		
-		character_direction = pre_attack_direction
+		velocity = Vector2.ZERO		
+		character_direction = Vector2.ZERO
 
 func _on_dash_animation_finished():
 	if $Sprite.animation == "Dash":
@@ -214,7 +162,6 @@ func update_cursor():
 		cursor_polygon.global_position = cursor_pos
 		cursor_outline.global_position = cursor_pos
 		Global.cursorPos = cursor_pos
-		
 		var target_angle = direction.angle() + PI/2
 		cursor_polygon.rotation = target_angle
 		cursor_outline.rotation = target_angle
@@ -237,7 +184,7 @@ func spawn_footstep():
 		footstep.play()
 			
 func take_damage() -> void:
-	if!is_invincible and hp > 0:
+	if !is_invincible and hp > 0:
 		hp -= 1
 		is_invincible = true
 		invincibility_timer = invincibility_duration
@@ -252,7 +199,3 @@ func die() -> void:
 	damaged = true
 	queue_free()
 	get_tree().quit()
-
-
-func _on_sword_animation_finished() -> void:
-	$Sword.play("Idle")
