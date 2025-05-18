@@ -242,10 +242,10 @@ libraries = {
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-7, -9)
-energy = 0.4
+energy = 0.6
 shadow_enabled = true
 texture = ExtResource("3_xpcdj")
-texture_scale = 0.6
+texture_scale = 0.8
 
 [node name="PlayerHitBox" type="Area2D" parent="."]
 
