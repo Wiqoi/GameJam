@@ -218,7 +218,6 @@ func spawn_footstep():
 	if footstep_scene:
 		var footstep = footstep_scene.instantiate() as AnimatedSprite2D
 		footstep.global_position = global_position + Vector2(-10, -30)
-		get_tree().get_root().add_child(footstep)
 		if character_direction.x < 0:
 			footstep.flip_h = true
 			footstep.global_position = global_position + Vector2(10, -33)
@@ -243,5 +242,6 @@ func die() -> void:
 	$Sprite.play("PlayerDeath")
 	damaged = true
 	queue_free()
+	get_tree().quit()
 
 			

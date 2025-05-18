@@ -56,8 +56,6 @@ func _physics_process(_delta: float) -> void:
 			limit = 150
 			
 		move_and_slide()
-	else: 
-		player = %Player
 		
 func update_offset():
 	offset = Vector2(randf_range(-limit, limit), randf_range(-limit, limit))
