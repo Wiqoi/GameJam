@@ -10,23 +10,25 @@ var limit : int = 150
 var isJumping : bool = false
 var offset = Vector2(randf_range(-45, 45), randf_range(-45, 45))
 var dying : bool = false
-var jump_cooldown_frames = 90
+var jump_cooldown_frames = 210
 var jump_cooldown_counter = 0
 
 var hitbox : CollisionShape2D
 
 func _ready() -> void:
 	add_to_group("enemies")
-	hitbox = $%HitboxCollision
+	hitbox = %HitboxCollision
 	if $Hitbox:
 		$Hitbox.add_to_group("EnemyHitbox")
+	var hurtbox = %EnemyHurtBox
+	hurtbox.disabled = false
 
 func _physics_process(_delta: float) -> void:
 	if player && not dying:
 		var direction = (player.global_position - global_position + offset).normalized()
 		var separation = get_separation_force()
 		
-		if isJumping and frame_counter2 >= 20 and frame_counter2 <= 40:
+		if isJumping and frame_counter2 >= 20 and frame_counter2 <= 35:
 			velocity = (player.global_position - global_position).normalized() * speedJump
 			frame_counter2 += 1
 			hitbox.disabled = false
@@ -55,6 +57,9 @@ func _physics_process(_delta: float) -> void:
 		else:
 			limit = 150
 			
+		if jump_cooldown_counter > 0:
+			jump_cooldown_counter -= 1
+			
 		move_and_slide()
 		
 func update_offset():
@@ -77,6 +82,7 @@ func get_separation_force() -> Vector2:
 		return Vector2.ZERO
 
 func jumpToPlayer():
+	$EnemySprite.animation = "Jumping"
 	isJumping = true
 	if $EnemySprite.animation != "Jumping":
 		$EnemySprite.animation = "Jumping"
@@ -87,9 +93,7 @@ func jumpToPlayer():
 		$EnemySprite.animation = "Walking"
 		frame_counter2 = 0
 		jump_cooldown_counter = jump_cooldown_frames
-		frame_counter2 = 0
-	elif frame_counter2 >= 20:
-		$EnemySprite.scale = Vector2(1.5, 1.5)
+		hitbox.disabled = true
 
 
 

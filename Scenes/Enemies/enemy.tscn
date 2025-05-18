@@ -145,10 +145,10 @@ animations = [{
 radius = 4.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
-size = Vector2(16, 12)
+size = Vector2(23.0477, 16.082)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1rqp"]
-size = Vector2(16, 12)
+size = Vector2(14, 9)
 
 [node name="Enemy" type="CharacterBody2D"]
 unique_name_in_owner = true
@@ -158,6 +158,7 @@ script = ExtResource("1_jcvw6")
 
 [node name="EnemySprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+modulate = Color(0.349689, 0.349689, 0.349689, 1)
 sprite_frames = SubResource("SpriteFrames_iifgy")
 animation = &"Walking"
 autoplay = "Walking"
@@ -169,8 +170,10 @@ shape = SubResource("CircleShape2D_1f0kj")
 
 [node name="HurtBox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-1, 1)
+[node name="EnemyHurtBox" type="CollisionShape2D" parent="HurtBox"]
+unique_name_in_owner = true
+position = Vector2(-0.499999, 1)
+scale = Vector2(0.997932, 0.994899)
 shape = SubResource("RectangleShape2D_1f0kj")
 
 [node name="Hitbox" parent="." instance=ExtResource("3_x1rqp")]
