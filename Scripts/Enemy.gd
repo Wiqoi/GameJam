@@ -84,17 +84,6 @@ func get_separation_force() -> Vector2:
 func jumpToPlayer():
 	$EnemySprite.animation = "Jumping"
 	isJumping = true
-	if $EnemySprite.animation != "Jumping":
-		$EnemySprite.animation = "Jumping"
-	
-	if frame_counter2 >= 35:
-		isJumping = false
-		$EnemySprite.scale = Vector2(1, 1)
-		$EnemySprite.animation = "Walking"
-		frame_counter2 = 0
-		jump_cooldown_counter = jump_cooldown_frames
-		hitbox.disabled = true
-
 
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
