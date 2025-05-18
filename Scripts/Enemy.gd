@@ -19,8 +19,8 @@ var hitbox : CollisionShape2D
 func _ready() -> void:
 	add_to_group("enemies")
 	hitbox = %HitboxCollision
-	if $Hitbox:
-		$Hitbox.add_to_group("EnemyHitbox")
+	if $HitboxSlime:
+		$HitboxSlime.add_to_group("EnemyHitbox")
 	var hurtbox = %EnemyHurtBox
 	hurtbox.disabled = false
 
