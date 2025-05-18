@@ -100,6 +100,46 @@ animations = [{
 "loop": false,
 "name": &"AbilityMain",
 "speed": 12.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Bleed",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"GroundSpike",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Heal",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"ProtectiveBox",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"PullInDamage",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"PushAway",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"SetOnFire",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"TimeFreeze",
+"speed": 5.0
 }]
 
 [node name="Node2D" type="Node2D"]
@@ -108,4 +148,4 @@ script = ExtResource("1_e36nw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("SpriteFrames_7hypg")
-animation = &"AbilityMain"
+animation = &"PushAway"
