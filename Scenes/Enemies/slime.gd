@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var player: CharacterBody2D
-var health : float = 2.0
+var health : float = 3.0
 var speed : float = 30.0
 var speedJump : float = 200.0
 var offset = Vector2(randf_range(-45, 45), randf_range(-45, 45))
