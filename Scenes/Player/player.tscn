@@ -1,10 +1,10 @@
-[gd_scene load_steps=40 format=3 uid="uid://bunmeh8jxgkjj"]
+[gd_scene load_steps=30 format=3 uid="uid://bunmeh8jxgkjj"]
 
 [ext_resource type="Script" uid="uid://lvoh8mxuovtb" path="res://Scripts/Player.gd" id="1_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://d33s5sdxha22v" path="res://Assets/HenryAssets/Player.png" id="2_mtuoh"]
 [ext_resource type="Texture2D" uid="uid://bn4rc532244i0" path="res://Assets/FreeOnlineAssets/FE1000_nyknck/FE1002/FE1002_02.png" id="3_htcer"]
 [ext_resource type="Texture2D" uid="uid://cf07xq0tqy76t" path="res://Assets/FreeOnlineAssets/light.png" id="3_xpcdj"]
-[ext_resource type="Texture2D" uid="uid://datgj7ucvxmwg" path="res://Assets/HenryAssets/GameJam (3).png" id="6_0u5uq"]
+[ext_resource type="PackedScene" uid="uid://ses2rjxjm7o4" path="res://Scenes/Player/sword.tscn" id="6_0u5uq"]
 [ext_resource type="Texture2D" uid="uid://dodgg3jc4qy5d" path="res://Assets/FreeOnlineAssets/FE1000_nyknck/FE1001/FE1001_02.png" id="6_dd0ac"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aqm4k"]
@@ -203,99 +203,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtuoh"]
 size = Vector2(36, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oikmp"]
-atlas = ExtResource("6_0u5uq")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h8ma5"]
-atlas = ExtResource("6_0u5uq")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eksi1"]
-atlas = ExtResource("6_0u5uq")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jincj"]
-atlas = ExtResource("6_0u5uq")
-region = Rect2(0, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rqdc0"]
-atlas = ExtResource("6_0u5uq")
-region = Rect2(128, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qr1w5"]
-atlas = ExtResource("6_0u5uq")
-region = Rect2(256, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ythyg"]
-atlas = ExtResource("6_0u5uq")
-region = Rect2(0, 256, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bmb2s"]
-atlas = ExtResource("6_0u5uq")
-region = Rect2(128, 256, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ur3l4"]
-atlas = ExtResource("6_0u5uq")
-region = Rect2(256, 256, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qr1w5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oikmp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h8ma5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eksi1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jincj")
-}],
-"loop": false,
-"name": &"Attack",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rqdc0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qr1w5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ythyg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bmb2s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ur3l4")
-}],
-"loop": false,
-"name": &"AttackCombo2",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oikmp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h8ma5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eksi1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jincj")
-}],
-"loop": false,
-"name": &"AttackLeft",
-"speed": 10.0
-}]
-
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_6t5aa")
@@ -347,12 +254,10 @@ visible = false
 position = Vector2(11, 0)
 texture = ExtResource("6_dd0ac")
 
-[node name="Attack" type="AnimatedSprite2D" parent="."]
-position = Vector2(8, 0)
-scale = Vector2(0.273438, 0.300781)
-sprite_frames = SubResource("SpriteFrames_qr1w5")
-animation = &"AttackCombo2"
+[node name="Sword" parent="." instance=ExtResource("6_0u5uq")]
+position = Vector2(4, 14.5)
+scale = Vector2(0.40625, 0.429688)
 
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]
 [connection signal="area_exited" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_exited"]
-[connection signal="animation_finished" from="Attack" to="." method="_on_attack_animation_finished"]
+[connection signal="animation_finished" from="Sword" to="." method="_on_sword_animation_finished"]
