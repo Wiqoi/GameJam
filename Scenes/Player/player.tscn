@@ -185,7 +185,7 @@ animations = [{
 size = Vector2(10, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6t5aa"]
-size = Vector2(14, 22)
+size = Vector2(12, 20)
 
 [sub_resource type="Animation" id="Animation_74mp2"]
 resource_name = "Attack"
@@ -201,7 +201,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtuoh"]
-size = Vector2(36, 32)
+size = Vector2(54, 56)
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -246,6 +246,7 @@ texture_scale = 1.2
 [node name="PlayerHitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox"]
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_mtuoh")
 disabled = true
 
@@ -255,8 +256,10 @@ scale = Vector2(0.257813, 0.289063)
 texture = ExtResource("5_dd0ac")
 
 [node name="Sword" parent="." instance=ExtResource("6_0u5uq")]
-position = Vector2(4, 14.5)
+position = Vector2(1, 0)
 scale = Vector2(0.40625, 0.429688)
+animation = &"Attack"
+frame_progress = 0.0
 
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]
 [connection signal="area_exited" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_exited"]
