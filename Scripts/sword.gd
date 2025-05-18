@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var follow_speed: float = 200.0
+@export var follow_speed: float = 300.0
 @export var stop_distance: float = 5.0
 @export var attack_duration : float = 0.8
 
@@ -40,10 +40,10 @@ func _process(delta):
 		attack_timer -= delta
 		if attack_timer <= 0:
 			attacking = false
+			$AttackHitbox.get_node("CollisionShape2D").disabled = true
 			$Sword.play("Idle")
 
 func attack():
-	attacking = true
 	attacking = true
 	attack_timer = attack_duration
 
@@ -53,12 +53,16 @@ func attack():
 	if abs(attack_direction.x) > abs(attack_direction.y):
 		if attack_direction.x > 0:
 			$Sword.play("Attack")
+			$AttackHitbox.get_node("CollisionShape2D").disabled = false
 			$Sword.flip_h = false
 		else:
 			$Sword.play("Attack")
+			$AttackHitbox.get_node("CollisionShape2D").disabled = false
 			$Sword.flip_h = true
 	else:
 		if attack_direction.y < 0:
+			$AttackHitbox.get_node("CollisionShape2D").disabled = false
 			$Sword.play("AttackUp")
 		else:
+			$AttackHitbox.get_node("CollisionShape2D").disabled = false
 			$Sword.play("AttackDown")
