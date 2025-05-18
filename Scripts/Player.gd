@@ -235,8 +235,14 @@ func _on_player_hurt_box_area_entered(area: Area2D) -> void:
 func spawn_footstep():
 	if footstep_scene:
 		var footstep = footstep_scene.instantiate() as AnimatedSprite2D
-		footstep.global_position = global_position + Vector2(0, -19)
-		get_tree().get_root().add_child(footstep)
+		footstep.global_position = global_position + Vector2(-10, -30)
+		if character_direction.x < 0:
+			footstep.flip_h = true
+			footstep.global_position = global_position + Vector2(10, -33)
+		else:
+			footstep.global_position = global_position + Vector2(-10, -33)
+		
+		get_tree().get_root().add_child(footstep)	
 		footstep.play()
 			
 func take_damage() -> void:
@@ -254,6 +260,7 @@ func die() -> void:
 	$Sprite.play("PlayerDeath")
 	damaged = true
 	queue_free()
+	get_tree().quit()
 
 
 func _on_sword_animation_finished() -> void:
