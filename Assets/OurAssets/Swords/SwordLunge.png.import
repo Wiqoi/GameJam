@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://40se0v1u5iga"
-path="res://.godot/imported/BossDualSwordAttack.png-d691be7b73b9a60fbc97d28dc58dca88.ctex"
+uid="uid://b0qrp0m0e4l7r"
+path="res://.godot/imported/SwordLunge.png-677cccc16e9c33e5f5f674fbb7b65c94.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OurAssets/BossDualSwordAttack.png"
-dest_files=["res://.godot/imported/BossDualSwordAttack.png-d691be7b73b9a60fbc97d28dc58dca88.ctex"]
+source_file="res://Assets/OurAssets/Swords/SwordLunge.png"
+dest_files=["res://.godot/imported/SwordLunge.png-677cccc16e9c33e5f5f674fbb7b65c94.ctex"]
 
 [params]
 

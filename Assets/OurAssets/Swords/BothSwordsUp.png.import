@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brjwl7o6rqrip"
-path="res://.godot/imported/BothSwordsComboDown.png-e68756d1eb18ef9cc91e1f5562712bcb.ctex"
+uid="uid://bqjli3t2tgf60"
+path="res://.godot/imported/BothSwordsUp.png-2ffd165b0c679db6f8c3aeaf86070910.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OurAssets/BothSwordsComboDown.png"
-dest_files=["res://.godot/imported/BothSwordsComboDown.png-e68756d1eb18ef9cc91e1f5562712bcb.ctex"]
+source_file="res://Assets/OurAssets/Swords/BothSwordsUp.png"
+dest_files=["res://.godot/imported/BothSwordsUp.png-2ffd165b0c679db6f8c3aeaf86070910.ctex"]
 
 [params]
 

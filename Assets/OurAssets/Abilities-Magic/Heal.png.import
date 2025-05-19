@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qtjsica8mxmw"
-path="res://.godot/imported/HopefullyPlayerFInal.png-6b01d08ff59eccc69f105eac9ab8a945.ctex"
+uid="uid://cpo1n4srd8qli"
+path="res://.godot/imported/Heal.png-9954628eeefc2b284656eb12e97e8457.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OurAssets/HopefullyPlayerFInal.png"
-dest_files=["res://.godot/imported/HopefullyPlayerFInal.png-6b01d08ff59eccc69f105eac9ab8a945.ctex"]
+source_file="res://Assets/OurAssets/Abilities-Magic/Heal.png"
+dest_files=["res://.godot/imported/Heal.png-9954628eeefc2b284656eb12e97e8457.ctex"]
 
 [params]
 
