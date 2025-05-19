@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://byluu0ekjpx7w"]
+[gd_scene load_steps=43 format=3 uid="uid://c1m10h0sqogy0"]
 
 [ext_resource type="Texture2D" uid="uid://b5kmifsk6x66n" path="res://Assets/FreeOnlineAssets/MaybeMonsters/Demon_sword/Sword/Sword.png" id="1_o7y3m"]
 [ext_resource type="Script" path="res://Scripts/Demon.gd" id="1_u8kdg"]
