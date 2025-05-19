@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cajwgx6jt22k5"
-path="res://.godot/imported/ComboDown.png-1a0622f3efdd413d92bc270a8de95fd8.ctex"
+uid="uid://cjgxi2jeehsvg"
+path="res://.godot/imported/BothSwordsDown.png-d401c804fd643c4066d696e6db2ed2d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OurAssets/ComboDown.png"
-dest_files=["res://.godot/imported/ComboDown.png-1a0622f3efdd413d92bc270a8de95fd8.ctex"]
+source_file="res://Assets/OurAssets/BothSwordsDown.png"
+dest_files=["res://.godot/imported/BothSwordsDown.png-d401c804fd643c4066d696e6db2ed2d6.ctex"]
 
 [params]
 
