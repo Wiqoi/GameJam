@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://br810wjbtd73e"]
 
-[ext_resource type="Texture2D" uid="uid://chvfpsrpq14cs" path="res://Assets/OurAssets/Health.png" id="1_xh0hd"]
-[ext_resource type="Script" uid="uid://c8sa04uh71kwy" path="res://Scenes/UIScript.gd" id="1_yd0xa"]
+[ext_resource type="Texture2D" uid="uid://chvfpsrpq14cs" path="res://Assets/OurAssets/UI/Health.png" id="1_xh0hd"]
+[ext_resource type="Script" uid="uid://c8sa04uh71kwy" path="res://Scripts/UIScript.gd" id="1_yd0xa"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
