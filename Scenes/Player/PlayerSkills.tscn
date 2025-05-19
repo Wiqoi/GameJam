@@ -1,9 +1,10 @@
-[gd_scene load_steps=47 format=3 uid="uid://nverh2los05o"]
+[gd_scene load_steps=62 format=3 uid="uid://nverh2los05o"]
 
 [ext_resource type="Script" uid="uid://b43dpmswqlm03" path="res://Scripts/PlayerAbility.gd" id="1_e36nw"]
 [ext_resource type="Texture2D" uid="uid://bj11kwol5q0c5" path="res://Assets/OurAssets/Abilities-Magic/Ability.png" id="2_e36nw"]
 [ext_resource type="Texture2D" uid="uid://cpo1n4srd8qli" path="res://Assets/OurAssets/Abilities-Magic/Heal.png" id="3_ent3i"]
 [ext_resource type="Texture2D" uid="uid://cscswuu3pif8r" path="res://Assets/OurAssets/Abilities-Magic/Bleed.png" id="3_lcemg"]
+[ext_resource type="Texture2D" uid="uid://d1aq177ciptme" path="res://Assets/OurAssets/Abilities-Magic/GroundSpike.png" id="4_jgulb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ent3i"]
 atlas = ExtResource("2_e36nw")
@@ -111,6 +112,62 @@ region = Rect2(0, 768, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_db6qn"]
 atlas = ExtResource("3_lcemg")
+region = Rect2(256, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnvee"]
+atlas = ExtResource("4_jgulb")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ubhj"]
+atlas = ExtResource("4_jgulb")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sevtn"]
+atlas = ExtResource("4_jgulb")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rh4a"]
+atlas = ExtResource("4_jgulb")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1hov"]
+atlas = ExtResource("4_jgulb")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdujo"]
+atlas = ExtResource("4_jgulb")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mcow"]
+atlas = ExtResource("4_jgulb")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1u6oy"]
+atlas = ExtResource("4_jgulb")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bc7g"]
+atlas = ExtResource("4_jgulb")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3iqkt"]
+atlas = ExtResource("4_jgulb")
+region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6p6p"]
+atlas = ExtResource("4_jgulb")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_va4v5"]
+atlas = ExtResource("4_jgulb")
+region = Rect2(768, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rxkw"]
+atlas = ExtResource("4_jgulb")
+region = Rect2(0, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsd3y"]
+atlas = ExtResource("4_jgulb")
 region = Rect2(256, 768, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_crxct"]
@@ -262,7 +319,49 @@ animations = [{
 "name": &"Bleed",
 "speed": 12.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnvee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ubhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sevtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rh4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1hov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdujo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mcow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1u6oy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bc7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3iqkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6p6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_va4v5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rxkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsd3y")
+}],
 "loop": false,
 "name": &"GroundSpike",
 "speed": 12.0
@@ -346,4 +445,4 @@ script = ExtResource("1_e36nw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("SpriteFrames_7hypg")
-animation = &"Bleed"
+animation = &"GroundSpike"
