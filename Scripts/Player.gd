@@ -22,7 +22,8 @@ var dash_direction: Vector2 = Vector2.RIGHT
 var footstep_timer: float = 0.0
 var is_moving: bool = false
 
-var hp = 3
+var hp = 5
+var dying = false
 var player_alive = true
 var damaged: bool = false
 var is_invincible: bool = false
@@ -90,61 +91,63 @@ func create_cursor():
 	cursor_outline.z_index = 2
 
 func _physics_process(delta):
-	if is_invincible:
-		$Invincible.visible = true
-		invincibility_timer -= delta
-		if invincibility_timer <= 0:
-			is_invincible = false
-			$Invincible.visible = false
-	if damaged:
-		damage_NoMove_Timer += delta
-		if damage_NoMove_Timer >= damage_NoMove_Duration:
-			damaged = false
-	is_moving = character_direction.length() > 0.1
-	if is_moving:
-		footstep_timer -= delta
-		if footstep_timer <= 0:
-			spawn_footstep()
+	if not dying:
+		if is_invincible:
+			$Invincible.visible = true
+			invincibility_timer -= delta
+			if invincibility_timer <= 0:
+				is_invincible = false
+				$Invincible.visible = false
+		if damaged:
+			damage_NoMove_Timer += delta
+			if damage_NoMove_Timer >= damage_NoMove_Duration:
+				damaged = false
+		is_moving = character_direction.length() > 0.1
+		if is_moving:
+			footstep_timer -= delta
+			if footstep_timer <= 0:
+				spawn_footstep()
+				footstep_timer = footstep_interval
+		else:
 			footstep_timer = footstep_interval
-	else:
-		footstep_timer = footstep_interval
-	if not is_dashing:
-		if dash_cooldown_timer > 0:
-			dash_cooldown_timer -= delta
-		if not damaged:
-			character_direction.x = Input.get_axis("Player_Left", "Player_Right")
-			character_direction.y = Input.get_axis("Player_Up", "Player_Down")
-			
-			character_direction = character_direction.normalized()
-			
-			if character_direction.x > 0:
-				$Sprite.flip_h = false
-			elif character_direction.x < 0:
-				$Sprite.flip_h = true
-			
-			if character_direction:
-				velocity = character_direction * movement_speed
-				if abs(character_direction.y) > abs(character_direction.x):
-					if character_direction.y < 0:
-						if $Sprite.animation != "WalkingUp":
-							$Sprite.animation = "WalkingUp"
+		if not is_dashing:
+			if dash_cooldown_timer > 0:
+				dash_cooldown_timer -= delta
+			if not damaged:
+				character_direction.x = Input.get_axis("Player_Left", "Player_Right")
+				character_direction.y = Input.get_axis("Player_Up", "Player_Down")
+				
+				character_direction = character_direction.normalized()
+				
+				if character_direction.x > 0:
+					$Sprite.flip_h = false
+				elif character_direction.x < 0:
+					$Sprite.flip_h = true
+				
+				if character_direction:
+					velocity = character_direction * movement_speed
+					if abs(character_direction.y) > abs(character_direction.x):
+						if character_direction.y < 0:
+							if $Sprite.animation != "WalkingUp":
+								$Sprite.animation = "WalkingUp"
+						else:
+							if $Sprite.animation != "WalkingDown":
+								$Sprite.animation = "WalkingDown"
 					else:
-						if $Sprite.animation != "WalkingDown":
-							$Sprite.animation = "WalkingDown"
+						if $Sprite.animation != "Walking":
+							$Sprite.animation = "Walking"
 				else:
-					if $Sprite.animation != "Walking":
-						$Sprite.animation = "Walking"
-			else:
-				velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
-				if $Sprite.animation == "WalkingUp":
-					$Sprite.animation = "IdleUp"
-				else:
-					$Sprite.animation = "IdleDown"
-		elif damaged:
-			velocity = Vector2(0, 0)
-	
-	update_cursor()
-	move_and_slide()
+					velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
+					if $Sprite.animation == "WalkingUp":
+						$Sprite.animation = "IdleUp"
+					else:
+						$Sprite.animation = "IdleDown"
+			elif damaged:
+				velocity = Vector2(0, 0)
+		else:
+			handle_dash_movement(delta)
+		update_cursor()
+		move_and_slide()
 
 func handle_dash_movement(delta):
 	dash_timer -= delta
@@ -193,6 +196,7 @@ func spawn_footstep():
 func take_damage() -> void:
 	if !is_invincible and hp > 0:
 		hp -= 1
+		Global.playerHP -= 1
 		is_invincible = true
 		invincibility_timer = invincibility_duration
 		damage_NoMove_Timer = 0
@@ -200,9 +204,10 @@ func take_damage() -> void:
 		$Sprite.animation = "PlayerHit"
 		if hp <= 0:
 			die()
-			
+
 func die() -> void:
 	$Sprite.play("PlayerDeath")
-	damaged = true
+	dying = true
+	await $Sprite.animation_finished
 	queue_free()
 	get_tree().quit()

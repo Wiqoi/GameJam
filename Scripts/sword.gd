@@ -106,12 +106,10 @@ func execute_combo():
 	else:
 		if attack_direction.y < 0:
 			$AttackHitbox.set_rotation_degrees(-90)
-			$Sword.play("AttackCombo")
-			$Sword.rotate(-90)
+			$Sword.play("AttackComboUp")
 		else:
 			$AttackHitbox.set_rotation_degrees(90)
-			$Sword.play("AttackCombo")
-			$Sword.rotate(90)
+			$Sword.play("AttackComboDown")
 
 func perform_base_attack():
 	if abs(attack_direction.x) > abs(attack_direction.y):

@@ -1,7 +1,7 @@
 [gd_scene load_steps=43 format=3 uid="uid://c1m10h0sqogy0"]
 
 [ext_resource type="Texture2D" uid="uid://b5kmifsk6x66n" path="res://Assets/FreeOnlineAssets/MaybeMonsters/Demon_sword/Sword/Sword.png" id="1_o7y3m"]
-[ext_resource type="Script" path="res://Scripts/Demon.gd" id="1_u8kdg"]
+[ext_resource type="Script" uid="uid://ct4qu1fvownnc" path="res://Scripts/Demon.gd" id="1_u8kdg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u8kdg"]
 atlas = ExtResource("1_o7y3m")
@@ -189,7 +189,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ywd1k")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 12.0
 }, {
@@ -224,7 +224,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qv6l7")
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
 "speed": 12.0
 }, {
@@ -280,7 +280,7 @@ radius = 14.0357
 size = Vector2(55, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cckmm"]
-size = Vector2(56, 41.5)
+size = Vector2(28, 29)
 
 [node name="Demon" type="CharacterBody2D"]
 script = ExtResource("1_u8kdg")
@@ -295,9 +295,10 @@ autoplay = "Walking"
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_i4afg")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="HitboxDemon" type="Area2D" parent="."]
+unique_name_in_owner = true
 
-[node name="HitboxCollisionDemon" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxCollisionDemon" type="CollisionShape2D" parent="HitboxDemon"]
 unique_name_in_owner = true
 position = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_w1w5m")
@@ -306,5 +307,8 @@ shape = SubResource("RectangleShape2D_w1w5m")
 
 [node name="HurtboxCollisionDemon" type="CollisionShape2D" parent="Hurtbox"]
 unique_name_in_owner = true
-position = Vector2(2, 1.25)
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_cckmm")
+
+[connection signal="animation_finished" from="DemonSprite" to="." method="_on_demon_sprite_animation_finished"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://datgj7ucvxmwg"
-path="res://.godot/imported/GameJam (3).png-8d17595fdd0532662363719180b325aa.ctex"
+uid="uid://bj11kwol5q0c5"
+path="res://.godot/imported/Ability.png-955bc44e0363771386aaa74f9d8a5ae6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/HenryAssets/GameJam (3).png"
-dest_files=["res://.godot/imported/GameJam (3).png-8d17595fdd0532662363719180b325aa.ctex"]
+source_file="res://Assets/OurAssets/Ability.png"
+dest_files=["res://.godot/imported/Ability.png-955bc44e0363771386aaa74f9d8a5ae6.ctex"]
 
 [params]
 
