@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://btwsnu1lwi4qw"]
 
-[ext_resource type="Script" uid="uid://biknklwl4lugm" path="res://Scenes/Enemies/slime.gd" id="1_4lx4x"]
+[ext_resource type="Script" uid="uid://biknklwl4lugm" path="res://Scripts/slime.gd" id="1_4lx4x"]
 [ext_resource type="Texture2D" uid="uid://8niyel4sinrm" path="res://Assets/FreeOnlineAssets/Cute_Fantasy_Free/Enemies/Slime.png" id="2_6kvin"]
 [ext_resource type="PackedScene" uid="uid://bxt5q06ej56kg" path="res://Scenes/Enemies/hitbox.tscn" id="3_hm6tv"]
 
