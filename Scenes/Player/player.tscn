@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bunmeh8jxgkjj"]
+[gd_scene load_steps=48 format=3 uid="uid://bunmeh8jxgkjj"]
 
 [ext_resource type="Script" uid="uid://lvoh8mxuovtb" path="res://Scripts/Player.gd" id="1_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://cv0nvlkh2pa3u" path="res://Scenes/Player/playerCamera.tscn" id="3_0u5uq"]
@@ -302,7 +302,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
-size = Vector2(10, 19)
+size = Vector2(11, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6t5aa"]
 size = Vector2(12, 20)
@@ -323,6 +323,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtuoh"]
 size = Vector2(54, 56)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dd0ac"]
+size = Vector2(28, 30)
+
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_6t5aa")
@@ -331,15 +334,14 @@ script = ExtResource("1_6t5aa")
 position = Vector2(0, 0.402317)
 scale = Vector2(0.296875, 0.303161)
 sprite_frames = SubResource("SpriteFrames_ph33w")
-animation = &"PlayerDeath"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 14
-frame_progress = 1.0
 
 [node name="PlayerCamera" parent="." instance=ExtResource("3_0u5uq")]
 position = Vector2(0, 1)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+light_mask = 128
 shape = SubResource("RectangleShape2D_cvnsp")
 
 [node name="PlayerHurtBox" type="Area2D" parent="."]
@@ -368,6 +370,11 @@ disabled = true
 visible = false
 scale = Vector2(0.257813, 0.289063)
 texture = ExtResource("4_mtuoh")
+
+[node name="Border" type="CollisionShape2D" parent="."]
+light_mask = 128
+visibility_layer = 128
+shape = SubResource("RectangleShape2D_dd0ac")
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]

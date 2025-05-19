@@ -63,7 +63,7 @@ func start_jump() -> void:
 	jump_frame_counter = 0
 	$DemonSprite.animation = "Attack"
 
-func handle_jump(direction: Vector2) -> void:
+func handle_jump(_direction: Vector2) -> void:
 	jump_frame_counter += 1
 
 	if jump_frame_counter < 20:
