@@ -1,13 +1,13 @@
 [gd_scene load_steps=18 format=3 uid="uid://nylbh3fa82tl"]
 
-[ext_resource type="Texture2D" uid="uid://df4tr3f3iab7i" path="res://Assets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Wall.png" id="1_yj5sm"]
-[ext_resource type="Texture2D" uid="uid://bo7w6od57u22w" path="res://Assets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Grass.png" id="2_xsk5a"]
-[ext_resource type="Texture2D" uid="uid://va7tncvmg86s" path="res://Assets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Stone Ground.png" id="3_gd36q"]
-[ext_resource type="Texture2D" uid="uid://0ix1lhgbxkdg" path="res://Assets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Plant.png" id="4_bfdkv"]
-[ext_resource type="Texture2D" uid="uid://dssd7mqg3ak5c" path="res://Assets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Props.png" id="5_uqn18"]
-[ext_resource type="Texture2D" uid="uid://43g2ikq4alxs" path="res://Assets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Shadow Plant.png" id="6_7fdtd"]
-[ext_resource type="Texture2D" uid="uid://bllgwb43rghxr" path="res://Assets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Shadow.png" id="7_3wd8h"]
-[ext_resource type="Texture2D" uid="uid://c0hkvbbdjvm2a" path="res://Assets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Struct.png" id="8_gd36q"]
+[ext_resource type="Texture2D" uid="uid://df4tr3f3iab7i" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Wall.png" id="1_yj5sm"]
+[ext_resource type="Texture2D" uid="uid://bo7w6od57u22w" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Grass.png" id="2_xsk5a"]
+[ext_resource type="Texture2D" uid="uid://va7tncvmg86s" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Stone Ground.png" id="3_gd36q"]
+[ext_resource type="Texture2D" uid="uid://0ix1lhgbxkdg" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Plant.png" id="4_bfdkv"]
+[ext_resource type="Texture2D" uid="uid://dssd7mqg3ak5c" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Props.png" id="5_uqn18"]
+[ext_resource type="Texture2D" uid="uid://43g2ikq4alxs" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Shadow Plant.png" id="6_7fdtd"]
+[ext_resource type="Texture2D" uid="uid://bllgwb43rghxr" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Shadow.png" id="7_3wd8h"]
+[ext_resource type="Texture2D" uid="uid://c0hkvbbdjvm2a" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Struct.png" id="8_gd36q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
 texture = ExtResource("1_yj5sm")
