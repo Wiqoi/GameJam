@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjgxi2jeehsvg"
-path="res://.godot/imported/BothSwordsDown.png-d401c804fd643c4066d696e6db2ed2d6.ctex"
+uid="uid://bj11kwol5q0c5"
+path="res://.godot/imported/Ability.png-caf34e2cad9e103ad9c71e6a518ceb80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OurAssets/BothSwordsDown.png"
-dest_files=["res://.godot/imported/BothSwordsDown.png-d401c804fd643c4066d696e6db2ed2d6.ctex"]
+source_file="res://Assets/OurAssets/Abilities-Magic/Ability.png"
+dest_files=["res://.godot/imported/Ability.png-caf34e2cad9e103ad9c71e6a518ceb80.ctex"]
 
 [params]
 

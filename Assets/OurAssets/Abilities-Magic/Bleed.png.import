@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqjli3t2tgf60"
-path="res://.godot/imported/BothSwordsUp.png-45aa8fd5dbce3e302b7e620bc2b325bf.ctex"
+uid="uid://cscswuu3pif8r"
+path="res://.godot/imported/Bleed.png-3c73949e780aee27f419b79f3b3d9581.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OurAssets/BothSwordsUp.png"
-dest_files=["res://.godot/imported/BothSwordsUp.png-45aa8fd5dbce3e302b7e620bc2b325bf.ctex"]
+source_file="res://Assets/OurAssets/Abilities-Magic/Bleed.png"
+dest_files=["res://.godot/imported/Bleed.png-3c73949e780aee27f419b79f3b3d9581.ctex"]
 
 [params]
 
