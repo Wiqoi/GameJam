@@ -1,12 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://br810wjbtd73e"]
 
-<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://chvfpsrpq14cs" path="res://Assets/OurAssets/Health.png" id="1_xh0hd"]
-[ext_resource type="Script" uid="uid://c8sa04uh71kwy" path="res://Scripts/UIScript.gd" id="1_yd0xa"]
-=======
-[ext_resource type="Script" uid="uid://c8sa04uh71kwy" path="res://Scripts/UIScript.gd" id="1_yd0xa"]
-[ext_resource type="Texture2D" uid="uid://chvfpsrpq14cs" path="res://Assets/OurAssets/UI/Health.png" id="2_3ngb3"]
->>>>>>> 036ab0dd8091c99440f7d934ea21d72c3b64993b
+[ext_resource type="Script" uid="uid://c8sa04uh71kwy" path="res://Scenes/UIScript.gd" id="1_yd0xa"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -20,32 +15,32 @@ layout_mode = 0
 offset_left = -14.0
 offset_right = 42.0
 offset_bottom = 48.0
-texture = ExtResource("2_3ngb3")
+texture = ExtResource("1_xh0hd")
 
 [node name="HealthBar2" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 11.0
 offset_right = 67.0
 offset_bottom = 48.0
-texture = ExtResource("2_3ngb3")
+texture = ExtResource("1_xh0hd")
 
 [node name="HealthBar3" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 36.0
 offset_right = 92.0
 offset_bottom = 48.0
-texture = ExtResource("2_3ngb3")
+texture = ExtResource("1_xh0hd")
 
 [node name="HealthBar4" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 61.0
 offset_right = 117.0
 offset_bottom = 48.0
-texture = ExtResource("2_3ngb3")
+texture = ExtResource("1_xh0hd")
 
 [node name="HealthBar5" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 86.0
 offset_right = 142.0
 offset_bottom = 48.0
-texture = ExtResource("2_3ngb3")
+texture = ExtResource("1_xh0hd")
