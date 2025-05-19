@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk5i064r0imwe"
-path="res://.godot/imported/SwordAttackUp.png-c864c5e8e4e5e44eac27de0182dffb85.ctex"
+uid="uid://40se0v1u5iga"
+path="res://.godot/imported/BossDualSwordAttack.png-d691be7b73b9a60fbc97d28dc58dca88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OurAssets/SwordAttackUp.png"
-dest_files=["res://.godot/imported/SwordAttackUp.png-c864c5e8e4e5e44eac27de0182dffb85.ctex"]
+source_file="res://Assets/OurAssets/BossDualSwordAttack.png"
+dest_files=["res://.godot/imported/BossDualSwordAttack.png-d691be7b73b9a60fbc97d28dc58dca88.ctex"]
 
 [params]
 
