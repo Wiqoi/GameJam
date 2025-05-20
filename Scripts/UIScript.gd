@@ -2,12 +2,12 @@ extends Control
 
 func _process(delta: float) -> void:
 	if Global.playerHP == 4:
-		$HealthBar5.visible = false
+		$HealthBar5.texture = load("res://Assets/OurAssets/UI/Health3.png")
 	if Global.playerHP == 3:
-		$HealthBar4.visible = false
+		$HealthBar4.texture = load("res://Assets/OurAssets/UI/Health3.png")
 	if Global.playerHP == 2:
-		$HealthBar3.visible = false
+		$HealthBar3.texture = load("res://Assets/OurAssets/UI/Health3.png")
 	if Global.playerHP == 1:
-		$HealthBar2.visible = false
+		$HealthBar2.texture = load("res://Assets/OurAssets/UI/Health3.png")
 	if Global.playerHP == 0:
-		$HealthBar1.visible = false
+		$HealthBar1.texture = load("res://Assets/OurAssets/UI/Health3.png")
