@@ -1,8 +1,11 @@
 extends Node2D
 
 var pastAbility = 0
+var AbilityCooldownTime : float = 1.2
+var AbilityCooldownTimer : float = 1.2
 
 func _process(delta: float) -> void:
+	AbilityCooldownTimer += delta
 	if Global.currentPlayerAbility != pastAbility:
 			if Global.currentPlayerAbility == 0:
 				removeBefore()
@@ -49,7 +52,9 @@ func _process(delta: float) -> void:
 				pastAbility = 8
 				$AnimatedSprite2D.play("TimeFreeze")
 				$AbilityArea.get_node("CollisionShape2D").add_to_group("TimeFreeze")
-	if Input.is_action_just_pressed("Skill"):
+	if Input.is_action_just_pressed("Skill") && Global.playerSkill >= 1 && AbilityCooldownTimer > AbilityCooldownTime:
+		Global.playerSkill -= 1
+		AbilityCooldownTimer = 0
 		$AnimatedSprite2D.visible = true
 		go_to_cursor()
 		if Global.currentPlayerAbility == 0:
