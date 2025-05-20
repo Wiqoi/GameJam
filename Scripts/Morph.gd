@@ -153,7 +153,8 @@ func get_separation_force() -> Vector2:
 
 func die() -> void:
 	dying = true
-	%HitboxCollisionMorph.disabled = true
+	%HitCollisionMorph.disabled = true
+	%HitCollisionMorph2.disabled = true
 	$MorphSprite.play("Death")
 
 func _on_hurt_box_morph_area_entered(area: Area2D) -> void:
@@ -164,7 +165,7 @@ func _on_hurt_box_morph_area_entered(area: Area2D) -> void:
 			bleeding = false
 			
 		if health <= 0:
-			die()
+			call_deferred("die")
 	elif area.is_in_group("Bleed"):
 		bleeding = true
 	elif area.is_in_group("PushAway"):

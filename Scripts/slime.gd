@@ -108,7 +108,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 			bleeding = false
 			
 		if health <= 0:
-			die()
+			call_deferred("die")
 	elif area.is_in_group("Bleed"):
 		bleeding = true
 	elif area.is_in_group("PushAway"):
