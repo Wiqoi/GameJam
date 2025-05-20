@@ -353,3 +353,6 @@ shape = SubResource("RectangleShape2D_a7j1l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gtu43")
+
+[connection signal="animation_finished" from="MorphSprite" to="." method="_on_morph_sprite_animation_finished"]
+[connection signal="area_entered" from="HurtBoxMorph" to="." method="_on_hurt_box_morph_area_entered"]

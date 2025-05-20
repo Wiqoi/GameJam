@@ -146,13 +146,13 @@ func die() -> void:
 	%HitboxCollisionMorph.disabled = true
 	$MorphSprite.play("Death")
 
-func _on_demon_sprite_animation_finished() -> void:
-	if $MorphSprite.animation == "Death":
-		queue_free()
-
-
-func _on_hurtbox_area_entered(area: Area2D) -> void:
+func _on_hurt_box_morph_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerAttack"):
 		health -= Global.playerDmg
 		if health <= 0:
 			die()
+
+
+func _on_morph_sprite_animation_finished() -> void:
+	if $MorphSprite.animation == "Death":
+		queue_free()
