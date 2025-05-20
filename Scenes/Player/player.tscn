@@ -356,6 +356,7 @@ libraries = {
 energy = 0.7
 shadow_enabled = true
 texture = ExtResource("3_xpcdj")
+texture_scale = 0.9
 
 [node name="PlayerHitBox" type="Area2D" parent="."]
 
