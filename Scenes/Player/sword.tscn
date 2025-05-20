@@ -405,7 +405,7 @@ script = ExtResource("4_uf8ak")
 [node name="Sword" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.347656, 0.375)
 sprite_frames = SubResource("SpriteFrames_dmtmw")
-animation = &"Idle"
+animation = &"AttackComboUp"
 autoplay = "Idle"
 
 [node name="AttackHitbox" type="Area2D" parent="."]
