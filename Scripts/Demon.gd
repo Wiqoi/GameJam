@@ -69,7 +69,7 @@ func handle_jump(_direction: Vector2) -> void:
 	if jump_frame_counter < 20:
 		velocity = Vector2.ZERO
 		hitbox.disabled = true
-	elif jump_frame_counter <= 80:
+	elif jump_frame_counter <= 50:
 		velocity = Vector2.ZERO
 		hitbox.disabled = false
 	else:
