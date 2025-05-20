@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://nverh2los05o"]
+[gd_scene load_steps=63 format=3 uid="uid://nverh2los05o"]
 
 [ext_resource type="Script" uid="uid://b43dpmswqlm03" path="res://Scripts/PlayerAbility.gd" id="1_e36nw"]
 [ext_resource type="Texture2D" uid="uid://bj11kwol5q0c5" path="res://Assets/OurAssets/Abilities-Magic/Ability.png" id="1_lcbt2"]
@@ -439,6 +439,9 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgulb"]
+size = Vector2(217, 213)
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_e36nw")
 
@@ -446,3 +449,9 @@ script = ExtResource("1_e36nw")
 visible = false
 sprite_frames = SubResource("SpriteFrames_7hypg")
 animation = &"AbilityMain"
+
+[node name="AbilityArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AbilityArea"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_jgulb")

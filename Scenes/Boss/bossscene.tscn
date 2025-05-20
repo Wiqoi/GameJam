@@ -1,18 +1,18 @@
-[gd_scene load_steps=28 format=4 uid="uid://ba50n6dr6ipau"]
+[gd_scene load_steps=28 format=4 uid="uid://c7wphi3v2feex"]
 
-[ext_resource type="Script" uid="uid://b1ld6yf22v3sq" path="res://Scripts/SpawnEnemy.gd" id="1_ahqd5"]
-[ext_resource type="PackedScene" uid="uid://bunmeh8jxgkjj" path="res://Scenes/Player/player.tscn" id="1_ebmjs"]
-[ext_resource type="PackedScene" uid="uid://nylbh3fa82tl" path="res://Scenes/Levels/tile_map.tscn" id="3_b2ers"]
-[ext_resource type="Texture2D" uid="uid://df4tr3f3iab7i" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Wall.png" id="4_7l4mf"]
-[ext_resource type="Texture2D" uid="uid://bo7w6od57u22w" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Grass.png" id="5_xdwyp"]
-[ext_resource type="Texture2D" uid="uid://va7tncvmg86s" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Stone Ground.png" id="6_ahqd5"]
-[ext_resource type="Texture2D" uid="uid://0ix1lhgbxkdg" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Plant.png" id="7_dw2ve"]
-[ext_resource type="Texture2D" uid="uid://dssd7mqg3ak5c" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Props.png" id="8_8u2a7"]
-[ext_resource type="Texture2D" uid="uid://43g2ikq4alxs" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Shadow Plant.png" id="9_e8oij"]
-[ext_resource type="Texture2D" uid="uid://bllgwb43rghxr" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Shadow.png" id="10_gqwak"]
-[ext_resource type="Texture2D" uid="uid://c0hkvbbdjvm2a" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Struct.png" id="11_3jpjc"]
-[ext_resource type="PackedScene" uid="uid://ses2rjxjm7o4" path="res://Scenes/Player/sword.tscn" id="12_xdwyp"]
-[ext_resource type="PackedScene" uid="uid://nverh2los05o" path="res://Scenes/Player/PlayerSkills.tscn" id="13_ahqd5"]
+[ext_resource type="Script" uid="uid://b1ld6yf22v3sq" path="res://Scripts/SpawnEnemy.gd" id="1_m633j"]
+[ext_resource type="PackedScene" uid="uid://bunmeh8jxgkjj" path="res://Scenes/Player/player.tscn" id="2_cjb11"]
+[ext_resource type="PackedScene" uid="uid://nylbh3fa82tl" path="res://Scenes/Levels/tile_map.tscn" id="3_cvm28"]
+[ext_resource type="Texture2D" uid="uid://df4tr3f3iab7i" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Wall.png" id="4_wtfad"]
+[ext_resource type="Texture2D" uid="uid://bo7w6od57u22w" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Grass.png" id="5_m8q4d"]
+[ext_resource type="Texture2D" uid="uid://va7tncvmg86s" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Stone Ground.png" id="6_lyqoi"]
+[ext_resource type="Texture2D" uid="uid://0ix1lhgbxkdg" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Plant.png" id="7_f42eu"]
+[ext_resource type="Texture2D" uid="uid://dssd7mqg3ak5c" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Props.png" id="8_17sge"]
+[ext_resource type="Texture2D" uid="uid://43g2ikq4alxs" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Shadow Plant.png" id="9_3cumk"]
+[ext_resource type="Texture2D" uid="uid://bllgwb43rghxr" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Shadow.png" id="10_s8slm"]
+[ext_resource type="Texture2D" uid="uid://c0hkvbbdjvm2a" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Struct.png" id="11_qtc2k"]
+[ext_resource type="PackedScene" uid="uid://ses2rjxjm7o4" path="res://Scenes/Player/sword.tscn" id="12_dn1ps"]
+[ext_resource type="PackedScene" uid="uid://nverh2los05o" path="res://Scenes/Player/PlayerSkills.tscn" id="13_vqfop"]
 
 [sub_resource type="Curve2D" id="Curve2D_7l4mf"]
 _data = {
@@ -21,7 +21,7 @@ _data = {
 point_count = 5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
-texture = ExtResource("4_7l4mf")
+texture = ExtResource("4_wtfad")
 2:2/0 = 0
 3:2/0 = 0
 4:2/0 = 0
@@ -216,7 +216,7 @@ texture = ExtResource("4_7l4mf")
 11:21/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1yjge"]
-texture = ExtResource("5_xdwyp")
+texture = ExtResource("5_m8q4d")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -475,7 +475,7 @@ texture = ExtResource("5_xdwyp")
 15:15/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wbbra"]
-texture = ExtResource("6_ahqd5")
+texture = ExtResource("6_lyqoi")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -678,7 +678,7 @@ texture = ExtResource("6_ahqd5")
 15:15/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ljphf"]
-texture = ExtResource("7_dw2ve")
+texture = ExtResource("7_f42eu")
 4:0/0 = 0
 5:0/0 = 0
 3:1/0 = 0
@@ -923,7 +923,7 @@ texture = ExtResource("7_dw2ve")
 7:31/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_43uk8"]
-texture = ExtResource("8_8u2a7")
+texture = ExtResource("8_17sge")
 14:0/0 = 0
 15:0/0 = 0
 24:0/0 = 0
@@ -1279,7 +1279,7 @@ texture = ExtResource("8_8u2a7")
 19:31/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kydwq"]
-texture = ExtResource("9_e8oij")
+texture = ExtResource("9_3cumk")
 4:6/0 = 0
 5:6/0 = 0
 6:6/0 = 0
@@ -1380,7 +1380,7 @@ texture = ExtResource("9_e8oij")
 23:14/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gctrg"]
-texture = ExtResource("10_gqwak")
+texture = ExtResource("10_s8slm")
 24:0/0 = 0
 25:0/0 = 0
 2:1/0 = 0
@@ -1702,7 +1702,7 @@ texture = ExtResource("10_gqwak")
 11:31/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bfdkv"]
-texture = ExtResource("11_3jpjc")
+texture = ExtResource("11_qtc2k")
 25:1/0 = 0
 26:1/0 = 0
 27:1/0 = 0
@@ -1933,9 +1933,9 @@ a = Vector2(-776, -449)
 b = Vector2(674, -451)
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_ahqd5")
+script = ExtResource("1_m633j")
 
-[node name="Player" parent="." instance=ExtResource("1_ebmjs")]
+[node name="Player" parent="." instance=ExtResource("2_cjb11")]
 unique_name_in_owner = true
 light_mask = 3
 z_index = 1
@@ -1955,7 +1955,7 @@ rotation = 1.56212
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="TileMap" parent="." instance=ExtResource("3_b2ers")]
+[node name="TileMap" parent="." instance=ExtResource("3_cvm28")]
 position = Vector2(67, 72)
 
 [node name="Backgound" type="TileMapLayer" parent="TileMap"]
@@ -1969,10 +1969,10 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAD4//n/BAAWABEAAAD4//r/BAAWABIAAAD4//v/BAAWABMAAAD4//z/BAAWABQAAAD5//n/BAAXABEAAAD5//r/BAAXABIAAAD5//v/BAAXABMAAAD5//z/BAAXABQAAAD5//3/BAAXABUAAAD6//j/BAAYABAAAAD6//n/BAAYABEAAAD6//r/BAAYABIAAAD6//v/BAAYABMAAAD6//z/BAAYABQAAAD6//3/BAAYABUAAAD7//j/BAAZABAAAAD7//n/BAAZABEAAAD7//r/BAAZABIAAAD7//v/BAAZABMAAAD7//z/BAAZABQAAAD7//3/BAAZABUAAAD8//n/BAAaABEAAAD8//r/BAAaABIAAAD8//v/BAAaABMAAAD8//z/BAAaABQAAAD8//3/BAAaABUAAAD9//n/BAAbABEAAAD9//r/BAAbABIAAAD9//v/BAAbABMAAAD9//z/BAAbABQAAAA=")
 tile_set = SubResource("TileSet_3dryh")
 
-[node name="Sword" parent="." instance=ExtResource("12_xdwyp")]
+[node name="Sword" parent="." instance=ExtResource("12_dn1ps")]
 follow_speed = 85.0
 
-[node name="Abilities" parent="." instance=ExtResource("13_ahqd5")]
+[node name="Abilities" parent="." instance=ExtResource("13_vqfop")]
 
 [node name="InvisibleWall" type="StaticBody2D" parent="."]
 
