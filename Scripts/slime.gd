@@ -74,6 +74,7 @@ func jumpToPlayer():
 		return
 
 	jump_frame_counter += 1
+	
 func update_offset():
 	offset = Vector2(randf_range(-limit, limit), randf_range(-limit, limit))
 
@@ -98,7 +99,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 
 func die():
 	dying = true
-	%HitboxCollision.disabled = true
+	%HitboxCollisionSlime.disabled = true
 	$SlimeSprite.play("Death")
 
 func _on_enemy_sprite_animation_finished() -> void:

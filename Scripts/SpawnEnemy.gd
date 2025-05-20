@@ -34,6 +34,13 @@ func spawn_enemy3():
 	else:
 		new_demon.global_position = %SpawnPathFollow.global_position
 		add_child(new_demon)
+		
+func spawn_enemy4():
+	var new_morph = preload("res://Scenes/Enemies/morph.tscn").instantiate()
+	new_morph.player = get_node("/root/Game/Player")
+	%SpawnPathFollow.progress_ratio = randf()
+	new_morph.global_position = %SpawnPathFollow.global_position
+	add_child(new_morph)
 	
 
 func _on_timer_timeout() -> void:
@@ -45,5 +52,7 @@ func _on_spawn_enemy_timer_timeout() -> void:
 		spawn_enemy1()
 	elif 50 < timeCount and timeCount < 80:
 		spawn_enemy2()
-	elif timeCount > 100:
+	elif timeCount > 100 and timeCount < 130:
 		spawn_enemy3()
+	elif timeCount > 150:
+		spawn_enemy4()
