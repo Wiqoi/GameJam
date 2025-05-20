@@ -98,6 +98,7 @@ func get_separation_force() -> Vector2:
 
 func die() -> void:
 	dying = true
+	%HitboxCollisionDemon.disabled = true
 	$DemonSprite.play("Death")
 
 func _on_demon_sprite_animation_finished() -> void:

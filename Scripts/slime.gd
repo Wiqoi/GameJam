@@ -98,6 +98,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 
 func die():
 	dying = true
+	%HitboxCollision.disabled = true
 	$SlimeSprite.play("Death")
 
 func _on_enemy_sprite_animation_finished() -> void:
