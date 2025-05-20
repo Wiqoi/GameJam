@@ -61,10 +61,8 @@ func spawn_enemy5():
 		new_morph.global_position = %SpawnPathFollow.global_position
 		add_child(new_morph)
 	
-
 func _on_timer_timeout() -> void:
 	timeCount += 1
-
 
 func _on_spawn_enemy_timer_timeout() -> void:
 	if timeCount < 30:

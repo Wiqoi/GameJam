@@ -336,6 +336,7 @@ autoplay = "Idle"
 
 [node name="PlayerCamera" parent="." instance=ExtResource("3_0u5uq")]
 position = Vector2(0, 1)
+limit_bottom = 437
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 light_mask = 128
