@@ -82,7 +82,7 @@ func removeBefore():
 	if pastAbility == 1:
 		$AbilityArea.get_node("CollisionShape2D").remove_from_group("Bleed")
 	if pastAbility == 2:
-		$AbilityArea.get_node("CollisionShape2D").remove_from_group("GroundSpike")
+		$AbilityArea.get_node("CollisionShape2D").remove_from_group("GwroundSpike")
 	if pastAbility == 3:
 		$AbilityArea.get_node("CollisionShape2D").remove_from_group("Heal")
 	if pastAbility == 4:

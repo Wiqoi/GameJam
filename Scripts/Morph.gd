@@ -6,6 +6,8 @@ var speed: float = 50.0
 var is_jumping1: bool = false
 var is_jumping2: bool = false
 var dying: bool = false
+var bleeding: bool = false
+var pushed: bool = false
 
 var offset: Vector2 = Vector2(randf_range(-45, 45), randf_range(-45, 45))
 var limit: int = 150
@@ -33,7 +35,15 @@ func _physics_process(_delta: float) -> void:
 	var direction = (player.global_position - global_position + offset).normalized()
 	var separation = get_separation_force()
 
-	if is_jumping1:
+	if pushed:
+			is_jumping1 = false
+			is_jumping2 = false
+			var dMouse = (get_global_mouse_position() - global_position).normalized()
+			if dMouse.length() <= 100:
+				velocity = dMouse * speed
+			else:
+				pushed = false
+	elif is_jumping1:
 		handle_attack1(direction)
 	elif is_jumping2:
 		handle_attack2(direction)
@@ -149,8 +159,16 @@ func die() -> void:
 func _on_hurt_box_morph_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerAttack"):
 		health -= Global.playerDmg
+		if bleeding:
+			health -= 1
+			bleeding = false
+			
 		if health <= 0:
 			die()
+	elif area.is_in_group("Bleed"):
+		bleeding = true
+	elif area.is_in_group("PushAway"):
+		pushed = true
 
 
 func _on_morph_sprite_animation_finished() -> void:

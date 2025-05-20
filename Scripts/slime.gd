@@ -8,6 +8,8 @@ var offset = Vector2(randf_range(-45, 45), randf_range(-45, 45))
 var limit : int = 150
 var isJumping : bool = false
 var dying : bool = false
+var bleeding : bool = false
+var pushed : bool = false
 
 var jump_frame_counter : int = 0
 var jump_cooldown_frames = 210
@@ -28,7 +30,14 @@ func _physics_process(_delta: float) -> void:
 	if player && not dying:
 		var direction = (player.global_position - global_position + offset).normalized()
 		var separation = get_separation_force()
-
+		
+		if pushed:
+			isJumping = false
+			var dMouse = (get_global_mouse_position() - global_position).normalized()
+			if dMouse.length() <= 100:
+				velocity = dMouse * speed
+			else:
+				pushed = false
 		if isJumping:
 			jumpToPlayer()
 		else:
@@ -94,8 +103,18 @@ func get_separation_force() -> Vector2:
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerAttack"):
 		health -= Global.playerDmg
+		if bleeding:
+			health -= 1
+			bleeding = false
+			
 		if health <= 0:
 			die()
+	elif area.is_in_group("Bleed"):
+		bleeding = true
+	elif area.is_in_group("PushAway"):
+		pushed = true
+		
+	
 
 func die():
 	dying = true
