@@ -1,7 +1,8 @@
-[gd_scene load_steps=33 format=3 uid="uid://c1m10h0sqogy0"]
+[gd_scene load_steps=35 format=3 uid="uid://c1m10h0sqogy0"]
 
 [ext_resource type="Script" uid="uid://ct4qu1fvownnc" path="res://Scripts/Demon.gd" id="1_u8kdg"]
 [ext_resource type="Texture2D" uid="uid://kg35yxtmy7d3" path="res://Assets/OurAssets/Sprites/Demon.png" id="2_7pn5h"]
+[ext_resource type="Texture2D" uid="uid://dbhcxwkmgqyht" path="res://Assets/OurAssets/Sprites/Demon1.png" id="3_7pn5h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_040qw"]
 atlas = ExtResource("2_7pn5h")
@@ -104,8 +105,12 @@ atlas = ExtResource("2_7pn5h")
 region = Rect2(8, 0, 63, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cdcgt"]
-atlas = ExtResource("2_7pn5h")
-region = Rect2(134, 0, 63, 64)
+atlas = ExtResource("3_7pn5h")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvxk2"]
+atlas = ExtResource("3_7pn5h")
+region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ac8c6"]
 animations = [{
@@ -202,10 +207,13 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cdcgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvxk2")
 }],
 "loop": true,
 "name": &"Walking",
-"speed": 12.0
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i4afg"]
