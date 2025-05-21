@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://biknklwl4lugm" path="res://Scripts/slime.gd" id="1_4lx4x"]
 [ext_resource type="Texture2D" uid="uid://8niyel4sinrm" path="res://Assets/FreeOnlineAssets/Cute_Fantasy_Free/Enemies/Slime.png" id="2_6kvin"]
-[ext_resource type="PackedScene" uid="uid://bxt5q06ej56kg" path="res://Scenes/Enemies/hitbox.tscn" id="3_hm6tv"]
+[ext_resource type="PackedScene" uid="uid://bx5imp0ipv7wn" path="res://Scenes/Enemies/hitbox.tscn" id="3_hm6tv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x1rqp"]
 atlas = ExtResource("2_6kvin")
@@ -179,7 +179,7 @@ shape = SubResource("RectangleShape2D_1f0kj")
 [node name="HitboxSlime" parent="." instance=ExtResource("3_hm6tv")]
 unique_name_in_owner = true
 
-[node name="HitboxCollision" type="CollisionShape2D" parent="HitboxSlime"]
+[node name="HitboxCollisionSlime" type="CollisionShape2D" parent="HitboxSlime"]
 unique_name_in_owner = true
 position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_x1rqp")

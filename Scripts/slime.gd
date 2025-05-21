@@ -8,6 +8,8 @@ var offset = Vector2(randf_range(-45, 45), randf_range(-45, 45))
 var limit : int = 150
 var isJumping : bool = false
 var dying : bool = false
+var bleeding : bool = false
+var pushed : bool = false
 
 var jump_frame_counter : int = 0
 var jump_cooldown_frames = 210
@@ -18,7 +20,7 @@ var hitbox : CollisionShape2D
 
 func _ready() -> void:
 	add_to_group("enemies")
-	hitbox = %HitboxCollision
+	hitbox = %HitboxCollisionSlime
 	if $HitboxSlime:
 		$HitboxSlime.add_to_group("EnemyHitbox")
 	var hurtbox = %SlimeHurtBox
@@ -28,7 +30,14 @@ func _physics_process(_delta: float) -> void:
 	if player && not dying:
 		var direction = (player.global_position - global_position + offset).normalized()
 		var separation = get_separation_force()
-
+		
+		if pushed:
+			isJumping = false
+			var dMouse = (get_global_mouse_position() - global_position).normalized()
+			if dMouse.length() <= 100:
+				velocity = dMouse * speed
+			else:
+				pushed = false
 		if isJumping:
 			jumpToPlayer()
 		else:
@@ -74,6 +83,7 @@ func jumpToPlayer():
 		return
 
 	jump_frame_counter += 1
+	
 func update_offset():
 	offset = Vector2(randf_range(-limit, limit), randf_range(-limit, limit))
 
@@ -93,12 +103,22 @@ func get_separation_force() -> Vector2:
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerAttack"):
 		health -= Global.playerDmg
+		if bleeding:
+			health -= 1
+			bleeding = false
+			
 		if health <= 0:
-			die()
+			call_deferred("die")
+	elif area.is_in_group("Bleed"):
+		bleeding = true
+	elif area.is_in_group("PushAway"):
+		pushed = true
+		
+	
 
 func die():
 	dying = true
-	%HitboxCollision.disabled = true
+	%HitboxCollisionSlime.disabled = true
 	$SlimeSprite.play("Death")
 
 func _on_enemy_sprite_animation_finished() -> void:
