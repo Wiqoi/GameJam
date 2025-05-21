@@ -330,7 +330,7 @@ script = ExtResource("1_s1qs2")
 unique_name_in_owner = true
 position = Vector2(32, -7)
 sprite_frames = SubResource("SpriteFrames_paaqs")
-animation = &"Attack2"
+animation = &"Walking"
 autoplay = "Walking"
 
 [node name="HurtBoxMorph" type="Area2D" parent="."]
