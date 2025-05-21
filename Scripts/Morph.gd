@@ -170,6 +170,14 @@ func _on_hurt_box_morph_area_entered(area: Area2D) -> void:
 		bleeding = true
 	elif area.is_in_group("PushAway"):
 		pushed = true
+	elif area.is_in_group("AbilityMain"):
+		health -= 2
+		if bleeding:
+			health -= 1
+			bleeding = false
+			
+		if health <= 0:
+			call_deferred("die")
 
 
 func _on_morph_sprite_animation_finished() -> void:

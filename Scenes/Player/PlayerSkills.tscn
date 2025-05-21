@@ -446,11 +446,16 @@ size = Vector2(232, 226)
 script = ExtResource("1_e36nw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_7hypg")
 animation = &"Bleed"
 
 [node name="AbilityArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AbilityArea"]
+[node name="AbilityCollision" type="CollisionShape2D" parent="AbilityArea"]
+unique_name_in_owner = true
 position = Vector2(-7, -6)
 shape = SubResource("RectangleShape2D_jgulb")
+disabled = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

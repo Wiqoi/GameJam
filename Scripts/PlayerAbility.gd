@@ -9,54 +9,46 @@ func _process(delta: float) -> void:
 	if Global.currentPlayerAbility != pastAbility:
 			if Global.currentPlayerAbility == 1:
 				removeBefore()
-				pastAbility = 2
-				$AnimatedSprite2D.play("AbilityMain")
-				$AbilityArea.add_to_group("AbilityMainwawawawawa")
+				pastAbility = 1
+				$AbilityArea.add_to_group("AbilityMain")
 			elif Global.currentPlayerAbility == 2:
 				removeBefore()
 				pastAbility = 2
-				$AnimatedSprite2D.play("Bleed")
 				$AbilityArea.add_to_group("Bleed")
 			elif Global.currentPlayerAbility == 3:
 				removeBefore()
 				pastAbility = 3
-				$AnimatedSprite2D.play("GroundSpike")
 				$AbilityArea.add_to_group("GroundSpike")
 			elif Global.currentPlayerAbility == 4:
 				removeBefore()
 				pastAbility = 4
-				$AnimatedSprite2D.play("Heal")
 				$AbilityArea.add_to_group("Heal")
 			elif Global.currentPlayerAbility == 5:
 				removeBefore()
 				pastAbility = 5
-				$AnimatedSprite2D.play("ProtectiveBox")
 				$AbilityArea.add_to_group("ProtectiveBox")
 			elif Global.currentPlayerAbility == 6:
 				removeBefore()
 				pastAbility = 6
-				$AnimatedSprite2D.play("PullInDamage")
 				$AbilityArea.add_to_group("PullInDamage")
 			elif Global.currentPlayerAbility == 7:
 				removeBefore()
 				pastAbility = 7
-				$AnimatedSprite2D.play("PushAway")
 				$AbilityArea.add_to_group("PushAway")
 			elif Global.currentPlayerAbility == 8:
 				removeBefore()
 				pastAbility = 8
-				$AnimatedSprite2D.play("SetOnFire")
 				$AbilityArea.add_to_group("SetOnFire")
 			elif Global.currentPlayerAbility == 9:
 				removeBefore()
 				pastAbility = 9
-				$AnimatedSprite2D.play("TimeFreeze")
 				$AbilityArea.add_to_group("TimeFreeze")
 				
 	if Input.is_action_just_pressed("Skill") && Global.playerSkill >= 1 && AbilityCooldownTimer > AbilityCooldownTime:
 		Global.playerSkill -= 1
 		AbilityCooldownTimer = 0
 		$AnimatedSprite2D.visible = true
+		%AbilityCollision.disabled = false
 		go_to_cursor()
 		if Global.currentPlayerAbility == 1:
 			$AnimatedSprite2D.play("AbilityMain")
@@ -99,3 +91,6 @@ func removeBefore():
 			
 func go_to_cursor():
 	global_position = get_global_mouse_position()
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	%AbilityCollision.disabled = true
