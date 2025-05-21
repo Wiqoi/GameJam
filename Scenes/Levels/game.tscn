@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=4 uid="uid://ba50n6dr6ipau"]
+[gd_scene load_steps=31 format=4 uid="uid://ba50n6dr6ipau"]
 
 [ext_resource type="Script" uid="uid://b1ld6yf22v3sq" path="res://Scripts/SpawnEnemy.gd" id="1_ahqd5"]
 [ext_resource type="PackedScene" uid="uid://bunmeh8jxgkjj" path="res://Scenes/Player/player.tscn" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://c1m10h0sqogy0" path="res://Scenes/Enemies/demon.tscn" id="2_e8oij"]
 [ext_resource type="PackedScene" uid="uid://nylbh3fa82tl" path="res://Scenes/Levels/tile_map.tscn" id="3_b2ers"]
 [ext_resource type="Texture2D" uid="uid://df4tr3f3iab7i" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Wall.png" id="4_7l4mf"]
 [ext_resource type="Texture2D" uid="uid://bo7w6od57u22w" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Grass.png" id="5_xdwyp"]
@@ -13,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://c0hkvbbdjvm2a" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Struct.png" id="11_3jpjc"]
 [ext_resource type="PackedScene" uid="uid://ses2rjxjm7o4" path="res://Scenes/Player/sword.tscn" id="12_xdwyp"]
 [ext_resource type="PackedScene" uid="uid://nverh2los05o" path="res://Scenes/Player/PlayerSkills.tscn" id="13_ahqd5"]
+[ext_resource type="PackedScene" uid="uid://b82en3adb3mg5" path="res://Scenes/Enemies/morph.tscn" id="15_gqwak"]
+[ext_resource type="PackedScene" uid="uid://btwsnu1lwi4qw" path="res://Scenes/Enemies/slime.tscn" id="16_3jpjc"]
 
 [sub_resource type="Curve2D" id="Curve2D_7l4mf"]
 _data = {
@@ -1939,6 +1942,7 @@ script = ExtResource("1_ahqd5")
 unique_name_in_owner = true
 light_mask = 3
 z_index = 1
+position = Vector2(-12, -8)
 line_width = 1.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -1971,11 +1975,13 @@ tile_map_data = PackedByteArray("AAD4//n/BAAWABEAAAD4//r/BAAWABIAAAD4//v/BAAWABM
 tile_set = SubResource("TileSet_3dryh")
 
 [node name="Sword" parent="." instance=ExtResource("12_xdwyp")]
+position = Vector2(-12, -8)
 follow_speed = 85.0
 
 [node name="Abilities" parent="." instance=ExtResource("13_ahqd5")]
 
 [node name="InvisibleWall" type="StaticBody2D" parent="."]
+position = Vector2(0, -4)
 
 [node name="Border" type="CollisionShape2D" parent="InvisibleWall"]
 visibility_layer = 128
@@ -2004,6 +2010,15 @@ one_way_collision = true
 [node name="SpawnEnemyTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="Morph" parent="." instance=ExtResource("15_gqwak")]
+position = Vector2(-38, -166)
+
+[node name="Slime" parent="." instance=ExtResource("16_3jpjc")]
+position = Vector2(-248, -44)
+
+[node name="Demon" parent="." instance=ExtResource("2_e8oij")]
+position = Vector2(261, -59)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]

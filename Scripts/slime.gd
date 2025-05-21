@@ -12,6 +12,8 @@ var bleeding : bool = false
 var pushed : bool = false
 var frame_counter2 : int = 0
 var freezed : bool = false
+var is_hurt : bool = false
+var hurt_timer: int = 0
 
 var jump_cooldown_frames = 210
 var jump_cooldown_counter = 0
@@ -20,6 +22,8 @@ var frame_counter1 : int = 0
 var hitbox : CollisionShape2D
 
 func _ready() -> void:
+	if !player:
+		player = %Player 
 	add_to_group("enemies")
 	hitbox = %HitboxCollisionSlime
 	if $HitboxSlime:
@@ -31,12 +35,19 @@ func _physics_process(_delta: float) -> void:
 	if player && not dying:
 		var direction = (player.global_position - global_position + offset).normalized()
 		var separation = get_separation_force()
-		
-		if freezed:
+		if is_hurt:
+			hurt_timer -= 1
+			if hurt_timer <= 0:
+				is_hurt = false
+				
+			velocity = Vector2.ZERO
+			print("hoi")
+		elif freezed:
 			frame_counter2 += 1
 			if frame_counter2 > 90:
 				freezed = false
 				frame_counter2 = 0
+			velocity = Vector2.ZERO
 		elif pushed:
 			isJumping = false
 			var dMouse = (get_global_mouse_position() - global_position).normalized()
@@ -44,7 +55,7 @@ func _physics_process(_delta: float) -> void:
 				velocity = dMouse * speed
 			else:
 				pushed = false
-		if isJumping:
+		elif isJumping:
 			jumpToPlayer()
 		else:
 			velocity = (direction + separation * 20).normalized() * speed
@@ -56,7 +67,7 @@ func _physics_process(_delta: float) -> void:
 			update_offset()
 
 		var distToPlayer = (global_position - player.global_position).length()
-		if not isJumping and distToPlayer < 41 and jump_cooldown_counter <= 0:
+		if not isJumping and distToPlayer < 41 and jump_cooldown_counter <= 0 and not is_hurt:
 			isJumping = true
 			$SlimeSprite.animation = "Jumping"
 
@@ -66,9 +77,6 @@ func _physics_process(_delta: float) -> void:
 			limit = 80
 		else:
 			limit = 150
-
-		if jump_cooldown_counter > 0:
-			jump_cooldown_counter -= 1
 
 		move_and_slide()
 
@@ -81,11 +89,11 @@ func jumpToPlayer():
 		1, 2, 3:
 			velocity = (player.global_position - global_position).normalized() * speedJump
 			hitbox.disabled = false
-		4, 5, 6, 7:
+		4, 5, 6, 7, 8:
 			velocity = Vector2.ZERO
 			hitbox.disabled = true
 			
-	if frame == 7 and $SlimeSprite.frame == 7 and $SlimeSprite.frame == $SlimeSprite.sprite_frames.get_frame_count("Jumping") - 1:
+	if frame == 8 and $SlimeSprite.frame == 8 and $SlimeSprite.frame == $SlimeSprite.sprite_frames.get_frame_count("Jumping") - 1:
 		isJumping = false
 		jump_cooldown_counter = jump_cooldown_frames
 		$SlimeSprite.animation = "Walking"
@@ -117,6 +125,10 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 			
 		if health <= 0:
 			call_deferred("die")
+		else:
+			$SlimeSprite.animation = "Hurt"
+			is_hurt = true
+			hurt_timer = 30
 	elif area.is_in_group("Bleed"):
 		bleeding = true
 	elif area.is_in_group("PushAway"):
@@ -129,6 +141,10 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 			
 		if health <= 0:
 			call_deferred("die")
+		else:
+			$SlimeSprite.animation = "Hurt"
+			is_hurt = true
+			hurt_timer = 30
 	elif area.is_in_group("FreezeTimer"):
 		freezed = true
 		
