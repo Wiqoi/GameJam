@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 				removeBefore()
 				pastAbility = 0
 				$AnimatedSprite2D.play("AbilityMain")
-				$AbilityArea.add_to_group("AbilityMain")
+				$AbilityArea.add_to_group("PlayerAttack")
 			if Global.currentPlayerAbility == 1:
 				removeBefore()
 				pastAbility = 1
@@ -78,7 +78,7 @@ func _process(delta: float) -> void:
 			
 func removeBefore():
 	if pastAbility == 0:
-		$AbilityArea.remove_from_group("AbilityMain")
+		$AbilityArea.remove_from_group("PlayerAttack")
 	if pastAbility == 1:
 		$AbilityArea.remove_from_group("Bleed")
 	if pastAbility == 2:

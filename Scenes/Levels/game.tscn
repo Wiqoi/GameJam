@@ -1942,6 +1942,7 @@ z_index = 1
 line_width = 1.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.00528596, 0.0628275, 0.0334928, 1)
 
 [node name="SpawnPath" type="Path2D" parent="."]
