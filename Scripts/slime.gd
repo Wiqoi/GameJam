@@ -39,7 +39,9 @@ func _physics_process(_delta: float) -> void:
 			hurt_timer -= 1
 			if hurt_timer <= 0:
 				is_hurt = false
+				
 			velocity = Vector2.ZERO
+			print("hoi")
 		elif freezed:
 			frame_counter2 += 1
 			if frame_counter2 > 90:
@@ -65,7 +67,7 @@ func _physics_process(_delta: float) -> void:
 			update_offset()
 
 		var distToPlayer = (global_position - player.global_position).length()
-		if not isJumping and distToPlayer < 41 and jump_cooldown_counter <= 0:
+		if not isJumping and distToPlayer < 41 and jump_cooldown_counter <= 0 and not is_hurt:
 			isJumping = true
 			$SlimeSprite.animation = "Jumping"
 
@@ -75,9 +77,6 @@ func _physics_process(_delta: float) -> void:
 			limit = 80
 		else:
 			limit = 150
-
-		if jump_cooldown_counter > 0:
-			jump_cooldown_counter -= 1
 
 		move_and_slide()
 

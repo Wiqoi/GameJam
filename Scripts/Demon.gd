@@ -11,7 +11,6 @@ var is_hurt : bool = false
 var offset : Vector2 = Vector2(randf_range(-45, 45), randf_range(-45, 45))
 var limit : int = 150
 var frame_counter : int = 0
-var jump_frame_counter : int = 0
 var jump_cooldown : int = 210
 var jump_cooldown_timer : int = 0
 var frame_counter2 : int = 0
@@ -72,8 +71,6 @@ func _physics_process(_delta: float) -> void:
 			limit = 150
 
 	$DemonSprite.flip_h = direction.x < 0
-	if jump_cooldown_timer > 0:
-		jump_cooldown_timer -= 1
 
 	frame_counter += 1
 	if frame_counter % 60 == 0:
@@ -84,7 +81,6 @@ func _physics_process(_delta: float) -> void:
 
 func start_jump() -> void:
 	is_jumping = true
-	jump_frame_counter = 0
 	$DemonSprite.animation = "Attack"
 
 func handle_jump(_direction: Vector2) -> void:
@@ -97,7 +93,6 @@ func handle_jump(_direction: Vector2) -> void:
 			hitbox.disabled = false
 		12:
 			is_jumping = false
-			jump_frame_counter = 0
 			jump_cooldown_timer = jump_cooldown
 			hitbox.disabled = true
 			$DemonSprite.animation = "Walking"
