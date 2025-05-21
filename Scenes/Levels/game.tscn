@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=4 uid="uid://ba50n6dr6ipau"]
 
-[ext_resource type="Script" uid="uid://b1ld6yf22v3sq" path="res://Scripts/SpawnEnemy.gd" id="1_ahqd5"]
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_ahqd5"]
 [ext_resource type="PackedScene" uid="uid://bunmeh8jxgkjj" path="res://Scenes/Player/player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://nylbh3fa82tl" path="res://Scenes/Levels/tile_map.tscn" id="3_b2ers"]
 [ext_resource type="Texture2D" uid="uid://df4tr3f3iab7i" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Tileset Wall.png" id="4_7l4mf"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bllgwb43rghxr" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Shadow.png" id="10_gqwak"]
 [ext_resource type="Texture2D" uid="uid://c0hkvbbdjvm2a" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Struct.png" id="11_3jpjc"]
 [ext_resource type="PackedScene" uid="uid://ses2rjxjm7o4" path="res://Scenes/Player/sword.tscn" id="12_xdwyp"]
-[ext_resource type="PackedScene" uid="uid://nverh2los05o" path="res://Scenes/Player/PlayerSkills.tscn" id="13_ahqd5"]
+[ext_resource type="PackedScene" path="res://Scenes/Player/PlayerSkills.tscn" id="13_ahqd5"]
 
 [sub_resource type="Curve2D" id="Curve2D_7l4mf"]
 _data = {
