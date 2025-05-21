@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 var player: CharacterBody2D
-var health : float = 3.0
-var speed : float = 30.0
-var speedJump : float = 150.0
+var health : float = 4.0
+var speed : float = 50.0
+var speedJump : float = 200.0
 var offset = Vector2(randf_range(-45, 45), randf_range(-45, 45))
 var limit : int = 150
 var isJumping : bool = false
@@ -19,9 +19,9 @@ var hitbox : CollisionShape2D
 func _ready() -> void:
 	add_to_group("enemies")
 	hitbox = %HitboxCollision
-	if $HitboxSlime:
-		$HitboxSlime.add_to_group("EnemyHitbox")
-	var hurtbox = %SlimeHurtBox
+	if $Hitbox:
+		$Hitbox.add_to_group("EnemyHitbox")
+	var hurtbox = %EnemyHurtBox
 	hurtbox.disabled = false
 
 func _physics_process(_delta: float) -> void:
@@ -44,7 +44,7 @@ func _physics_process(_delta: float) -> void:
 		if not isJumping and distToPlayer < 41 and jump_cooldown_counter <= 0:
 			isJumping = true
 			jump_frame_counter = 0
-			$SlimeSprite.animation = "Jumping"
+			$EnemySprite.animation = "Jumping"
 
 		if distToPlayer < 80:
 			limit = 0
@@ -67,7 +67,7 @@ func jumpToPlayer():
 		hitbox.disabled = false
 	else:
 		isJumping = false
-		$SlimeSprite.animation = "Walking"
+		$EnemySprite.animation = "Walking"
 		hitbox.disabled = true
 		jump_cooldown_counter = jump_cooldown_frames
 		jump_frame_counter = 0
@@ -98,9 +98,8 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 
 func die():
 	dying = true
-	%HitboxCollision.disabled = true
-	$SlimeSprite.play("Death")
+	$EnemySprite.play("Death")
 
 func _on_enemy_sprite_animation_finished() -> void:
-	if $SlimeSprite.animation == "Death":
+	if $EnemySprite.animation == "Death":
 		queue_free()
