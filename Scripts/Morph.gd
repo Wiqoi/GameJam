@@ -14,7 +14,6 @@ var freezed : bool = false
 var offset: Vector2 = Vector2(randf_range(-45, 45), randf_range(-45, 45))
 var limit: int = 150
 var frame_counter: int = 0
-var jump_frame_counter: int = 0
 var jump_cooldown: int = 150
 var jump_cooldown_timer: int = 0
 
@@ -95,50 +94,43 @@ func start_jump() -> void:
 	var randomAttack = randf()
 	if randomAttack >= 0.5:
 		is_jumping1 = true
-		jump_frame_counter = 0
 		$MorphSprite.animation = "Attack1"
 	else:
 		is_jumping2 = true
-		jump_frame_counter = 0
 		$MorphSprite.animation = "Attack2"
 
 func handle_attack1(_direction: Vector2) -> void:
-	jump_frame_counter += 1
+	velocity = Vector2.ZERO
+	
+	var frame = $MorphSprite.frame
 
-	if jump_frame_counter < 20:
-		velocity = Vector2.ZERO
-		hitbox1.disabled = true
-		hitbox2.disabled = true
-	elif jump_frame_counter <= 80:
-		velocity = Vector2.ZERO
-		hitbox1.disabled = false
-	else:
-		is_jumping1 = false
-		jump_frame_counter = 0
-		jump_cooldown_timer = jump_cooldown
-		velocity = Vector2.ZERO
-		hitbox1.disabled = true
-		hitbox2.disabled = true
-		$MorphSprite.animation = "Walking"
-		
+	match frame:
+		2, 3, 4, 5:
+			hitbox1.disabled = false
+		7:
+			is_jumping1 = false
+			jump_cooldown_timer = jump_cooldown
+			hitbox1.disabled = true
+			$MorphSprite.animation = "Walking"
+		_:
+			hitbox1.disabled = true
+
 func handle_attack2(_direction: Vector2) -> void:
-	jump_frame_counter += 1
+	velocity = Vector2.ZERO
 
-	if jump_frame_counter < 15:
-		velocity = Vector2.ZERO
-		hitbox1.disabled = true
-		hitbox2.disabled = true
-	elif jump_frame_counter <= 80:
-		velocity = Vector2.ZERO
-		hitbox2.disabled = false
-	else:
-		is_jumping2 = false
-		jump_frame_counter = 0
-		jump_cooldown_timer = jump_cooldown + 60
-		velocity = Vector2.ZERO
-		hitbox1.disabled = true
-		hitbox2.disabled = true
-		$MorphSprite.animation = "Walking"
+	var frame = $MorphSprite.frame
+
+	match frame:
+		2, 3, 4, 5:
+			hitbox2.disabled = false
+		6:
+			is_jumping2 = false
+			jump_cooldown_timer = jump_cooldown + 60
+			hitbox2.disabled = true
+			$MorphSprite.animation = "Walking"
+		_:
+			hitbox2.disabled = true
+
 		
 
 func update_offset() -> void:

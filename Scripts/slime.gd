@@ -13,7 +13,6 @@ var pushed : bool = false
 var frame_counter2 : int = 0
 var freezed : bool = false
 
-var jump_frame_counter : int = 0
 var jump_cooldown_frames = 210
 var jump_cooldown_counter = 0
 
@@ -59,7 +58,6 @@ func _physics_process(_delta: float) -> void:
 		var distToPlayer = (global_position - player.global_position).length()
 		if not isJumping and distToPlayer < 41 and jump_cooldown_counter <= 0:
 			isJumping = true
-			jump_frame_counter = 0
 			$SlimeSprite.animation = "Jumping"
 
 		if distToPlayer < 80:
@@ -75,21 +73,24 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 
 func jumpToPlayer():
-	if jump_frame_counter < 20:
-		velocity = Vector2.ZERO
-		hitbox.disabled = true
-	elif jump_frame_counter <= 35:
-		velocity = (player.global_position - global_position).normalized() * speedJump
-		hitbox.disabled = false
-	else:
+	var frame = $SlimeSprite.frame
+	match frame:
+		0:
+			velocity = Vector2.ZERO
+			hitbox.disabled = true
+		1, 2, 3:
+			velocity = (player.global_position - global_position).normalized() * speedJump
+			hitbox.disabled = false
+		4, 5, 6, 7:
+			velocity = Vector2.ZERO
+			hitbox.disabled = true
+			
+	if frame == 7 and $SlimeSprite.frame == 7 and $SlimeSprite.frame == $SlimeSprite.sprite_frames.get_frame_count("Jumping") - 1:
 		isJumping = false
-		$SlimeSprite.animation = "Walking"
-		hitbox.disabled = true
 		jump_cooldown_counter = jump_cooldown_frames
-		jump_frame_counter = 0
-		return
-
-	jump_frame_counter += 1
+		$SlimeSprite.animation = "Walking"
+		
+	$SlimeSprite.flip_h = velocity.x < 0
 	
 func update_offset():
 	offset = Vector2(randf_range(-limit, limit), randf_range(-limit, limit))
