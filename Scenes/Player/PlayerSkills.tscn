@@ -34,13 +34,13 @@ region = Rect2(256, 256, 256, 256)
 atlas = ExtResource("1_lcbt2")
 region = Rect2(512, 256, 256, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2htjl"]
-atlas = ExtResource("1_lcbt2")
-region = Rect2(768, 256, 256, 256)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_5crbh"]
 atlas = ExtResource("1_lcbt2")
 region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2htjl"]
+atlas = ExtResource("1_lcbt2")
+region = Rect2(768, 256, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1qtb8"]
 atlas = ExtResource("1_lcbt2")
@@ -251,10 +251,10 @@ animations = [{
 "texture": SubResource("AtlasTexture_u8hbl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2htjl")
+"texture": SubResource("AtlasTexture_5crbh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5crbh")
+"texture": SubResource("AtlasTexture_2htjl")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1qtb8")
@@ -440,18 +440,17 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jgulb"]
-size = Vector2(217, 213)
+size = Vector2(232, 226)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_e36nw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
 sprite_frames = SubResource("SpriteFrames_7hypg")
-animation = &"SetOnFire"
+animation = &"Bleed"
 
 [node name="AbilityArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AbilityArea"]
-position = Vector2(0.5, 0.5)
+position = Vector2(-7, -6)
 shape = SubResource("RectangleShape2D_jgulb")
