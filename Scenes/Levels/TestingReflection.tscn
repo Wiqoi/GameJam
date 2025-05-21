@@ -1,41 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://lhkiy3fx6q0d"]
+[gd_scene load_steps=3 format=3 uid="uid://lhkiy3fx6q0d"]
 
-[ext_resource type="Texture2D" uid="uid://dmhverhdohhq1" path="res://Assets/OurAssets/RandomTile.png" id="1_exyot"]
 [ext_resource type="PackedScene" uid="uid://bunmeh8jxgkjj" path="res://Scenes/Player/player.tscn" id="2_7f7fk"]
-[ext_resource type="Shader" uid="uid://d3aj03ukdowmq" path="res://TestingReflection.gdshader" id="3_7f7fk"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xwitt"]
-shader = ExtResource("3_7f7fk")
-shader_parameter/center = Vector2(0.5, 0.5)
-shader_parameter/amplitude = 0.012
-shader_parameter/frequency = 10.0
-shader_parameter/speed = 2.0
+[ext_resource type="PackedScene" uid="uid://dvgdw72ydwn1" path="res://Scenes/reflection.tscn" id="2_exyot"]
 
 [node name="TestingReflection" type="Node2D"]
 position = Vector2(-252, 0)
 
-[node name="RandomTile" type="Sprite2D" parent="."]
-position = Vector2(3.5, 0)
-scale = Vector2(8.34375, 4.6875)
-texture = ExtResource("1_exyot")
-
-[node name="RandomTile2" type="Sprite2D" parent="."]
-position = Vector2(385.5, 0)
-scale = Vector2(8.34375, 4.6875)
-texture = ExtResource("1_exyot")
-
-[node name="PointLight2D" type="PointLight2D" parent="RandomTile2"]
-texture = ExtResource("1_exyot")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_xwitt")
-offset_left = 285.0
-offset_top = -116.0
-offset_right = 825.0
-offset_bottom = 244.0
-scale = Vector2(0.374348, 0.568425)
-metadata/_edit_use_anchors_ = true
-
 [node name="Player" parent="." instance=ExtResource("2_7f7fk")]
 position = Vector2(-2, 2)
 movement_speed = 185.0
+
+[node name="Reflection" parent="." instance=ExtResource("2_exyot")]

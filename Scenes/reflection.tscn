@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvgdw72ydwn1"]
+
+[ext_resource type="Texture2D" uid="uid://dmhverhdohhq1" path="res://Assets/OurAssets/RandomTile.png" id="1_ns4nq"]
+[ext_resource type="Script" uid="uid://bcdwen2vqcach" path="res://Scripts/Reflection.gd" id="1_sfch1"]
+[ext_resource type="SpriteFrames" uid="uid://w6r3qaml3ebp" path="res://Scenes/Player/player.tres" id="3_sfch1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ns4nq"]
+light_mode = 2
+
+[node name="Reflection" type="Node2D"]
+script = ExtResource("1_sfch1")
+
+[node name="RandomTile2" type="Sprite2D" parent="."]
+position = Vector2(14, -5)
+scale = Vector2(5.9375, 4.6875)
+texture = ExtResource("1_ns4nq")
+
+[node name="PointLight2D" type="PointLight2D" parent="RandomTile2"]
+position = Vector2(-0.119851, 0)
+scale = Vector2(1, 1)
+range_item_cull_mask = 16
+texture = ExtResource("1_ns4nq")
+
+[node name="Reflection" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.470588)
+light_mask = 17
+material = SubResource("CanvasItemMaterial_ns4nq")
+position = Vector2(12, -4)
+rotation = -3.13786
+scale = Vector2(0.640625, 0.632813)
+sprite_frames = ExtResource("3_sfch1")
+animation = &"Attack"
