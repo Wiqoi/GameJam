@@ -8,6 +8,8 @@ var is_jumping2: bool = false
 var dying: bool = false
 var bleeding: bool = false
 var pushed: bool = false
+var frame_counter2 : int = 0
+var freezed : bool = false
 
 var offset: Vector2 = Vector2(randf_range(-45, 45), randf_range(-45, 45))
 var limit: int = 150
@@ -34,8 +36,12 @@ func _physics_process(_delta: float) -> void:
 
 	var direction = (player.global_position - global_position + offset).normalized()
 	var separation = get_separation_force()
-
-	if pushed:
+	if freezed:
+		frame_counter2 += 1
+		if frame_counter2 > 90:
+			freezed = false
+			frame_counter2 = 0
+	elif pushed:
 			is_jumping1 = false
 			is_jumping2 = false
 			var dMouse = (get_global_mouse_position() - global_position).normalized()
@@ -178,6 +184,8 @@ func _on_hurt_box_morph_area_entered(area: Area2D) -> void:
 			
 		if health <= 0:
 			call_deferred("die")
+	elif area.is_in_group("FreezeTimer"):
+		freezed = true
 
 
 func _on_morph_sprite_animation_finished() -> void:
