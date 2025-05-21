@@ -1,21 +1,22 @@
 extends CharacterBody2D
 
-var player: CharacterBody2D
-var health: float = 4.0
-var speed: float = 75.0
-var is_jumping: bool = false
-var dying: bool = false
-var bleeding: bool = false
-var pushed: bool = false
-
-var offset: Vector2 = Vector2(randf_range(-45, 45), randf_range(-45, 45))
-var limit: int = 150
-var frame_counter: int = 0
-var jump_frame_counter: int = 0
-var jump_cooldown: int = 210
-var jump_cooldown_timer: int = 0
+var player : CharacterBody2D
+var health : float = 4.0
+var speed : float = 75.0
+var is_jumping : bool = false
+var dying : bool = false
+var bleeding : bool = false
+var pushed : bool = false
+var is_hurt : bool = false
+var offset : Vector2 = Vector2(randf_range(-45, 45), randf_range(-45, 45))
+var limit : int = 150
+var frame_counter : int = 0
+var jump_frame_counter : int = 0
+var jump_cooldown : int = 210
+var jump_cooldown_timer : int = 0
 var frame_counter2 : int = 0
 var freezed : bool = false
+var hurt_timer: int = 0
 
 var hitbox: CollisionShape2D
 
@@ -32,7 +33,12 @@ func _physics_process(_delta: float) -> void:
 
 	var direction = (player.global_position - global_position + offset).normalized()
 	var separation = get_separation_force()
-	if freezed:
+	
+	if is_hurt:
+		hurt_timer -= 1
+		if hurt_timer <= 0:
+			is_hurt = false
+	elif freezed:
 		frame_counter2 += 1
 		if frame_counter2 > 90:
 			freezed = false
@@ -130,6 +136,10 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			
 		if health <= 0:
 			call_deferred("die")
+		else:
+			$DemonSprite.play("Hurt")
+			is_hurt = true
+			hurt_timer = 30
 	elif area.is_in_group("Bleed"):
 		bleeding = true
 	elif area.is_in_group("PushAway"):
@@ -142,5 +152,9 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			
 		if health <= 0:
 			call_deferred("die")
+		else:
+			$DemonSprite.play("Hurt")
+			is_hurt = true
+			hurt_timer = 30
 	elif area.is_in_group("FreezeTimer"):
 		freezed = true
