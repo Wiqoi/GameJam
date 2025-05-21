@@ -38,6 +38,7 @@ func _physics_process(_delta: float) -> void:
 		hurt_timer -= 1
 		if hurt_timer <= 0:
 			is_hurt = false
+		velocity = Vector2.ZERO
 	elif freezed:
 		frame_counter2 += 1
 		if frame_counter2 > 90:
@@ -137,7 +138,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		if health <= 0:
 			call_deferred("die")
 		else:
-			$DemonSprite.play("Hurt")
+			$DemonSprite.animation = "Hurt"
 			is_hurt = true
 			hurt_timer = 30
 	elif area.is_in_group("Bleed"):

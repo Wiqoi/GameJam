@@ -66,7 +66,7 @@ func _on_timer_timeout() -> void:
 
 func _on_spawn_enemy_timer_timeout() -> void:
 	if timeCount < 30:
-		spawn_enemy2()
+		spawn_enemy1()
 	elif 50 < timeCount and timeCount < 80:
 		spawn_enemy2()
 	elif timeCount > 90 and timeCount < 120:
