@@ -21,6 +21,8 @@ var hurt_timer: int = 0
 var hitbox: CollisionShape2D
 
 func _ready() -> void:
+	if !player:
+		player = %Player 
 	add_to_group("enemies")
 	hitbox = %HitboxCollisionDemon
 	hitbox.disabled = true
@@ -155,7 +157,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		if health <= 0:
 			call_deferred("die")
 		else:
-			$DemonSprite.play("Hurt")
+			$DemonSprite.animation = "Hurt"
 			is_hurt = true
 			hurt_timer = 30
 	elif area.is_in_group("FreezeTimer"):

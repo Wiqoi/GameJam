@@ -21,6 +21,8 @@ var hitbox1: CollisionShape2D
 var hitbox2: CollisionShape2D
 
 func _ready() -> void:
+	if !player:
+		player = %Player 
 	add_to_group("enemies")
 	hitbox1 = %HitCollisionMorph
 	hitbox2 = %HitCollisionMorph2
