@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://qy671j4tvean"]
+[gd_scene load_steps=17 format=3 uid="uid://qy671j4tvean"]
 
 [ext_resource type="Script" uid="uid://dtyinwkmt7gdd" path="res://Scripts/BossScripts/boss.gd" id="1_f2ymq"]
 [ext_resource type="Texture2D" uid="uid://b4ct8qwf7tbvb" path="res://Assets/OurAssets/Sprites/BossAndBossTP.png" id="1_qg2l1"]
@@ -120,9 +120,24 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2ymq"]
+size = Vector2(12.25, 20)
+
 [node name="Boss" type="CharacterBody2D"]
 script = ExtResource("1_f2ymq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-22, 0)
+scale = Vector2(0.347656, 0.328125)
 sprite_frames = SubResource("SpriteFrames_u1fj0")
 animation = &"bossDie"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-22, 0)
+shape = SubResource("RectangleShape2D_f2ymq")
+
+[node name="TeleportTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="TeleportTimer" to="." method="_on_teleport_timer_timeout"]

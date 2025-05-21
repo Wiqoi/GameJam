@@ -587,6 +587,8 @@ animations = [{
 [node name="bosssword" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-22.5, -5.25)
+scale = Vector2(0.445312, 0.535156)
 sprite_frames = SubResource("SpriteFrames_jq1ub")
 animation = &"bossSwordUp"
 frame = 9

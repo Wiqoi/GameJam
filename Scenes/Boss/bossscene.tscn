@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://c7wphi3v2feex"]
+[gd_scene load_steps=29 format=4 uid="uid://c7wphi3v2feex"]
 
 [ext_resource type="Script" uid="uid://b1ld6yf22v3sq" path="res://Scripts/SpawnEnemy.gd" id="1_m633j"]
 [ext_resource type="PackedScene" uid="uid://bunmeh8jxgkjj" path="res://Scenes/Player/player.tscn" id="2_cjb11"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c0hkvbbdjvm2a" path="res://Assets/FreeOnlineAssets/Pixel Art Top Down - Basic v1.1.2/Texture/TX Struct.png" id="11_qtc2k"]
 [ext_resource type="PackedScene" uid="uid://ses2rjxjm7o4" path="res://Scenes/Player/sword.tscn" id="12_dn1ps"]
 [ext_resource type="PackedScene" uid="uid://nverh2los05o" path="res://Scenes/Player/PlayerSkills.tscn" id="13_vqfop"]
+[ext_resource type="PackedScene" uid="uid://qy671j4tvean" path="res://Scenes/Boss/boss.tscn" id="14_43f41"]
 
 [sub_resource type="Curve2D" id="Curve2D_7l4mf"]
 _data = {
@@ -1932,7 +1933,7 @@ b = Vector2(-762, 439)
 a = Vector2(-776, -449)
 b = Vector2(674, -451)
 
-[node name="Game" type="Node2D"]
+[node name="BossScene" type="Node2D"]
 script = ExtResource("1_m633j")
 
 [node name="Player" parent="." instance=ExtResource("2_cjb11")]
@@ -1942,7 +1943,6 @@ z_index = 1
 line_width = 1.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.00528596, 0.0628275, 0.0334928, 1)
 
 [node name="SpawnPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_7l4mf")
@@ -2000,9 +2000,7 @@ rotation = 3.14159
 shape = SubResource("SegmentShape2D_e8oij")
 one_way_collision = true
 
-[node name="SpawnEnemyTimer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
+[node name="Boss" parent="." instance=ExtResource("14_43f41")]
+position = Vector2(62, -18)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]
