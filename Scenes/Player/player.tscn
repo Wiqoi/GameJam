@@ -39,7 +39,7 @@ script = ExtResource("1_6t5aa")
 position = Vector2(0, 0.402317)
 scale = Vector2(0.296875, 0.303161)
 sprite_frames = ExtResource("2_htcer")
-animation = &"Attack"
+animation = &"IdleDown"
 autoplay = "Idle"
 
 [node name="PlayerCamera" parent="." instance=ExtResource("3_0u5uq")]
