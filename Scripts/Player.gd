@@ -40,6 +40,7 @@ var sword : AnimatedSprite2D
 
 func _ready():
 	create_cursor()
+	$Colision.add_to_group("PlayerCollision")
 	footstep_timer = footstep_interval
 	Global.cursorPos = Vector2.ZERO
 
@@ -109,6 +110,7 @@ func _physics_process(delta):
 				spawn_footstep()
 				footstep_timer = footstep_interval
 		else:
+			Global.playerCurrentAnim = 0
 			footstep_timer = footstep_interval
 		if not is_dashing:
 			if dash_cooldown_timer > 0:
@@ -120,8 +122,10 @@ func _physics_process(delta):
 				character_direction = character_direction.normalized()
 				
 				if character_direction.x > 0:
+					Global.playerCurrentAnim = 1
 					$Sprite.flip_h = false
 				elif character_direction.x < 0:
+					Global.playerCurrentAnim = 2
 					$Sprite.flip_h = true
 				
 				if character_direction:
@@ -129,18 +133,23 @@ func _physics_process(delta):
 					if abs(character_direction.y) > abs(character_direction.x):
 						if character_direction.y < 0:
 							if $Sprite.animation != "WalkingUp":
+								Global.playerCurrentAnim = 4
 								$Sprite.animation = "WalkingUp"
 						else:
 							if $Sprite.animation != "WalkingDown":
+								Global.playerCurrentAnim = 3
 								$Sprite.animation = "WalkingDown"
 					else:
 						if $Sprite.animation != "Walking":
+							Global.playerCurrentAnim = 2
 							$Sprite.animation = "Walking"
 				else:
 					velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 					if $Sprite.animation == "WalkingUp":
+						Global.playerCurrentAnim = 0
 						$Sprite.animation = "IdleUp"
 					else:
+						Global.playerCurrentAnim = 0
 						$Sprite.animation = "IdleDown"
 			elif damaged:
 				velocity = Vector2(0, 0)
@@ -161,6 +170,7 @@ func handle_dash_movement(delta):
 
 func _on_dash_animation_finished():
 	if $Sprite.animation == "Dash":
+		Global.playerCurrentAnim = 0
 		$Sprite.animation = "IdleDown"
 
 func update_cursor():
