@@ -48,7 +48,7 @@ func _physics_process(_delta: float) -> void:
 	elif pushed:
 			is_jumping = false
 			var dMouse = (get_global_mouse_position() - global_position).normalized()
-			if dMouse.length() <= 100:
+			if dMouse.lengtha() <= 100:
 				velocity = dMouse * speed
 			else:
 				pushed = false
