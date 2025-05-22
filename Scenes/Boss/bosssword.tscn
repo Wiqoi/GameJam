@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://c64x32rn4eyth"]
+[gd_scene load_steps=87 format=3 uid="uid://c64x32rn4eyth"]
 
 [ext_resource type="Texture2D" uid="uid://40se0v1u5iga" path="res://Assets/OurAssets/Swords/BossDualSwordAttack.png" id="1_vm7vn"]
 [ext_resource type="Texture2D" uid="uid://b0qrp0m0e4l7r" path="res://Assets/OurAssets/Swords/SwordLunge.png" id="2_4srhg"]
@@ -44,34 +44,6 @@ region = Rect2(128, 256, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_jrqhm"]
 atlas = ExtResource("1_vm7vn")
 region = Rect2(256, 256, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4n6yd"]
-atlas = ExtResource("2_4srhg")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgdda"]
-atlas = ExtResource("2_4srhg")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xwlce"]
-atlas = ExtResource("2_4srhg")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xwd6x"]
-atlas = ExtResource("2_4srhg")
-region = Rect2(0, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x3672"]
-atlas = ExtResource("2_4srhg")
-region = Rect2(128, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hohhu"]
-atlas = ExtResource("2_4srhg")
-region = Rect2(256, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ry4pa"]
-atlas = ExtResource("2_4srhg")
-region = Rect2(0, 256, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d6kdn"]
 atlas = ExtResource("3_5ljdm")
@@ -273,6 +245,34 @@ region = Rect2(0, 256, 128, 128)
 atlas = ExtResource("7_yteor")
 region = Rect2(128, 256, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n6yd"]
+atlas = ExtResource("2_4srhg")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgdda"]
+atlas = ExtResource("2_4srhg")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwlce"]
+atlas = ExtResource("2_4srhg")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwd6x"]
+atlas = ExtResource("2_4srhg")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3672"]
+atlas = ExtResource("2_4srhg")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hohhu"]
+atlas = ExtResource("2_4srhg")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ry4pa"]
+atlas = ExtResource("2_4srhg")
+region = Rect2(0, 256, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_8hj7k"]
 atlas = ExtResource("8_8l8go")
 region = Rect2(0, 0, 128, 128)
@@ -345,33 +345,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"bossDuelSwordAttack",
-"speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4n6yd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vgdda")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xwlce")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xwd6x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x3672")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hohhu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ry4pa")
-}],
-"loop": false,
-"name": &"bossSowrdsLounge",
-"speed": 6.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -404,7 +378,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ll8s2")
 }],
-"loop": false,
+"loop": true,
 "name": &"bossSword",
 "speed": 12.0
 }, {
@@ -550,6 +524,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_4n6yd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgdda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwlce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwd6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3672")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hohhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ry4pa")
+}],
+"loop": false,
+"name": &"bossSwordLounge",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8hj7k")
 }, {
 "duration": 1.0,
@@ -584,12 +584,18 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4srhg"]
+size = Vector2(29.5, 63)
+
 [node name="bosssword" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-22.5, -5.25)
 scale = Vector2(0.445312, 0.535156)
 sprite_frames = SubResource("SpriteFrames_jq1ub")
-animation = &"bossSwordUp"
-frame = 9
-frame_progress = 1.0
+animation = &"bossSword"
+frame_progress = 0.59058
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-13, -6)
+shape = SubResource("RectangleShape2D_4srhg")
