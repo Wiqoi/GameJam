@@ -128,7 +128,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		else:
 			$SlimeSprite.animation = "Hurt"
 			is_hurt = true
-			hurt_timer = 30
+			hurt_timer = 15
 	elif area.is_in_group("Bleed"):
 		bleeding = true
 	elif area.is_in_group("PushAway"):
@@ -144,7 +144,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		else:
 			$SlimeSprite.animation = "Hurt"
 			is_hurt = true
-			hurt_timer = 30
+			hurt_timer = 15
 	elif area.is_in_group("FreezeTimer"):
 		freezed = true
 		
