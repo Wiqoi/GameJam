@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi6yp521synp1"
-path="res://.godot/imported/Heal.png-9954628eeefc2b284656eb12e97e8457.ctex"
+uid="uid://kog3vgbn8gfn"
+path="res://.godot/imported/ProtectiveBox.png-5bc82ab1ffaeeac1f909b8c5b7c2b3b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OurAssets/Abilities-Magic/Heal.png"
-dest_files=["res://.godot/imported/Heal.png-9954628eeefc2b284656eb12e97e8457.ctex"]
+source_file="res://Assets/OurAssets/Abilities-Magic/ProtectiveBox.png"
+dest_files=["res://.godot/imported/ProtectiveBox.png-5bc82ab1ffaeeac1f909b8c5b7c2b3b0.ctex"]
 
 [params]
 
