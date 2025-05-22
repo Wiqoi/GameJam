@@ -40,8 +40,7 @@ func _physics_process(_delta: float) -> void:
 			if hurt_timer <= 0:
 				is_hurt = false
 				
-			velocity = Vector2.ZERO
-			print("hoi")
+			velocity = direction * 0
 		elif freezed:
 			frame_counter2 += 1
 			if frame_counter2 > 90:
@@ -58,6 +57,7 @@ func _physics_process(_delta: float) -> void:
 		elif isJumping:
 			jumpToPlayer()
 		else:
+			$SlimeSprite.animation = "Walking"
 			velocity = (direction + separation * 20).normalized() * speed
 			hitbox.disabled = true
 
