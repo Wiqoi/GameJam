@@ -155,6 +155,8 @@ func die() -> void:
 	dying = true
 	%HitCollisionMorph.disabled = true
 	%HitCollisionMorph2.disabled = true
+	%HurtCollisionMorph.disabled = true
+	$CollisionShape2D.disabled = true
 	$MorphSprite.play("Die")
 
 func _on_hurt_box_morph_area_entered(area: Area2D) -> void:

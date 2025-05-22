@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=36 format=3 uid="uid://w6r3qaml3ebp"]
+[gd_resource type="SpriteFrames" load_steps=36 format=3 uid="uid://dqa4pbvw84maw"]
 
 [ext_resource type="Texture2D" uid="uid://qtjsica8mxmw" path="res://Assets/OurAssets/Sprites/HopefullyPlayerFInal.png" id="1_xtrph"]
 [ext_resource type="Texture2D" uid="uid://ca837rd4vqjxj" path="res://Assets/OurAssets/Sprites/PlayerDeath.png" id="2_20ibp"]
