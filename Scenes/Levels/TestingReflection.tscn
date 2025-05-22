@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://lhkiy3fx6q0d"]
+
+[ext_resource type="PackedScene" uid="uid://bunmeh8jxgkjj" path="res://Scenes/Player/player.tscn" id="2_7f7fk"]
+[ext_resource type="PackedScene" uid="uid://dvgdw72ydwn1" path="res://Scenes/reflection.tscn" id="2_exyot"]
+
+[node name="TestingReflection" type="Node2D"]
+position = Vector2(-252, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_7f7fk")]
+position = Vector2(-2, 2)
+movement_speed = 185.0
+
+[node name="Reflection" parent="." instance=ExtResource("2_exyot")]
