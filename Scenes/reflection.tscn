@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvgdw72ydwn1"]
+[gd_scene load_steps=6 format=3 uid="uid://ng4em2t7bkre"]
 
 [ext_resource type="Texture2D" uid="uid://dmhverhdohhq1" path="res://Assets/OurAssets/RandomTile.png" id="1_ns4nq"]
 [ext_resource type="Script" uid="uid://bcdwen2vqcach" path="res://Scripts/Reflection.gd" id="1_sfch1"]
-[ext_resource type="SpriteFrames" uid="uid://w6r3qaml3ebp" path="res://Scenes/Player/player.tres" id="3_sfch1"]
+[ext_resource type="SpriteFrames" uid="uid://bvgyci1kolge5" path="res://Scenes/Player/player.tres" id="3_sfch1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ns4nq"]
 light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfch1"]
+size = Vector2(284, 205)
 
 [node name="Reflection" type="Node2D"]
 script = ExtResource("1_sfch1")
@@ -17,16 +20,26 @@ texture = ExtResource("1_ns4nq")
 
 [node name="PointLight2D" type="PointLight2D" parent="RandomTile2"]
 position = Vector2(-0.119851, 0)
-scale = Vector2(1, 1)
 range_item_cull_mask = 16
 texture = ExtResource("1_ns4nq")
 
 [node name="Reflection" type="AnimatedSprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.470588)
+visible = false
+self_modulate = Color(1, 1, 1, 0.211765)
 light_mask = 17
 material = SubResource("CanvasItemMaterial_ns4nq")
-position = Vector2(12, -4)
+position = Vector2(30.8121, -16.4602)
 rotation = -3.13786
-scale = Vector2(0.640625, 0.632813)
+scale = Vector2(-0.297, 0.303)
 sprite_frames = ExtResource("3_sfch1")
-animation = &"Attack"
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(14, -10.5)
+shape = SubResource("RectangleShape2D_sfch1")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
