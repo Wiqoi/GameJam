@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var player : CharacterBody2D
 var health : float = 4.0
-var speed : float = 75.0
+var speed : float = 80.0
 var is_jumping : bool = false
 var dying : bool = false
 var bleeding : bool = false
@@ -138,7 +138,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		else:
 			$DemonSprite.animation = "Hurt"
 			is_hurt = true
-			hurt_timer = 30
+			hurt_timer = 15
 	elif area.is_in_group("Bleed"):
 		bleeding = true
 	elif area.is_in_group("PushAway"):
@@ -154,6 +154,6 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		else:
 			$DemonSprite.animation = "Hurt"
 			is_hurt = true
-			hurt_timer = 30
+			hurt_timer = 15
 	elif area.is_in_group("FreezeTimer"):
 		freezed = true
