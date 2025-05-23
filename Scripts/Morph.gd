@@ -66,7 +66,7 @@ func _physics_process(_delta: float) -> void:
 		velocity = (direction + separation * 20).normalized() * speed
 		hitbox1.disabled = true
 		hitbox2.disabled = true
-		$MorphSprite.animation = "Walking"
+		%MorphSprite.play("Walking")
 
 		var distance_to_player = global_position.distance_to(player.global_position)
 		if distance_to_player < 60 and jump_cooldown_timer <= 0:
