@@ -1,5 +1,6 @@
-[gd_scene load_steps=87 format=3 uid="uid://c64x32rn4eyth"]
+[gd_scene load_steps=88 format=3 uid="uid://c64x32rn4eyth"]
 
+[ext_resource type="Script" uid="uid://dgmqbe0dg8o8y" path="res://Scripts/BossScripts/bosssword.gd" id="1_5ljdm"]
 [ext_resource type="Texture2D" uid="uid://40se0v1u5iga" path="res://Assets/OurAssets/Swords/BossDualSwordAttack.png" id="1_vm7vn"]
 [ext_resource type="Texture2D" uid="uid://b0qrp0m0e4l7r" path="res://Assets/OurAssets/Swords/SwordLunge.png" id="2_4srhg"]
 [ext_resource type="Texture2D" uid="uid://cbltkveiae0mg" path="res://Assets/OurAssets/Swords/BothSwords.png" id="3_5ljdm"]
@@ -585,17 +586,20 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4srhg"]
-size = Vector2(29.5, 63)
+size = Vector2(35, 66)
 
-[node name="bosssword" type="CharacterBody2D"]
+[node name="bosssword" type="Node2D"]
+script = ExtResource("1_5ljdm")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-22.5, -5.25)
+[node name="Sword" type="AnimatedSprite2D" parent="."]
+position = Vector2(-26, -6)
 scale = Vector2(0.445312, 0.535156)
 sprite_frames = SubResource("SpriteFrames_jq1ub")
-animation = &"bossSword"
-frame_progress = 0.59058
+animation = &"bossSwordCombo"
+frame_progress = 0.382004
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-13, -6)
+[node name="AttackHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
+position = Vector2(-16.5, -6)
 shape = SubResource("RectangleShape2D_4srhg")
