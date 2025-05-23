@@ -101,12 +101,27 @@ func _physics_process(_delta: float) -> void:
 
 func start_jump() -> void:
 	var randomAttack = randf()
+	var dx = player.global_position.x - global_position.x
+	var dy = player.global_position.y - global_position.y
+	
 	if randomAttack >= 0.5:
 		is_jumping1 = true
-		$MorphSprite.animation = "Attack1"
+		if dx >= dy:
+			$MorphSprite.animation = "Attack1"
+		elif dy > 0:
+			$MorphSprite.animation = "Attack1Up"
+		else:
+			$MorphSprite.animation = "Attack1DOwn"
 	else:
 		is_jumping2 = true
-		$MorphSprite.animation = "Attack2"
+		if dx >= dy:
+			$MorphSprite.animation = "Attack2"
+		elif dy > 0:
+			pass
+			#$MorphSprite.animation = "Attack2Up"
+		else:
+			pass
+			#$MorphSprite.animation = "Attack2DOwn"
 
 func handle_attack1(_direction: Vector2) -> void:
 	velocity = Vector2.ZERO
@@ -114,9 +129,9 @@ func handle_attack1(_direction: Vector2) -> void:
 	var frame = $MorphSprite.frame
 
 	match frame:
-		2, 3, 4, 5:
+		1, 2, 3, 4:
 			hitbox1.disabled = false
-		7:
+		6:
 			is_jumping1 = false
 			jump_cooldown_timer = jump_cooldown_frames
 			hitbox1.disabled = true
@@ -130,7 +145,7 @@ func handle_attack2(_direction: Vector2) -> void:
 	var frame = $MorphSprite.frame
 
 	match frame:
-		2, 3, 4:
+		1, 2, 3:
 			hitbox2.disabled = false
 		5:
 			is_jumping2 = false
@@ -164,7 +179,7 @@ func die() -> void:
 	%HitCollisionMorph2.disabled = true
 	%HurtCollisionMorph.disabled = true
 	$CollisionShape2D.disabled = true
-	$MorphSprite.play("Die")
+	$MorphSprite.play("Death")
 
 func _on_hurt_box_morph_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerAttack"):
