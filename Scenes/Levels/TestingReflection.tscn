@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bry2y176cluvb"]
 
 [ext_resource type="PackedScene" uid="uid://bunmeh8jxgkjj" path="res://Scenes/Player/player.tscn" id="2_7f7fk"]
-[ext_resource type="PackedScene" path="res://Scenes/reflection.tscn" id="2_exyot"]
+[ext_resource type="PackedScene" uid="uid://ckbyxy5pr25ao" path="res://Scenes/reflection.tscn" id="2_exyot"]
 
 [node name="TestingReflection" type="Node2D"]
 position = Vector2(-252, 0)

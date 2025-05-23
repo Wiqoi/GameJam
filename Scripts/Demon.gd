@@ -57,7 +57,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity = (direction + separation * 20).normalized() * speed
 		hitbox.disabled = true
-		$DemonSprite.animation = "Walking"
+		%SlimeSprite.play("Walking")
 
 		var distance_to_player = global_position.distance_to(player.global_position)
 		if distance_to_player < 31 and jump_cooldown_timer <= 0:
