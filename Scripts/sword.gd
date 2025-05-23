@@ -20,6 +20,7 @@ var combo_stage = 0
 
 func _ready():
 	position = Vector2(20, 0)
+	$ReflectionCollision.add_to_group("SwordCollision")
 	if $AttackHitbox:
 		$AttackHitbox.add_to_group("PlayerAttack")
 
@@ -63,6 +64,7 @@ func _process(delta):
 			if combo_pending:
 				execute_combo()
 			else:
+				Global.swordCurrentAnim = 8
 				reset_combo()
 				$Sword.play("Idle")
 
@@ -96,36 +98,44 @@ func execute_combo():
 	
 	if abs(attack_direction.x) > abs(attack_direction.y):
 		if attack_direction.x > 0:
+			Global.swordCurrentAnim = 4
 			$Sword.play("AttackCombo")
 			$AttackHitbox.set_rotation_degrees(0)
 			$Sword.flip_h = false
 		else:
+			Global.swordCurrentAnim = 5
 			$Sword.play("AttackCombo")
 			$AttackHitbox.set_rotation_degrees(180)
 			$Sword.flip_h = true
 	else:
 		if attack_direction.y < 0:
+			Global.swordCurrentAnim = 6
 			$AttackHitbox.set_rotation_degrees(-90)
 			$Sword.play("AttackComboUp")
 		else:
+			Global.swordCurrentAnim = 7
 			$AttackHitbox.set_rotation_degrees(90)
 			$Sword.play("AttackComboDown")
 
 func perform_base_attack():
 	if abs(attack_direction.x) > abs(attack_direction.y):
 		if attack_direction.x > 0:
+			Global.swordCurrentAnim = 0
 			$Sword.play("Attack")
 			$AttackHitbox.set_rotation_degrees(0)
 			$Sword.flip_h = false
 		else:
+			Global.swordCurrentAnim = 1
 			$Sword.play("Attack")
 			$AttackHitbox.set_rotation_degrees(180)
 			$Sword.flip_h = true
 	else:
 		if attack_direction.y < 0:
+			Global.swordCurrentAnim = 2
 			$AttackHitbox.set_rotation_degrees(-90)
 			$Sword.play("AttackUp")
 		else:
+			Global.swordCurrentAnim = 3
 			$AttackHitbox.set_rotation_degrees(90)
 			$Sword.play("AttackDown")
 
