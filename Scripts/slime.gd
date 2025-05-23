@@ -10,7 +10,7 @@ var isJumping : bool = false
 var dying : bool = false
 var bleeding : bool = false
 var pushed : bool = false
-var frame_counter2 : int = 0
+var freeze_counter : int = 0
 var freezed : bool = false
 var is_hurt : bool = false
 var hurt_timer: int = 0
@@ -42,11 +42,11 @@ func _physics_process(_delta: float) -> void:
 				
 			velocity = direction * 0
 		elif freezed:
-			frame_counter2 += 1
-			if frame_counter2 > 90:
+			freeze_counter -= 1
+			if freeze_counter < 0:
 				freezed = false
-				frame_counter2 = 0
-			velocity = Vector2.ZERO
+				
+			velocity = direction * 0
 		elif pushed:
 			isJumping = false
 			var dMouse = (get_global_mouse_position() - global_position).normalized()
@@ -145,8 +145,9 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 			$SlimeSprite.animation = "Hurt"
 			is_hurt = true
 			hurt_timer = 15
-	elif area.is_in_group("FreezeTimer"):
+	elif area.is_in_group("TimeFreeze"):
 		freezed = true
+		freeze_counter = 600
 		
 	
 

@@ -8,11 +8,10 @@ var is_jumping2: bool = false
 var dying: bool = false
 var bleeding: bool = false
 var pushed: bool = false
-var frame_counter2 : int = 0
 var freezed : bool = false
 var hurt_timer: int = 0
 var is_hurt : bool = false
-
+var freeze_counter : int = 0
 var offset: Vector2 = Vector2(randf_range(-45, 45), randf_range(-45, 45))
 var limit: int = 150
 var frame_counter: int = 0
@@ -44,12 +43,13 @@ func _physics_process(_delta: float) -> void:
 		hurt_timer -= 1
 		if hurt_timer <= 0:
 			is_hurt = false
-		velocity = Vector2.ZERO
+		velocity = direction * 0
 	elif freezed:
-		frame_counter2 += 1
-		if frame_counter2 > 90:
+		freeze_counter -= 1
+		if freeze_counter < 0:
 			freezed = false
-			frame_counter2 = 0
+		
+		velocity = direction * 0
 	elif pushed:
 			is_jumping1 = false
 			is_jumping2 = false
@@ -194,8 +194,9 @@ func _on_hurt_box_morph_area_entered(area: Area2D) -> void:
 			$MorphSprite.animation = "Hurt"
 			is_hurt = true
 			hurt_timer = 15
-	elif area.is_in_group("FreezeTimer"):
+	elif area.is_in_group("TimeFreeze"):
 		freezed = true
+		freeze_counter = 600
 
 func _on_morph_sprite_animation_finished() -> void:
 	if $MorphSprite.animation == "Death":
