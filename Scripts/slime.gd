@@ -56,11 +56,12 @@ func _physics_process(_delta: float) -> void:
 				pushed = false
 		elif isJumping:
 			jumpToPlayer()
-		else:
-			$SlimeSprite.animation = "Walking"
+			
+		if not is_hurt and not freezed and not pushed and not isJumping:
+			%SlimeSprite.play("Walking")
 			velocity = (direction + separation * 20).normalized() * speed
 			hitbox.disabled = true
-
+		
 		frame_counter1 += 1
 		if frame_counter1 % 60 == 0:
 			frame_counter1 = 0
@@ -69,7 +70,7 @@ func _physics_process(_delta: float) -> void:
 		var distToPlayer = (global_position - player.global_position).length()
 		if not isJumping and distToPlayer < 41 and jump_cooldown_counter <= 0 and not is_hurt:
 			isJumping = true
-			$SlimeSprite.animation = "Jumping"
+			%SlimeSprite.animation = "Jumping"
 
 		if distToPlayer < 80:
 			limit = 0
@@ -81,7 +82,7 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 
 func jumpToPlayer():
-	var frame = $SlimeSprite.frame
+	var frame = %SlimeSprite.frame
 	match frame:
 		0:
 			velocity = Vector2.ZERO
@@ -93,12 +94,12 @@ func jumpToPlayer():
 			velocity = Vector2.ZERO
 			hitbox.disabled = true
 			
-	if frame == 8 and $SlimeSprite.frame == 8 and $SlimeSprite.frame == $SlimeSprite.sprite_frames.get_frame_count("Jumping") - 1:
+	if frame == 8 and %SlimeSprite.frame == 8 and %SlimeSprite.frame == %SlimeSprite.sprite_frames.get_frame_count("Jumping") - 1:
 		isJumping = false
 		jump_cooldown_counter = jump_cooldown_frames
-		$SlimeSprite.animation = "Walking"
+		%SlimeSprite.animation = "Walking"
 		
-	$SlimeSprite.flip_h = velocity.x < 0
+	%SlimeSprite.flip_h = velocity.x < 0
 	
 func update_offset():
 	offset = Vector2(randf_range(-limit, limit), randf_range(-limit, limit))
@@ -126,7 +127,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		if health <= 0:
 			call_deferred("die")
 		else:
-			$SlimeSprite.animation = "Hurt"
+			%SlimeSprite.animation = "Hurt"
 			is_hurt = true
 			hurt_timer = 15
 	elif area.is_in_group("Bleed"):
@@ -142,7 +143,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		if health <= 0:
 			call_deferred("die")
 		else:
-			$SlimeSprite.animation = "Hurt"
+			%SlimeSprite.animation = "Hurt"
 			is_hurt = true
 			hurt_timer = 15
 	elif area.is_in_group("TimeFreeze"):
@@ -154,8 +155,8 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 func die():
 	dying = true
 	%HitboxCollisionSlime.disabled = true
-	$SlimeSprite.play("Death")
+	%SlimeSprite.play("Death")
 
 func _on_enemy_sprite_animation_finished() -> void:
-	if $SlimeSprite.animation == "Death":
+	if %SlimeSprite.animation == "Death":
 		queue_free()

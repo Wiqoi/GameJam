@@ -23,6 +23,8 @@ func _process(delta: float) -> void:
 		$Reflection.play("WalkingDown")
 	if Global.playerCurrentAnim == 4:
 		$Reflection.play("WalkingUp")
+	if Global.playerCurrentAnim == 10:
+		$Reflection.play("PlayerDeath")
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
