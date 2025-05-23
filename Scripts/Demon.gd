@@ -11,8 +11,10 @@ var is_hurt : bool = false
 var offset : Vector2 = Vector2(randf_range(-45, 45), randf_range(-45, 45))
 var limit : int = 150
 var frame_counter : int = 0
-var jump_cooldown : int = 210
+
+var jump_cooldown_frames : int = 210
 var jump_cooldown_timer : int = 0
+
 var freezed : bool = false
 var hurt_timer: int = 0
 var freeze_counter : int = 0
@@ -54,7 +56,8 @@ func _physics_process(_delta: float) -> void:
 				pushed = false
 	elif is_jumping:
 		handle_jump(direction)
-	else:
+		
+	if not freezed and not pushed and not is_jumping and not is_hurt:
 		velocity = (direction + separation * 20).normalized() * speed
 		hitbox.disabled = true
 		%DemonSprite.play("Walking")
@@ -93,7 +96,7 @@ func handle_jump(_direction: Vector2) -> void:
 			hitbox.disabled = false
 		12:
 			is_jumping = false
-			jump_cooldown_timer = jump_cooldown
+			jump_cooldown_timer = jump_cooldown_frames
 			hitbox.disabled = true
 			$DemonSprite.animation = "Walking"
 		_:
@@ -136,9 +139,11 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		if health <= 0:
 			call_deferred("die")
 		else:
-			$DemonSprite.animation = "Hurt"
+			%DemonSprite.play("Hurt")
 			is_hurt = true
 			hurt_timer = 15
+			jump_cooldown_timer = jump_cooldown_frames + 100
+			is_jumping = false
 	elif area.is_in_group("Bleed"):
 		bleeding = true
 	elif area.is_in_group("PushAway"):
@@ -152,9 +157,11 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		if health <= 0:
 			call_deferred("die")
 		else:
-			$DemonSprite.animation = "Hurt"
+			%DemonSprite.play("Hurt")
 			is_hurt = true
 			hurt_timer = 15
+			jump_cooldown_timer = jump_cooldown_frames + 100
+			is_jumping = false
 	elif area.is_in_group("TimeFreeze"):
 		freezed = true
 		freeze_counter = 600

@@ -15,7 +15,8 @@ var freeze_counter : int = 0
 var offset: Vector2 = Vector2(randf_range(-45, 45), randf_range(-45, 45))
 var limit: int = 150
 var frame_counter: int = 0
-var jump_cooldown: int = 150
+
+var jump_cooldown_frames: int = 150
 var jump_cooldown_timer: int = 0
 
 var hitbox1: CollisionShape2D
@@ -117,7 +118,7 @@ func handle_attack1(_direction: Vector2) -> void:
 			hitbox1.disabled = false
 		7:
 			is_jumping1 = false
-			jump_cooldown_timer = jump_cooldown
+			jump_cooldown_timer = jump_cooldown_frames
 			hitbox1.disabled = true
 			$MorphSprite.animation = "Walking"
 		_:
@@ -133,7 +134,7 @@ func handle_attack2(_direction: Vector2) -> void:
 			hitbox2.disabled = false
 		5:
 			is_jumping2 = false
-			jump_cooldown_timer = jump_cooldown + 60
+			jump_cooldown_timer = jump_cooldown_frames + 60
 			hitbox2.disabled = true
 			$MorphSprite.animation = "Walking"
 		_:
@@ -175,9 +176,12 @@ func _on_hurt_box_morph_area_entered(area: Area2D) -> void:
 		if health <= 0:
 			call_deferred("die")
 		else:
-			$MorphSprite.animation = "Hurt"
+			%MorphSprite.play("Hurt")
 			is_hurt = true
 			hurt_timer = 15
+			jump_cooldown_timer = jump_cooldown_frames + 100
+			is_jumping1 = false
+			is_jumping2 = false
 	elif area.is_in_group("Bleed"):
 		bleeding = true
 	elif area.is_in_group("PushAway"):
@@ -191,9 +195,12 @@ func _on_hurt_box_morph_area_entered(area: Area2D) -> void:
 		if health <= 0:
 			call_deferred("die")
 		else:
-			$MorphSprite.animation = "Hurt"
+			%MorphSprite.play("Hurt")
 			is_hurt = true
 			hurt_timer = 15
+			jump_cooldown_timer = jump_cooldown_frames + 100
+			is_jumping1 = false
+			is_jumping2 = false
 	elif area.is_in_group("TimeFreeze"):
 		freezed = true
 		freeze_counter = 600

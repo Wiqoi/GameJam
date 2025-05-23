@@ -39,6 +39,7 @@ func _physics_process(_delta: float) -> void:
 			hurt_timer -= 1
 			if hurt_timer <= 0:
 				is_hurt = false
+				return
 				
 			velocity = direction * 0
 		elif freezed:
@@ -56,8 +57,7 @@ func _physics_process(_delta: float) -> void:
 				pushed = false
 		elif isJumping:
 			jumpToPlayer()
-			
-		if not is_hurt and not freezed and not pushed and not isJumping:
+		else:
 			%SlimeSprite.play("Walking")
 			velocity = (direction + separation * 20).normalized() * speed
 			hitbox.disabled = true
@@ -97,7 +97,7 @@ func jumpToPlayer():
 	if frame == 8 and %SlimeSprite.frame == 8 and %SlimeSprite.frame == %SlimeSprite.sprite_frames.get_frame_count("Jumping") - 1:
 		isJumping = false
 		jump_cooldown_counter = jump_cooldown_frames
-		%SlimeSprite.animation = "Walking"
+		%SlimeSprite.play("Walking")
 		
 	%SlimeSprite.flip_h = velocity.x < 0
 	
@@ -127,9 +127,11 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		if health <= 0:
 			call_deferred("die")
 		else:
-			%SlimeSprite.animation = "Hurt"
+			%SlimeSprite.play("Hurt")
 			is_hurt = true
 			hurt_timer = 15
+			jump_cooldown_counter = jump_cooldown_frames
+			isJumping = false
 	elif area.is_in_group("Bleed"):
 		bleeding = true
 	elif area.is_in_group("PushAway"):
@@ -143,9 +145,11 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		if health <= 0:
 			call_deferred("die")
 		else:
-			%SlimeSprite.animation = "Hurt"
+			%SlimeSprite.play("Hurt")
 			is_hurt = true
 			hurt_timer = 15
+			jump_cooldown_counter = jump_cooldown_frames + 100
+			isJumping = false
 	elif area.is_in_group("TimeFreeze"):
 		freezed = true
 		freeze_counter = 600
