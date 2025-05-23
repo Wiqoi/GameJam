@@ -216,6 +216,7 @@ func take_damage() -> void:
 			die()
 
 func die() -> void:
+	Global.playerCurrentAnim = 10
 	$Sprite.play("PlayerDeath")
 	dying = true
 	await $Sprite.animation_finished

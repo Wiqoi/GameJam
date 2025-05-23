@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bry2y176cluvb"]
+[gd_scene load_steps=3 format=3 uid="uid://csbigfqtm0bon"]
 
 [ext_resource type="PackedScene" uid="uid://bunmeh8jxgkjj" path="res://Scenes/Player/player.tscn" id="2_7f7fk"]
-[ext_resource type="PackedScene" path="res://Scenes/reflection.tscn" id="2_exyot"]
+[ext_resource type="PackedScene" uid="uid://ng4em2t7bkre" path="res://Scenes/reflection.tscn" id="2_exyot"]
 
 [node name="TestingReflection" type="Node2D"]
 position = Vector2(-252, 0)
 
 [node name="Reflection" parent="." instance=ExtResource("2_exyot")]
 position = Vector2(-27, 20)
+scale = Vector2(1.00249, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_7f7fk")]
 position = Vector2(-6, 2)
