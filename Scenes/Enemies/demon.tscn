@@ -229,6 +229,7 @@ size = Vector2(28, 29)
 script = ExtResource("1_u8kdg")
 
 [node name="DemonSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_ac8c6")
 animation = &"Walking"
