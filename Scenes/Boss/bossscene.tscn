@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://c7wphi3v2feex"]
+[gd_scene load_steps=30 format=4 uid="uid://c7wphi3v2feex"]
 
 [ext_resource type="Script" uid="uid://b1ld6yf22v3sq" path="res://Scripts/SpawnEnemy.gd" id="1_m633j"]
 [ext_resource type="PackedScene" uid="uid://bunmeh8jxgkjj" path="res://Scenes/Player/player.tscn" id="2_cjb11"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ses2rjxjm7o4" path="res://Scenes/Player/sword.tscn" id="12_dn1ps"]
 [ext_resource type="PackedScene" uid="uid://nverh2los05o" path="res://Scenes/Player/PlayerSkills.tscn" id="13_vqfop"]
 [ext_resource type="PackedScene" uid="uid://qy671j4tvean" path="res://Scenes/Boss/boss.tscn" id="14_43f41"]
+[ext_resource type="PackedScene" uid="uid://c64x32rn4eyth" path="res://Scenes/Boss/bosssword.tscn" id="15_lw5tx"]
 
 [sub_resource type="Curve2D" id="Curve2D_7l4mf"]
 _data = {
@@ -2001,6 +2002,10 @@ shape = SubResource("SegmentShape2D_e8oij")
 one_way_collision = true
 
 [node name="Boss" parent="." instance=ExtResource("14_43f41")]
+unique_name_in_owner = true
 position = Vector2(62, -18)
+
+[node name="bosssword" parent="." instance=ExtResource("15_lw5tx")]
+position = Vector2(73, -18)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
