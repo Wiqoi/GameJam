@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://nverh2los05o" path="res://Scenes/Player/PlayerSkills.tscn" id="13_ahqd5"]
 [ext_resource type="PackedScene" uid="uid://b82en3adb3mg5" path="res://Scenes/Enemies/morph.tscn" id="15_gqwak"]
 [ext_resource type="PackedScene" uid="uid://btwsnu1lwi4qw" path="res://Scenes/Enemies/slime.tscn" id="16_3jpjc"]
-[ext_resource type="PackedScene" uid="uid://ng4em2t7bkre" path="res://Scenes/reflection.tscn" id="17_gqwak"]
+[ext_resource type="PackedScene" uid="uid://ckbyxy5pr25ao" path="res://Scenes/reflection.tscn" id="17_gqwak"]
 
 [sub_resource type="Curve2D" id="Curve2D_7l4mf"]
 _data = {
