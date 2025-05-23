@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dmhverhdohhq1" path="res://Assets/OurAssets/RandomTile.png" id="1_ns4nq"]
 [ext_resource type="Script" uid="uid://bcdwen2vqcach" path="res://Scripts/Reflection.gd" id="1_sfch1"]
-[ext_resource type="SpriteFrames" path="res://Scenes/Player/player.tres" id="3_sfch1"]
+[ext_resource type="SpriteFrames" uid="uid://bvi2d36e65xll" path="res://Scenes/Player/player.tres" id="3_sfch1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ns4nq"]
 light_mode = 2
@@ -15,7 +15,7 @@ script = ExtResource("1_sfch1")
 
 [node name="RandomTile2" type="Sprite2D" parent="."]
 position = Vector2(14, -5)
-scale = Vector2(5.9375, 4.6875)
+scale = Vector2(62.3375, 35.0815)
 texture = ExtResource("1_ns4nq")
 
 [node name="PointLight2D" type="PointLight2D" parent="RandomTile2"]
@@ -36,6 +36,7 @@ animation = &"Idle"
 autoplay = "Idle"
 
 [node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(8.36, 6.37921)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(14, -10.5)
