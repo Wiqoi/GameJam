@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dxfnrlm061uqd"]
 
-[ext_resource type="Script" uid="uid://fn14pfdkt3lu" path="res://Scenes/Levels/StartingInterface.gd" id="1_teen0"]
+[ext_resource type="Script" uid="uid://fn14pfdkt3lu" path="res://Scripts/StartingInterface.gd" id="1_teen0"]
 
 [node name="StartingInterface" type="Control"]
 layout_mode = 3
@@ -19,12 +19,14 @@ offset_right = 795.0
 offset_bottom = 239.0
 
 [node name="Options" type="Button" parent="."]
+layout_mode = 0
 offset_left = 313.0
 offset_top = 258.0
 offset_right = 795.0
 offset_bottom = 329.0
 
 [node name="ExitGame" type="Button" parent="."]
+layout_mode = 0
 offset_left = 311.0
 offset_top = 352.0
 offset_right = 793.0
