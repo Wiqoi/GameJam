@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://b82en3adb3mg5"]
+[gd_scene load_steps=46 format=3 uid="uid://b82en3adb3mg5"]
 
 [ext_resource type="Script" uid="uid://pwaa1xkwtiua" path="res://Scripts/Morph.gd" id="1_s1qs2"]
 [ext_resource type="Texture2D" uid="uid://bdvu5p8igbnda" path="res://Assets/OurAssets/Sprites/Morph (2).png" id="2_s1qs2"]
@@ -52,6 +52,10 @@ atlas = ExtResource("2_s1qs2")
 region = Rect2(256, 1024, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a5y6u"]
+atlas = ExtResource("2_s1qs2")
+region = Rect2(512, 1024, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8bty"]
 atlas = ExtResource("2_s1qs2")
 region = Rect2(512, 1024, 256, 256)
 
@@ -197,6 +201,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a5y6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8bty")
 }],
 "loop": false,
 "name": &"Attack1Down",
@@ -323,7 +330,7 @@ script = ExtResource("1_s1qs2")
 [node name="MorphSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_paaqs")
-animation = &"Attack1Up"
+animation = &"Attack1Down"
 autoplay = "Walking"
 
 [node name="HurtBoxMorph" type="Area2D" parent="."]
