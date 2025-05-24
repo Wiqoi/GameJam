@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckbyxy5pr25ao"]
+[gd_scene load_steps=7 format=3 uid="uid://dvgdw72ydwn1"]
 
 [ext_resource type="Texture2D" uid="uid://dmhverhdohhq1" path="res://Assets/OurAssets/RandomTile.png" id="1_ns4nq"]
 [ext_resource type="Script" uid="uid://bcdwen2vqcach" path="res://Scripts/Reflection.gd" id="1_sfch1"]
 [ext_resource type="SpriteFrames" uid="uid://467686apoift" path="res://Scenes/Player/player.tres" id="3_sfch1"]
+[ext_resource type="SpriteFrames" uid="uid://bk6glbkd2q8xu" path="res://Scenes/Player/sword.tres" id="4_utcvd"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ns4nq"]
 light_mode = 2
@@ -41,6 +42,14 @@ scale = Vector2(8.36, 6.37921)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(14, -10.5)
 shape = SubResource("RectangleShape2D_sfch1")
+
+[node name="SwordReflection" type="AnimatedSprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.211765)
+rotation = -3.14221
+scale = Vector2(0.348, 0.375)
+sprite_frames = ExtResource("4_utcvd")
+animation = &"Idle"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
