@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
 
-@export var speed : float = 50
+@export var speed : float = 80
 @export var health: int = 30
 
 var isPhaseTwo: bool = false
 var isTeleporting: bool = false
 var player : CharacterBody2D
+var movementDirection: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	player = %Player
@@ -16,8 +17,15 @@ func _physics_process(delta: float) -> void:
 	if health <= 10:
 		isPhaseTwo = true
 		
+	if isPhaseTwo == false:
+		var distToPlayer = (global_position - player.global_position).length()
+		if distToPlayer >= 60:
+			movementDirection = (player.global_position - global_position).normalized()
+			velocity = movementDirection * speed
 
-	
+			move_and_slide()	
+
+
 	# Add the gravity.
 
 	# Get the input direction and handle the movement/deceleration.
@@ -41,3 +49,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 		
 		$AnimatedSprite2D.play("bossTeleportReappear")
+
+	
