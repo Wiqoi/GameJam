@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=57 format=3 uid="uid://bk6glbkd2q8xu"]
+[gd_resource type="SpriteFrames" load_steps=57 format=3 uid="uid://bvkrk6sypyd5q"]
 
 [ext_resource type="Texture2D" uid="uid://cbltkveiae0mg" path="res://Assets/OurAssets/Swords/BothSwords.png" id="1_50r7i"]
 [ext_resource type="Texture2D" uid="uid://drlckwdk80ft7" path="res://Assets/OurAssets/Swords/BothSwordsCombo.png" id="2_qhmlu"]
