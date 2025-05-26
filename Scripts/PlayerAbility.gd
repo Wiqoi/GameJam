@@ -44,6 +44,14 @@ func _process(delta: float) -> void:
 				pastAbility = 9
 				$AbilityArea.add_to_group("TimeFreeze")
 				
+	else:
+		var frame = $AnimatedSprite2D.frame
+		match frame:
+			9:
+				%AbilityCollision.disabled = false
+			_:
+				%AbilityCollision.disabled = true
+				
 	if Input.is_action_just_pressed("Skill") && Global.playerSkill >= 1 && AbilityCooldownTimer > AbilityCooldownTime:
 		Global.playerSkill -= 1
 		AbilityCooldownTimer = 0
