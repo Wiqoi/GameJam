@@ -56,7 +56,6 @@ func _process(delta: float) -> void:
 		Global.playerSkill -= 1
 		AbilityCooldownTimer = 0
 		$AnimatedSprite2D.visible = true
-		%AbilityCollision.disabled = false
 		go_to_cursor()
 		if Global.currentPlayerAbility == 1:
 			$AnimatedSprite2D.play("AbilityMain")
