@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr1pk76y4w7m6"
-path="res://.godot/imported/DemonWalk.png-96214f400b95596b1c5669fd4a82880f.ctex"
+uid="uid://sk7jqj6ywg58"
+path="res://.godot/imported/DemonSquare.png-d91bd83388789b90fdcd21a757c64d4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OurAssets/Sprites/DemonWalk.png"
-dest_files=["res://.godot/imported/DemonWalk.png-96214f400b95596b1c5669fd4a82880f.ctex"]
+source_file="res://Assets/OurAssets/Sprites/DemonSquare.png"
+dest_files=["res://.godot/imported/DemonSquare.png-d91bd83388789b90fdcd21a757c64d4b.ctex"]
 
 [params]
 
