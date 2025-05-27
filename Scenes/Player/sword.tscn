@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ses2rjxjm7o4"]
 
-[ext_resource type="SpriteFrames" uid="uid://bk6glbkd2q8xu" path="res://Scenes/Player/sword.tres" id="2_dbc6b"]
+[ext_resource type="SpriteFrames" uid="uid://bvkrk6sypyd5q" path="res://Scenes/Player/sword.tres" id="2_dbc6b"]
 [ext_resource type="Script" uid="uid://chsmu6d44kg2y" path="res://Scripts/sword.gd" id="4_uf8ak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0r30"]
