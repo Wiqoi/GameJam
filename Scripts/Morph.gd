@@ -118,7 +118,7 @@ func start_jump() -> void:
 	
 	if randomAttack >= 0.5:
 		is_jumping1 = true
-		if dx >= dy:
+		if (dx * dx) >= (dy * dy):
 			$MorphSprite.animation = "Attack1"
 			AttackNormal = true
 		elif dy < 0:
