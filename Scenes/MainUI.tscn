@@ -176,27 +176,3 @@ offset_left = -75.0
 offset_right = -35.0
 offset_bottom = 40.0
 texture = ExtResource("2_yd0xa")
-
-[node name="Advertisement" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColorRect" type="ColorRect" parent="Advertisement"]
-layout_mode = 0
-offset_left = -104.0
-offset_top = 191.0
-offset_right = 1242.0
-offset_bottom = 457.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Advertisement"]
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = 7.0
-offset_top = 228.0
-offset_right = 526.0
-offset_bottom = 321.0
-scale = Vector2(2, 2)
-text = "PAY $1.99 PER MONTH TO GET RID OF THIS / OR PAY $99.99 FOR A LIFETIME PAYMENT.
-CALL: +925 911 FOR CONTACTING OFFICIALS OF GAMISTAN TO GET A 20% DISCOUNT"
-fit_content = true

@@ -199,8 +199,8 @@ func die() -> void:
 	dying = true
 	%HitCollisionMorph.disabled = true
 	%HitCollisionMorph2.disabled = true
-	%HitCollisionUp.disabled = true
-	%HitCollisionDown.disabled = true
+	%HitCollisionMorphUp.disabled = true
+	%HitCollisionMorphDown.disabled = true
 	%HurtCollisionMorph.disabled = true
 	$CollisionShape2D.disabled = true
 	$MorphSprite.play("Death")
