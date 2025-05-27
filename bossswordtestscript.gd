@@ -1,8 +1,8 @@
 extends Node2D
 
 @export var follow_speed: float = 95.0
-@export var stop_distance: float = 10.0
-@export var targ_dist: float = 9.0
+@export var stop_distance: float = 5.0
+@export var targ_dist: float = 11.0
 @export var attack_duration: float = 0.8
 @export var combo_window: float = 0.2
 @export var hitbox_delay: float = 0.33

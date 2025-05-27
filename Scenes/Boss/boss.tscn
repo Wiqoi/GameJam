@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://dtyinwkmt7gdd" path="res://Scripts/BossScripts/boss.gd" id="1_f2ymq"]
 [ext_resource type="Texture2D" uid="uid://b4ct8qwf7tbvb" path="res://Assets/OurAssets/Sprites/BossAndBossTP.png" id="1_qg2l1"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5omod"]
+atlas = ExtResource("1_qg2l1")
+region = Rect2(384, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1fj0"]
 atlas = ExtResource("1_qg2l1")
 region = Rect2(0, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5omod"]
-atlas = ExtResource("1_qg2l1")
-region = Rect2(384, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f2ymq"]
 atlas = ExtResource("1_qg2l1")
@@ -79,7 +79,7 @@ region = Rect2(0, 256, 128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u1fj0")
+"texture": SubResource("AtlasTexture_5omod")
 }],
 "loop": true,
 "name": &"bossBack",
@@ -87,7 +87,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5omod")
+"texture": SubResource("AtlasTexture_u1fj0")
 }],
 "loop": true,
 "name": &"bossFront",
@@ -141,7 +141,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"bossTeleportDisappear",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -164,7 +164,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"bossTeleportReappear",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2ymq"]
@@ -177,15 +177,18 @@ script = ExtResource("1_f2ymq")
 position = Vector2(-22, 0)
 scale = Vector2(0.347656, 0.328125)
 sprite_frames = SubResource("SpriteFrames_u1fj0")
-animation = &"bossFront"
+animation = &"bossTeleportDisappear"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="TeleportTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
 position = Vector2(-22, 0)
 shape = SubResource("RectangleShape2D_f2ymq")
 
-[node name="TeleportTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="TeleportTimer" to="." method="_on_teleport_timer_timeout"]
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
