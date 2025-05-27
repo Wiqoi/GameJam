@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dmhverhdohhq1" path="res://Assets/OurAssets/RandomTile.png" id="1_ns4nq"]
 [ext_resource type="Script" uid="uid://bcdwen2vqcach" path="res://Scripts/Reflection.gd" id="1_sfch1"]
 [ext_resource type="SpriteFrames" uid="uid://467686apoift" path="res://Scenes/Player/player.tres" id="3_sfch1"]
-[ext_resource type="SpriteFrames" uid="uid://bk6glbkd2q8xu" path="res://Scenes/Player/sword.tres" id="4_utcvd"]
+[ext_resource type="SpriteFrames" uid="uid://bvkrk6sypyd5q" path="res://Scenes/Player/sword.tres" id="4_utcvd"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ns4nq"]
 light_mode = 2
