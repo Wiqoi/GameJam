@@ -296,10 +296,8 @@ script = ExtResource("1_s1qs2")
 [node name="MorphSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_paaqs")
-animation = &"Attack1Up"
+animation = &"Attack2"
 autoplay = "Walking"
-frame = 6
-frame_progress = 1.0
 
 [node name="HurtBoxMorph" type="Area2D" parent="."]
 

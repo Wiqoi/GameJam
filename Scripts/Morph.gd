@@ -116,7 +116,7 @@ func start_jump() -> void:
 	var dx = player.global_position.x - global_position.x
 	var dy = player.global_position.y - global_position.y
 	
-	if randomAttack >= 0.5:
+	if randomAttack > 0.5:
 		is_jumping1 = true
 		if (dx * dx) >= (dy * dy):
 			$MorphSprite.animation = "Attack1"
@@ -199,6 +199,8 @@ func die() -> void:
 	dying = true
 	%HitCollisionMorph.disabled = true
 	%HitCollisionMorph2.disabled = true
+	%HitCollisionUp.disabled = true
+	%HitCollisionDown.disabled = true
 	%HurtCollisionMorph.disabled = true
 	$CollisionShape2D.disabled = true
 	$MorphSprite.play("Death")
