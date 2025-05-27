@@ -78,5 +78,8 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		health -= Global.playerDmg
 		
 		if (health < 0):
-			pass
+			die()
+
+func die():
+	queue_free()
 			# die
