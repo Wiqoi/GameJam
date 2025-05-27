@@ -57,7 +57,7 @@ func _process(delta: float) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("SwordCollision"):
 		print("yay")
-		swordreflection.visible = true
+		swordreflection.visible = false
 		set_physics_process(true)
 		sword = area
 	if area.is_in_group("PlayerCollision"):
@@ -75,6 +75,6 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 		sword = null
 		
 func _physics_process(delta: float) -> void:
-	swordreflection.set_global_position(Vector2(sword.global_position.x, sword.global_position.y + 23))
+	swordreflection.set_global_position(Vector2(sword.global_position.x, sword.global_position.y + 0))
 	reflection.set_global_position(Vector2(player.global_position.x, player.global_position.y + 48))
 	

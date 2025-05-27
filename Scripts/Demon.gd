@@ -65,6 +65,9 @@ func _physics_process(_delta: float) -> void:
 		var distance_to_player = global_position.distance_to(player.global_position)
 		if distance_to_player < 31 and jump_cooldown_timer <= 0:
 			start_jump()
+			
+		if jump_cooldown_timer > 0:
+			jump_cooldown_timer -= 1
 
 		if distance_to_player < 80:
 			limit = 0
