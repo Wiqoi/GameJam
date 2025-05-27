@@ -31,4 +31,7 @@ func _process(delta: float) -> void:
 		$RichTextLabel.add_text("Phase 4")
 	if Global.currentPhase == 4:
 		$RichTextLabel.clear()
+		$RichTextLabel.add_text("Phase 5")
+	if Global.currentPhase == 5:
+		$RichTextLabel.clear()
 		$RichTextLabel.add_text("Bosh Time")
