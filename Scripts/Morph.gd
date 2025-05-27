@@ -128,6 +128,7 @@ func start_jump() -> void:
 			$MorphSprite.animation = "Attack1Down"
 			AttackDown = true
 	else:
+		is_jumping2 = true
 		$MorphSprite.animation = "Attack2"
 
 func handle_attack1(_direction: Vector2) -> void:
