@@ -226,6 +226,7 @@ size = Vector2(55, 43)
 size = Vector2(28, 29)
 
 [node name="Demon" type="CharacterBody2D"]
+scale = Vector2(1.01055, 1.02221)
 script = ExtResource("1_u8kdg")
 
 [node name="DemonSprite" type="AnimatedSprite2D" parent="."]
