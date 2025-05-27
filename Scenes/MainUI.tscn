@@ -90,7 +90,7 @@ offset_top = 32.0
 offset_right = 612.0
 offset_bottom = 72.0
 theme = SubResource("Theme_3ngb3")
-text = "Phase One Wow"
+text = "Phase 1"
 fit_content = true
 
 [node name="Boss" type="Control" parent="."]
