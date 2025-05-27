@@ -19,8 +19,14 @@ var frame_counter: int = 0
 var jump_cooldown_frames: int = 150
 var jump_cooldown_timer: int = 0
 
+var AttackUp : bool = false
+var AttackNormal : bool = false
+var AttackDown : bool = false
+
 var hitbox1: CollisionShape2D
 var hitbox2: CollisionShape2D
+var hitboxUp: CollisionShape2D
+var hitboxDown: CollisionShape2D
 
 func _ready() -> void:
 	if !player:
@@ -28,8 +34,12 @@ func _ready() -> void:
 	add_to_group("enemies")
 	hitbox1 = %HitCollisionMorph
 	hitbox2 = %HitCollisionMorph2
+	hitboxUp = %HitCollisionMorphUp
+	hitboxDown = %HitCollisionMorphDown
 	hitbox1.disabled = true
 	hitbox2.disabled = true
+	hitboxUp.disabled = true
+	hitboxDown.disabled = true
 	$HitboxMorph.add_to_group("EnemyHitbox")
 	%HurtCollisionMorph.disabled = false
 
@@ -67,6 +77,8 @@ func _physics_process(_delta: float) -> void:
 		velocity = (direction + separation * 20).normalized() * speed
 		hitbox1.disabled = true
 		hitbox2.disabled = true
+		hitboxUp.disabled = true
+		hitboxDown.disabled = true
 		%MorphSprite.play("Walking")
 
 		var distance_to_player = global_position.distance_to(player.global_position)
@@ -108,20 +120,15 @@ func start_jump() -> void:
 		is_jumping1 = true
 		if dx >= dy:
 			$MorphSprite.animation = "Attack1"
-		elif dy > 0:
+			AttackNormal = true
+		elif dy < 0:
 			$MorphSprite.animation = "Attack1Up"
+			AttackUp = true
 		else:
-			$MorphSprite.animation = "Attack1DOwn"
+			$MorphSprite.animation = "Attack1Down"
+			AttackDown = true
 	else:
-		is_jumping2 = true
-		if dx >= dy:
-			$MorphSprite.animation = "Attack2"
-		elif dy > 0:
-			pass
-			#$MorphSprite.animation = "Attack2Up"
-		else:
-			pass
-			#$MorphSprite.animation = "Attack2DOwn"
+		$MorphSprite.animation = "Attack2"
 
 func handle_attack1(_direction: Vector2) -> void:
 	velocity = Vector2.ZERO
@@ -130,14 +137,29 @@ func handle_attack1(_direction: Vector2) -> void:
 
 	match frame:
 		1, 2, 3, 4:
-			hitbox1.disabled = false
+			if AttackNormal:
+				hitbox1.disabled = false
+			elif AttackUp:
+				hitboxUp.disabled = false
+			else:
+				hitboxDown.disabled = false
 		6:
 			is_jumping1 = false
 			jump_cooldown_timer = jump_cooldown_frames
 			hitbox1.disabled = true
+			hitboxDown.disabled = true
+			hitboxUp.disabled = true
 			$MorphSprite.animation = "Walking"
+			AttackNormal = false
+			AttackUp = false
+			AttackDown = false
 		_:
-			hitbox1.disabled = true
+			if AttackNormal:
+				hitbox1.disabled = true
+			elif AttackUp:
+				hitboxUp.disabled = true
+			else:
+				hitboxDown.disabled = true
 
 func handle_attack2(_direction: Vector2) -> void:
 	velocity = Vector2.ZERO
@@ -147,7 +169,7 @@ func handle_attack2(_direction: Vector2) -> void:
 	match frame:
 		1, 2, 3:
 			hitbox2.disabled = false
-		5:
+		4:
 			is_jumping2 = false
 			jump_cooldown_timer = jump_cooldown_frames + 60
 			hitbox2.disabled = true
