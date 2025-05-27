@@ -71,6 +71,9 @@ func _physics_process(_delta: float) -> void:
 		if not isJumping and distToPlayer < 41 and jump_cooldown_counter <= 0 and not is_hurt:
 			isJumping = true
 			%SlimeSprite.animation = "Jumping"
+			
+		if jump_cooldown_counter > 0:
+			jump_cooldown_counter -= 1
 
 		if distToPlayer < 80:
 			limit = 0
