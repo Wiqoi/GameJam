@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbhcxwkmgqyht"
-path="res://.godot/imported/Demon1.png-7b5e96a62707d8ed89358aad443ba816.ctex"
+uid="uid://3yytflo6x3sw"
+path="res://.godot/imported/DemonDeath.png-0c2375a371a1534308e08d7292267411.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OurAssets/Sprites/Demon1.png"
-dest_files=["res://.godot/imported/Demon1.png-7b5e96a62707d8ed89358aad443ba816.ctex"]
+source_file="res://Assets/OurAssets/Sprites/DemonDeath.png"
+dest_files=["res://.godot/imported/DemonDeath.png-0c2375a371a1534308e08d7292267411.ctex"]
 
 [params]
 

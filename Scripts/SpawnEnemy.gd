@@ -66,12 +66,17 @@ func _on_timer_timeout() -> void:
 
 func _on_spawn_enemy_timer_timeout() -> void:
 	if timeCount < 30:
+		Global.currentPhase = 1
 		spawn_enemy1()
 	elif 50 < timeCount and timeCount < 80:
+		Global.currentPhase = 2
 		spawn_enemy2()
 	elif timeCount > 90 and timeCount < 120:
+		Global.currentPhase = 3
 		spawn_enemy3()
 	elif timeCount > 135 and timeCount < 165:
+		Global.currentPhase = 4
 		spawn_enemy4()
 	elif timeCount > 180 and timeCount < 210:
+		Global.currentPhase = 5
 		spawn_enemy5()

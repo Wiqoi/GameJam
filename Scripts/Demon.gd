@@ -77,6 +77,11 @@ func _physics_process(_delta: float) -> void:
 			limit = 150
 
 	$DemonSprite.flip_h = direction.x < 0
+	
+	if direction.x < 0:
+		$DemonSprite.position.x = -21.77
+	else:
+		$DemonSprite.position.x = 21.77
 
 	frame_counter += 1
 	if frame_counter % 60 == 0:
@@ -97,7 +102,7 @@ func handle_jump(_direction: Vector2) -> void:
 	match frame:
 		1, 2, 3, 6, 7, 8:
 			hitbox.disabled = false
-		12:
+		11:
 			is_jumping = false
 			jump_cooldown_timer = jump_cooldown_frames
 			hitbox.disabled = true
