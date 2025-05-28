@@ -86,10 +86,11 @@ texture = ExtResource("3_3ngb3")
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 self_modulate = Color(0.886262, 0.886261, 0.886262, 1)
 layout_mode = 0
-offset_left = 472.0
+offset_left = 515.0
 offset_top = 32.0
-offset_right = 612.0
-offset_bottom = 72.0
+offset_right = 575.0
+offset_bottom = 55.0
+scale = Vector2(0.998954, 1)
 theme = SubResource("Theme_3ngb3")
 text = "Phase 1"
 fit_content = true
