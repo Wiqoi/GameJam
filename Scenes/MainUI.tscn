@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://br810wjbtd73e"]
+[gd_scene load_steps=6 format=3 uid="uid://br810wjbtd73e"]
 
 [ext_resource type="Script" uid="uid://c8sa04uh71kwy" path="res://Scripts/UIScript.gd" id="1_yd0xa"]
 [ext_resource type="Texture2D" uid="uid://pn8msrkv4lp8" path="res://Assets/OurAssets/UI/Health2.png" id="2_yd0xa"]
 [ext_resource type="Texture2D" uid="uid://bo6qy0snb2htf" path="res://Assets/OurAssets/UI/Ability1.png" id="3_3ngb3"]
+[ext_resource type="PackedScene" uid="uid://0txs8a7delse" path="res://Scenes/upgradeScreen.tscn" id="4_c3bvd"]
 
 [sub_resource type="Theme" id="Theme_3ngb3"]
 
@@ -178,6 +179,7 @@ offset_bottom = 40.0
 texture = ExtResource("2_yd0xa")
 
 [node name="Advertisement" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -201,3 +203,32 @@ text = "PAY $1.99 PER MONTH TO GET RID OF THIS / OR PAY $99.99 FOR A LIFETIME PA
 CALL: +925 911 FOR CONTACTING OFFICIALS OF SOMETHING TO GET A 20% DISCOUNT ON YOUR PURCHASE
 "
 fit_content = true
+
+[node name="Advertisment2" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Advertisment2"]
+visible = false
+layout_mode = 0
+offset_left = 856.0
+offset_top = 14.0
+offset_right = 1072.0
+offset_bottom = 155.0
+color = Color(0.947199, 0.947199, 0.947199, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Advertisment2"]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 880.0
+offset_top = 48.0
+offset_right = 937.0
+offset_bottom = 72.0
+scale = Vector2(3, 3)
+text = "XP + 69"
+
+[node name="UpgradeScreen" parent="." instance=ExtResource("4_c3bvd")]
+visible = false
+layout_mode = 1
