@@ -1,6 +1,28 @@
 extends Control
 
+var xpTimer = 0
+var xpDuration = 0.5
+var Xping : bool = false
+
 func _process(delta: float) -> void:
+	
+	if Global.betweenPhases == true:
+		$UpgradeScreen.visible = true
+	
+	if Global.smthDying == true:
+		$Advertisment2/ColorRect.visible = true
+		$Advertisment2/RichTextLabel.visible = true
+		Xping = true
+	if Xping == true:
+		xpTimer += delta
+		print(xpTimer)
+		if xpTimer >= xpDuration:
+			Global.smthDying = false
+			xpTimer = 0
+			Xping = false
+			$Advertisment2/RichTextLabel.visible = false
+			$Advertisment2/ColorRect.visible = false
+	
 	if Global.playerHP == 4:
 		$HealthBar5.texture = load("res://Assets/OurAssets/UI/Health3.png")
 	elif Global.playerHP == 3:

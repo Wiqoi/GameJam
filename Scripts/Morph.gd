@@ -247,4 +247,5 @@ func _on_hurt_box_morph_area_entered(area: Area2D) -> void:
 
 func _on_morph_sprite_animation_finished() -> void:
 	if $MorphSprite.animation == "Death":
+		Global.smthDying = true
 		queue_free()
