@@ -95,10 +95,10 @@ func _physics_process(_delta: float) -> void:
 		$MorphSprite.flip_h = direction.x < 0
 	
 		if direction.x < 0:
-			%HitCollisionMorph.position.x = -30
+			%HitCollisionMorph.position.x = -28
 			%HitCollisionMorph2.position.x = -43.5
 		else:
-			%HitCollisionMorph.position.x = 30
+			%HitCollisionMorph.position.x = 28
 			%HitCollisionMorph2.position.x = 43.5
 		
 	if jump_cooldown_timer > 0:
