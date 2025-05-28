@@ -7,5 +7,4 @@ var playerHP = 5
 var playerSkill = 3
 var playerCurrentAnim = 0
 var swordCurrentAnim = 0
-var currentPhase = 1
-var inBetweenPhase : bool = false
+var currentPhase = 0
