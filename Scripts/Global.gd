@@ -9,4 +9,4 @@ var playerCurrentAnim = 0
 var swordCurrentAnim = 0
 var currentPhase = 1
 var smthDying = false
-var inBetweenPhase = false
+var betweenPhases : bool = false
