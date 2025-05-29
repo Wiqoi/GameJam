@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var speed : float = 80
+@export var speed : float = 100
 @export var health: int = 30
 @export var teleport_dist : float = 100.0
 
@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 					if movementDirection.x < 0:
 						if $AnimatedSprite2D.animation != "bossLeft":
 							$AnimatedSprite2D.animation = "bossLeft"
-					elif movementDirection.x > 9:
+					elif movementDirection.x > 0:
 						if $AnimatedSprite2D.animation != "bossRight":
 							$AnimatedSprite2D.animation = "bossRight"
 
@@ -82,4 +82,6 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 
 func die():
 	queue_free()
+	get_tree().quit()
+
 			# die

@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://c64x32rn4eyth"]
+[gd_scene load_steps=90 format=3 uid="uid://c64x32rn4eyth"]
 
 [ext_resource type="Script" uid="uid://dgmqbe0dg8o8y" path="res://Scripts/BossScripts/bosssword.gd" id="1_5ljdm"]
 [ext_resource type="Texture2D" uid="uid://40se0v1u5iga" path="res://Assets/OurAssets/Swords/BossDualSwordAttack.png" id="1_vm7vn"]
@@ -9,6 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://bfrqqc2mca2mk" path="res://Assets/OurAssets/Swords/BothSwordsComboUp.png" id="6_j3dgw"]
 [ext_resource type="Texture2D" uid="uid://cjgxi2jeehsvg" path="res://Assets/OurAssets/Swords/BothSwordsDown.png" id="7_yteor"]
 [ext_resource type="Texture2D" uid="uid://bqjli3t2tgf60" path="res://Assets/OurAssets/Swords/BothSwordsUp.png" id="8_8l8go"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq1ub"]
+atlas = ExtResource("3_5ljdm")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3dgw"]
+atlas = ExtResource("3_5ljdm")
+region = Rect2(128, 256, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_34kcu"]
 atlas = ExtResource("1_vm7vn")
@@ -318,6 +326,17 @@ region = Rect2(128, 256, 128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_jq1ub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3dgw")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.5
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_34kcu")
 }, {
 "duration": 1.0,
@@ -586,20 +605,20 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4srhg"]
-size = Vector2(35, 66)
+size = Vector2(41, 66)
 
 [node name="bosssword" type="Node2D"]
 script = ExtResource("1_5ljdm")
 
 [node name="Sword" type="AnimatedSprite2D" parent="."]
-position = Vector2(-26, -6)
-scale = Vector2(0.445312, 0.535156)
+position = Vector2(-24.5, -6)
+scale = Vector2(0.507812, 0.535156)
 sprite_frames = SubResource("SpriteFrames_jq1ub")
-animation = &"bossSwordCombo"
-frame_progress = 0.382004
+animation = &"Idle"
+frame_progress = 0.595737
 
 [node name="AttackHitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
-position = Vector2(-16.5, -6)
+position = Vector2(-13.5, -6)
 shape = SubResource("RectangleShape2D_4srhg")

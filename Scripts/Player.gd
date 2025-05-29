@@ -187,7 +187,7 @@ func update_cursor():
 		cursor_outline.rotation = target_angle
 
 func _on_player_hurt_box_area_entered(area: Area2D) -> void:
-	if area.is_in_group("EnemyHitbox"):
+	if area.is_in_group("EnemyHitbox") && !is_invincible:
 		take_damage()
 
 func spawn_footstep():

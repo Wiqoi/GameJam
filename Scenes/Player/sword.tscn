@@ -16,10 +16,9 @@ script = ExtResource("4_uf8ak")
 z_index = 2
 scale = Vector2(0.347656, 0.375)
 sprite_frames = ExtResource("2_dbc6b")
-animation = &"AttackUp"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 7
-frame_progress = 1.0
+frame_progress = 0.500581
 
 [node name="AttackHitbox" type="Area2D" parent="."]
 
