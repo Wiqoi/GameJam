@@ -58,6 +58,7 @@ texture = ExtResource("2_yd0xa")
 
 [node name="HealthBar6" type="TextureRect" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 201.0
 offset_right = 257.0
 offset_bottom = 48.0
@@ -66,6 +67,7 @@ texture = ExtResource("2_yd0xa")
 
 [node name="HealthBar7" type="TextureRect" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 236.0
 offset_right = 292.0
 offset_bottom = 48.0
@@ -74,6 +76,7 @@ texture = ExtResource("2_yd0xa")
 
 [node name="HealthBar8" type="TextureRect" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 279.0
 offset_right = 335.0
 offset_bottom = 48.0
@@ -82,6 +85,7 @@ texture = ExtResource("2_yd0xa")
 
 [node name="HealthBar9" type="TextureRect" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 321.0
 offset_right = 377.0
 offset_bottom = 48.0
@@ -90,6 +94,7 @@ texture = ExtResource("2_yd0xa")
 
 [node name="HealthBar10" type="TextureRect" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 364.0
 offset_right = 420.0
 offset_bottom = 48.0
