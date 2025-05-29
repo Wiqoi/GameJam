@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var speed : float = 100
 @export var health: int = 30
-@export var teleport_dist : float = 100.0
+@export var teleport_dist : float = 60.0
 
 
 var isPhaseTwo: bool = false
@@ -15,7 +15,7 @@ var movementDirection: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	$AnimatedSprite2D.animation = "bossIdle"
 	player = %Player
-	position = Vector2(100, 100)
+	position = Vector2(300, 100)
 
 func _physics_process(delta: float) -> void:
 	if $AnimatedSprite2D.animation != "bossTeleportDisappear":
@@ -29,11 +29,11 @@ func _physics_process(delta: float) -> void:
 				pass
 				if abs(movementDirection.y) > abs(movementDirection.x):
 					if movementDirection.y < 0:
-						if $AnimatedSprite2D.animation != "bossBack":
-							$AnimatedSprite2D.animation = "bossBack"
-					elif movementDirection.y > 0:
 						if $AnimatedSprite2D.animation != "bossFront":
 							$AnimatedSprite2D.animation = "bossFront"
+					elif movementDirection.y > 0:
+						if $AnimatedSprite2D.animation != "bossDown":
+							$AnimatedSprite2D.animation = "bossDown"
 				elif abs(movementDirection.x) > abs(movementDirection.y):
 					if movementDirection.x < 0:
 						if $AnimatedSprite2D.animation != "bossLeft":
@@ -79,6 +79,9 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		
 		if (health < 0):
 			die()
+		else:
+			$AnimatedSprite2D.play("bossHurt")
+			await $AnimatedSprite2D.animation_finished
 
 func die():
 	queue_free()
