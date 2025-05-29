@@ -87,8 +87,8 @@ func _on_spawn_enemy_timer_timeout() -> void:
 			Global.currentPhase = 2
 			Global.betweenPhases = true
 			enemyCount = 0
-			Global.playerHP = 5
-			Global.playerSkill = 3
+			Global.playerHP = Global.playerMaxHP
+			Global.playerSkill = Global.playerMaxHP
 		elif enemyCount < 20:
 			enemyCount += 1
 			spawn_enemy1()
@@ -98,8 +98,8 @@ func _on_spawn_enemy_timer_timeout() -> void:
 			Global.currentPhase = 3
 			Global.betweenPhases = true
 			enemyCount = 0
-			Global.playerHP = 5
-			Global.playerSkill = 3
+			Global.playerHP = Global.playerMaxHP
+			Global.playerSkill = Global.playerMaxHP
 		elif enemyCount < 20:
 			enemyCount += 1
 			spawn_enemy2()
@@ -109,8 +109,8 @@ func _on_spawn_enemy_timer_timeout() -> void:
 			Global.currentPhase = 4
 			Global.betweenPhases = true
 			enemyCount = 0
-			Global.playerHP = 5
-			Global.playerSkill = 3
+			Global.playerHP = Global.playerMaxHP
+			Global.playerSkill = Global.playerMaxHP
 		elif enemyCount < 20:
 			enemyCount += 1
 			spawn_enemy3()
@@ -120,8 +120,8 @@ func _on_spawn_enemy_timer_timeout() -> void:
 			Global.currentPhase = 5
 			Global.betweenPhases = true
 			enemyCount = 0
-			Global.playerHP = 5
-			Global.playerSkill = 3
+			Global.playerHP = Global.playerMaxHP
+			Global.playerSkill = Global.playerMaxHP
 		elif enemyCount < 20:
 			enemyCount += 1
 			spawn_enemy4()
@@ -131,8 +131,8 @@ func _on_spawn_enemy_timer_timeout() -> void:
 			Global.currentPhase = 6
 			Global.betweenPhases = true
 			enemyCount = 0
-			Global.playerHP = 5
-			Global.playerSkill = 3
+			Global.playerHP = Global.playerMaxHP
+			Global.playerSkill = Global.playerMaxHP
 		elif enemyCount < 20:
 			enemyCount += 1
 			spawn_enemy5()
