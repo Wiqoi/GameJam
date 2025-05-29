@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bunmeh8jxgkjj"]
+[gd_scene load_steps=12 format=3 uid="uid://bunmeh8jxgkjj"]
 
 [ext_resource type="Script" uid="uid://lvoh8mxuovtb" path="res://Scripts/Player.gd" id="1_6t5aa"]
 [ext_resource type="SpriteFrames" uid="uid://467686apoift" path="res://Scenes/Player/player.tres" id="2_htcer"]
 [ext_resource type="PackedScene" uid="uid://cv0nvlkh2pa3u" path="res://Scenes/Player/playerCamera.tscn" id="3_0u5uq"]
-[ext_resource type="Texture2D" path="res://Assets/FreeOnlineAssets/light.png" id="3_xpcdj"]
 [ext_resource type="Texture2D" uid="uid://dc7b1wmled1yt" path="res://Assets/OurAssets/Abilities-Magic/Arua.png" id="4_mtuoh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
@@ -61,12 +60,6 @@ shape = SubResource("RectangleShape2D_6t5aa")
 libraries = {
 &"": SubResource("AnimationLibrary_06tpx")
 }
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
-energy = 0.7
-shadow_enabled = true
-texture = ExtResource("3_xpcdj")
 
 [node name="PlayerHitBox" type="Area2D" parent="."]
 
