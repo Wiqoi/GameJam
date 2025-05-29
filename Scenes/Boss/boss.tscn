@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://qy671j4tvean"]
+[gd_scene load_steps=25 format=3 uid="uid://qy671j4tvean"]
 
 [ext_resource type="Script" uid="uid://dtyinwkmt7gdd" path="res://Scripts/BossScripts/boss.gd" id="1_f2ymq"]
 [ext_resource type="Texture2D" uid="uid://b4ct8qwf7tbvb" path="res://Assets/OurAssets/Sprites/BossAndBossTP.png" id="1_qg2l1"]
@@ -7,9 +7,17 @@
 atlas = ExtResource("1_qg2l1")
 region = Rect2(384, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xc06"]
+atlas = ExtResource("1_qg2l1")
+region = Rect2(128, 128, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1fj0"]
 atlas = ExtResource("1_qg2l1")
 region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1eljn"]
+atlas = ExtResource("1_qg2l1")
+region = Rect2(128, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f2ymq"]
 atlas = ExtResource("1_qg2l1")
@@ -19,13 +27,13 @@ region = Rect2(128, 0, 128, 128)
 atlas = ExtResource("1_qg2l1")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4xc06"]
-atlas = ExtResource("1_qg2l1")
-region = Rect2(128, 128, 128, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_2yrty"]
 atlas = ExtResource("1_qg2l1")
 region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgk0e"]
+atlas = ExtResource("1_qg2l1")
+region = Rect2(384, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8cuti"]
 atlas = ExtResource("1_qg2l1")
@@ -87,10 +95,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_4xc06")
+}],
+"loop": true,
+"name": &"bossDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_u1fj0")
 }],
 "loop": true,
 "name": &"bossFront",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1eljn")
+}],
+"loop": false,
+"name": &"bossHurt",
 "speed": 5.0
 }, {
 "frames": [{
@@ -106,7 +130,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4xc06")
+"texture": SubResource("AtlasTexture_2yrty")
 }],
 "loop": true,
 "name": &"bossLeft",
@@ -114,9 +138,9 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2yrty")
+"texture": SubResource("AtlasTexture_wgk0e")
 }],
-"loop": true,
+"loop": false,
 "name": &"bossRight",
 "speed": 5.0
 }, {
@@ -177,7 +201,7 @@ script = ExtResource("1_f2ymq")
 position = Vector2(-22, 0)
 scale = Vector2(0.347656, 0.328125)
 sprite_frames = SubResource("SpriteFrames_u1fj0")
-animation = &"bossTeleportDisappear"
+animation = &"bossHurt"
 
 [node name="TeleportTimer" type="Timer" parent="."]
 wait_time = 3.0

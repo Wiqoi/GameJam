@@ -56,6 +56,46 @@ offset_bottom = 48.0
 scale = Vector2(1.21842, 1)
 texture = ExtResource("2_yd0xa")
 
+[node name="HealthBar6" type="TextureRect" parent="."]
+visible = false
+offset_left = 201.0
+offset_right = 257.0
+offset_bottom = 48.0
+scale = Vector2(1.21842, 1)
+texture = ExtResource("2_yd0xa")
+
+[node name="HealthBar7" type="TextureRect" parent="."]
+visible = false
+offset_left = 236.0
+offset_right = 292.0
+offset_bottom = 48.0
+scale = Vector2(1.21842, 1)
+texture = ExtResource("2_yd0xa")
+
+[node name="HealthBar8" type="TextureRect" parent="."]
+visible = false
+offset_left = 279.0
+offset_right = 335.0
+offset_bottom = 48.0
+scale = Vector2(1.21842, 1)
+texture = ExtResource("2_yd0xa")
+
+[node name="HealthBar9" type="TextureRect" parent="."]
+visible = false
+offset_left = 321.0
+offset_right = 377.0
+offset_bottom = 48.0
+scale = Vector2(1.21842, 1)
+texture = ExtResource("2_yd0xa")
+
+[node name="HealthBar10" type="TextureRect" parent="."]
+visible = false
+offset_left = 364.0
+offset_right = 420.0
+offset_bottom = 48.0
+scale = Vector2(1.21842, 1)
+texture = ExtResource("2_yd0xa")
+
 [node name="Ability1" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = -14.0
