@@ -23,16 +23,70 @@ func _process(delta: float) -> void:
 			$Advertisment2/RichTextLabel.visible = false
 			$Advertisment2/ColorRect.visible = false
 	
-	if Global.playerHP == 4:
-		$HealthBar5.texture = load("res://Assets/OurAssets/UI/Health3.png")
-	elif Global.playerHP == 3:
-		$HealthBar4.texture = load("res://Assets/OurAssets/UI/Health3.png")
-	elif Global.playerHP == 2:
-		$HealthBar3.texture = load("res://Assets/OurAssets/UI/Health3.png")
-	elif Global.playerHP == 1:
-		$HealthBar2.texture = load("res://Assets/OurAssets/UI/Health3.png")
-	elif Global.playerHP == 0:
+	if Global.playerMaxHP == 0:
+		$HealthBar1.visible = false
+	if Global.playerMaxHP == 1:
+		$HealthBar1.visible = true
+		$HealthBar2.visible = false
+	if Global.playerMaxHP == 2:
+		$HealthBar2.visible = true
+		$HealthBar3.visible = false
+	if Global.playerMaxHP == 3:
+		$HealthBar3.visible = true
+		$HealthBar4.visible = false
+	if Global.playerMaxHP == 4:
+		$HealthBar4.visible = true
+		$HealthBar5.visible = false
+	if Global.playerMaxHP == 5:
+		$HealthBar5.visible = true
+		$HealthBar6.visible = false
+	if Global.playerMaxHP == 6:
+		$HealthBar6.visible = true
+		$HealthBar7.visible = false
+	if Global.playerMaxHP == 7:
+		$HealthBar7.visible = true
+		$HealthBar8.visible = false
+	if Global.playerMaxHP == 8:
+		$HealthBar8.visible = true
+		$HealthBar9.visible = false
+	if Global.playerMaxHP == 9:
+		$HealthBar9.visible = true
+		$HealthBar10.visible = false
+	if Global.playerMaxHP == 10:
+		$HealthBar10.visible = true
+		
+	if Global.playerHP == 0:
 		$HealthBar1.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.playerHP == 1:
+		$HealthBar1.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$HealthBar2.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.playerHP == 2:
+		$HealthBar2.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$HealthBar3.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.playerHP == 3:
+		$HealthBar3.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$HealthBar4.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.playerHP == 4:
+		$HealthBar4.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$HealthBar5.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.playerHP == 5:
+		$HealthBar5.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$HealthBar6.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.playerHP == 6:
+		$HealthBar6.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$HealthBar7.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.playerHP == 7:
+		$HealthBar7.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$HealthBar8.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.playerHP == 8:
+		$HealthBar8.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$HealthBar9.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.playerHP == 9:
+		$HealthBar9.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$HealthBar10.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.playerHP == 10:
+		$HealthBar10.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		
 		
 	if Global.playerSkill == 2:
 		$Ability3.texture = load("res://Assets/OurAssets/UI/Ability0.png")

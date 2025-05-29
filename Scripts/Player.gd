@@ -205,8 +205,8 @@ func spawn_footstep():
 			
 func take_damage() -> void:
 	if !is_invincible and hp > 0:
-		hp -= 1
 		Global.playerHP -= 1
+		hp = Global.playerHP
 		is_invincible = true
 		invincibility_timer = invincibility_duration
 		damage_NoMove_Timer = 0
