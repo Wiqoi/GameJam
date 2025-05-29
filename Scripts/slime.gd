@@ -166,4 +166,5 @@ func die():
 
 func _on_enemy_sprite_animation_finished() -> void:
 	if %SlimeSprite.animation == "Death":
+		Global.smthDying = true
 		queue_free()

@@ -134,6 +134,7 @@ func die() -> void:
 
 func _on_demon_sprite_animation_finished() -> void:
 	if $DemonSprite.animation == "Death":
+		Global.smthDying = true
 		queue_free()
 
 
