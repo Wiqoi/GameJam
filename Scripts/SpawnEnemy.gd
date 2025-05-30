@@ -130,7 +130,7 @@ func _on_spawn_enemy_timer_timeout() -> void:
 			Global.betweenPhases = true
 			enemyCount = 0
 			Global.currentPhase = 6
-		elif enemyCount < 1:
+		elif enemyCount < 30:
 			enemyCount += 1
 			spawn_enemy5()
 			phase5 = true
