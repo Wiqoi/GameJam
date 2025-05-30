@@ -11,3 +11,4 @@ var swordCurrentAnim = 0
 var currentPhase = 1
 var smthDying = false
 var betweenPhases : bool = false
+var bossDead = false

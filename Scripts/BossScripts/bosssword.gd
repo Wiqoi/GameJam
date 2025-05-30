@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var follow_speed: float = 80.0
+@export var follow_speed: float = 300.0
 @export var stop_distance: float = 10.0
 @export var targ_dist: float = 15.0
 @export var attack_duration: float = 0.8
@@ -144,13 +144,13 @@ func set_attack_animation(direction: Vector2, is_combo: bool):
 				$Sword.play("bossSwordUp")
 			$AttackHitbox.rotation = deg_to_rad(-90)
 			$Sword.flip_h = false
-		else:  
+		else: 
 			if is_combo:
 				$Sword.play("bossSwordComboDown")
 			else:
 				$Sword.play("bossSwordDown")
-			$AttackHitbox.rotation = deg_to_rad(90)
-			$Sword.flip_h = false
+				$AttackHitbox.rotation = deg_to_rad(90)
+				$Sword.flip_h = false
 
 func activate_hitbox():
 	$AttackHitbox.get_node("CollisionShape2D").disabled = false
