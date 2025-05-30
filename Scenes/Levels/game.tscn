@@ -93,6 +93,7 @@ shape = SubResource("SegmentShape2D_e8oij")
 one_way_collision = true
 
 [node name="SpawnEnemyTimer" type="Timer" parent="."]
+unique_name_in_owner = true
 wait_time = 2.0
 autostart = true
 
