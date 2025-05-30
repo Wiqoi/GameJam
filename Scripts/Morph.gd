@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var player: CharacterBody2D
-var health: float = 4.0
+var health: float = 5.0
 var speed: float = 50.0
 var is_jumping1: bool = false
 var is_jumping2: bool = false
