@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcjtylyvv5w5g"]
+[gd_scene load_steps=2 format=3 uid="uid://cwj5j3vgc8pt7"]
 
-[ext_resource type="Script" uid="uid://bg7ops6lqon61" path="res://Scripts/lore_wall.gd" id="1_rb7n4"]
+[ext_resource type="Script" path="res://Scripts/lore_wall.gd" id="1_rb7n4"]
 
 [node name="LoreWall" type="Control"]
 layout_mode = 3
