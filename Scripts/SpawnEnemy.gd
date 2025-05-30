@@ -84,7 +84,6 @@ func _on_spawn_enemy_timer_timeout() -> void:
 		pass
 	elif Global.currentPhase == 1:
 		if get_tree().get_nodes_in_group("Phase1_Enemy").size() == 0 and phase1:
-			Global.currentPhase = 2
 			Global.betweenPhases = true
 			enemyCount = 0
 			%SpawnEnemyTimer.wait_time -= 0.2
@@ -94,36 +93,36 @@ func _on_spawn_enemy_timer_timeout() -> void:
 			phase1 = true
 	elif Global.currentPhase == 2:
 		if get_tree().get_nodes_in_group("Phase2_Enemy").size() == 0 and phase2:
-			Global.currentPhase = 3
 			Global.betweenPhases = true
 			enemyCount = 0
+			%SpawnEnemyTimer.wait_time -= 0.2
 		elif enemyCount < 25:
 			enemyCount += 1
 			spawn_enemy2()
 			phase2 = true
 	elif Global.currentPhase == 3:
 		if get_tree().get_nodes_in_group("Phase3_Enemy").size() == 0 and phase3:
-			Global.currentPhase = 4
 			Global.betweenPhases = true
 			enemyCount = 0
+			%SpawnEnemyTimer.wait_time -= 0.2
 		elif enemyCount < 20:
 			enemyCount += 1
 			spawn_enemy3()
 			phase3 = true
 	elif Global.currentPhase == 4:
 		if get_tree().get_nodes_in_group("Phase4_Enemy").size() == 0 and phase4:
-			Global.currentPhase = 5
 			Global.betweenPhases = true
 			enemyCount = 0
+			%SpawnEnemyTimer.wait_time -= 0.2
 		elif enemyCount < 20:
 			enemyCount += 1
 			spawn_enemy4()
 			phase4 = true
 	elif Global.currentPhase == 5:
 		if get_tree().get_nodes_in_group("Phase5_Enemy").size() == 0 and phase5:
-			Global.currentPhase = 6
 			Global.betweenPhases = true
 			enemyCount = 0
+			%SpawnEnemyTimer.wait_time -= 0.2
 		elif enemyCount < 30:
 			enemyCount += 1
 			spawn_enemy5()
