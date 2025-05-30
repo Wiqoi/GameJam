@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://0txs8a7delse"]
 
-[ext_resource type="Script" uid="uid://cc6va8qxdmojo" path="res://Scenes/upgradeScreen.gd" id="1_fukat"]
+[ext_resource type="Script" uid="uid://cc6va8qxdmojo" path="res://Scripts/upgradeScreen.gd" id="1_fukat"]
 
 [node name="UpgradeScreen" type="Control"]
 layout_mode = 3

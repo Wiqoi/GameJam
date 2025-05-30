@@ -1954,6 +1954,7 @@ position = Vector2(-807, -524)
 rotation = 1.56212
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
 autostart = true
 
 [node name="TileMap" parent="." instance=ExtResource("3_cvm28")]

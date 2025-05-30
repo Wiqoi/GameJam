@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cwj5j3vgc8pt7"]
+[gd_scene load_steps=2 format=3 uid="uid://bcjtylyvv5w5g"]
+
+[ext_resource type="Script" uid="uid://bg7ops6lqon61" path="res://Scripts/lore_wall.gd" id="1_rb7n4"]
 
 [node name="LoreWall" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rb7n4")
 
 [node name="TextEdit" type="TextEdit" parent="."]
 self_modulate = Color(0, 0, 0, 1)
@@ -29,3 +32,5 @@ offset_right = 664.0
 offset_bottom = 633.0
 text = "Done reading lore
 "
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
