@@ -21,8 +21,8 @@ offset_bottom = 589.0
 text = "THIS IS LORE:
 You play as basically \"wonder\" and you are trying to save a human and his mind from succumbing to the evil powers of evil.
 Cringe IK, the main idea is that you trying to destroy the humans bad ideas and saving him from ultimate death. There are three
-enemies you have to fight, these include tbd1, tbd2, and tbd3. After fighting all three enemies, you will get the chance to fight the
-big boss, tbd4, and if you succeed, you will eventually save the human."
+enemies you have to fight. After fighting all three enemies, you will get the chance to fight the
+big boss, and if you succeed, you will eventually save the human."
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
