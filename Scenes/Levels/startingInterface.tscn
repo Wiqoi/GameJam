@@ -13,27 +13,37 @@ script = ExtResource("1_teen0")
 
 [node name="StartGame" type="Button" parent="."]
 layout_mode = 0
-offset_left = 313.0
-offset_top = 168.0
-offset_right = 795.0
-offset_bottom = 239.0
+offset_left = 309.0
+offset_top = 266.0
+offset_right = 791.0
+offset_bottom = 337.0
 text = "Start"
 
 [node name="Options" type="Button" parent="."]
 layout_mode = 0
-offset_left = 313.0
-offset_top = 258.0
-offset_right = 795.0
-offset_bottom = 329.0
+offset_left = 309.0
+offset_top = 362.0
+offset_right = 791.0
+offset_bottom = 433.0
 text = "Options"
 
 [node name="ExitGame" type="Button" parent="."]
 layout_mode = 0
 offset_left = 311.0
-offset_top = 352.0
+offset_top = 457.0
 offset_right = 793.0
-offset_bottom = 423.0
+offset_bottom = 528.0
 text = "Exit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 197.0
+offset_top = 13.0
+offset_right = 273.0
+offset_bottom = 36.0
+scale = Vector2(10, 10)
+text = "WONDER"
 
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="ExitGame" to="." method="_on_exit_game_pressed"]
