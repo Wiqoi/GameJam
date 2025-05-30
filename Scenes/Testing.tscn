@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgcdkw0b5tsrp"]
+
+[ext_resource type="PackedScene" uid="uid://0txs8a7delse" path="res://Scenes/upgradeScreen.tscn" id="1_bqyd2"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="UpgradeScreen" parent="." instance=ExtResource("1_bqyd2")]
