@@ -88,6 +88,39 @@ func _process(delta: float) -> void:
 		$HealthBar10.texture = load("res://Assets/OurAssets/UI/Health2.png")
 		
 		
+	if Global.bossHealth == 0:
+		$Boss/Health/HealthBar1.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.bossHealth == 1:
+		$Boss/Health/HealthBar1.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$Boss/Health/HealthBar2.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.bossHealth == 2:
+		$Boss/Health/HealthBar2.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$Boss/Health/HealthBar3.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.bossHealth == 3:
+		$Boss/Health/HealthBar3.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$Boss/Health/HealthBar4.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.bossHealth == 4:
+		$Boss/Health/HealthBar4.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$Boss/Health/HealthBar5.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.bossHealth == 5:
+		$Boss/Health/HealthBar5.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$Boss/Health/HealthBar6.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.bossHealth == 6:
+		$Boss/Health/HealthBar6.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$Boss/Health/HealthBar7.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.bossHealth == 7:
+		$Boss/Health/HealthBar7.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$Boss/Health/HealthBar8.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.bossHealth == 8:
+		$Boss/Health/HealthBar8.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$Boss/Health/HealthBar9.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.bossHealth == 9:
+		$Boss/Health/HealthBar9.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		$Boss/Health/HealthBar10.texture = load("res://Assets/OurAssets/UI/Health3.png")
+	if Global.bossHealth == 10:
+		$Boss/Health/HealthBar10.texture = load("res://Assets/OurAssets/UI/Health2.png")
+		
+		
 	if Global.playerSkill == 2:
 		$Ability3.texture = load("res://Assets/OurAssets/UI/Ability0.png")
 	elif Global.playerSkill == 1:

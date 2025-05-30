@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 @export var speed : float = 100
-@export var health: int = 30
+@export var health: int = 10
 @export var teleport_dist : float = 60.0
 
 
@@ -52,7 +52,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	pass # Replace with function body.
 	if area.is_in_group("PlayerAttack"):
-		health -= Global.playerDmg
+		health -= 1
+		Global.bossHealth -= 1
 		
 		if (health < 0):
 			die()
