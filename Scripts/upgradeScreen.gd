@@ -2,7 +2,8 @@ extends Control
 
 func _on_button_pressed() -> void:
 	Global.playerMaxHP += 1
-	Global.playerHP += 1
+	Global.playerHP = Global.playerMaxHP
+	Global.playerSkill = Global.playerMaxHP
 	Global.playerDmg += 1
 	$Button.visible = false
 	$Button2.visible = false
