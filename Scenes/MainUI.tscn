@@ -18,6 +18,7 @@ offset_bottom = 63.0
 script = ExtResource("1_yd0xa")
 
 [node name="HealthBar1" type="TextureRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = -14.0
 offset_right = 42.0
@@ -26,6 +27,7 @@ scale = Vector2(1.21842, 1)
 texture = ExtResource("2_yd0xa")
 
 [node name="HealthBar2" type="TextureRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 29.0
 offset_right = 85.0
@@ -34,6 +36,7 @@ scale = Vector2(1.21842, 1)
 texture = ExtResource("2_yd0xa")
 
 [node name="HealthBar3" type="TextureRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 72.0
 offset_right = 128.0
@@ -42,6 +45,7 @@ scale = Vector2(1.21842, 1)
 texture = ExtResource("2_yd0xa")
 
 [node name="HealthBar4" type="TextureRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 115.0
 offset_right = 171.0
@@ -50,6 +54,7 @@ scale = Vector2(1.21842, 1)
 texture = ExtResource("2_yd0xa")
 
 [node name="HealthBar5" type="TextureRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 158.0
 offset_right = 214.0
@@ -58,6 +63,7 @@ scale = Vector2(1.21842, 1)
 texture = ExtResource("2_yd0xa")
 
 [node name="HealthBar6" type="TextureRect" parent="."]
+unique_name_in_owner = true
 visible = false
 layout_mode = 0
 offset_left = 201.0
@@ -67,6 +73,7 @@ scale = Vector2(1.21842, 1)
 texture = ExtResource("2_yd0xa")
 
 [node name="HealthBar7" type="TextureRect" parent="."]
+unique_name_in_owner = true
 visible = false
 layout_mode = 0
 offset_left = 236.0
@@ -76,6 +83,7 @@ scale = Vector2(1.21842, 1)
 texture = ExtResource("2_yd0xa")
 
 [node name="HealthBar8" type="TextureRect" parent="."]
+unique_name_in_owner = true
 visible = false
 layout_mode = 0
 offset_left = 279.0
@@ -85,6 +93,7 @@ scale = Vector2(1.21842, 1)
 texture = ExtResource("2_yd0xa")
 
 [node name="HealthBar9" type="TextureRect" parent="."]
+unique_name_in_owner = true
 visible = false
 layout_mode = 0
 offset_left = 321.0
@@ -94,6 +103,7 @@ scale = Vector2(1.21842, 1)
 texture = ExtResource("2_yd0xa")
 
 [node name="HealthBar10" type="TextureRect" parent="."]
+unique_name_in_owner = true
 visible = false
 layout_mode = 0
 offset_left = 364.0
