@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cwj5j3vgc8pt7"]
+
+[node name="LoreWall" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextEdit" type="TextEdit" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 80.0
+offset_top = 3.0
+offset_right = 1088.0
+offset_bottom = 589.0
+text = "THIS IS LORE:
+You play as basically \"wonder\" and you are trying to save a human and his mind from succumbing to the evil powers of evil.
+Cringe IK, the main idea is that you trying to destroy the humans bad ideas and saving him from ultimate death. There are three
+enemies you have to fight, these include tbd1, tbd2, and tbd3. After fighting all three enemies, you will get the chance to fight the
+big boss, tbd4, and if you succeed, you will eventually save the human."
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 517.0
+offset_top = 602.0
+offset_right = 664.0
+offset_bottom = 633.0
+text = "Done reading lore
+"
