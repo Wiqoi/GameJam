@@ -13,35 +13,10 @@ var movementDirection: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
-	$AnimatedSprite2D.animation = "bossIdle"
-	player = %Player
-	position = Vector2(300, 100)
-
-func _physics_process(delta: float) -> void:
-	if $AnimatedSprite2D.animation != "bossTeleportDisappear":
-		var distToPlayer = (global_position - player.global_position).length()
-		if distToPlayer >= teleport_dist:
-			movementDirection = (player.global_position - global_position).normalized()
-			velocity = movementDirection * speed
-			move_and_slide()	
-			
-			if movementDirection && velocity:
-				pass
-				if abs(movementDirection.y) > abs(movementDirection.x):
-					if movementDirection.y < 0:
-						if $AnimatedSprite2D.animation != "bossFront":
-							$AnimatedSprite2D.animation = "bossFront"
-					elif movementDirection.y > 0:
-						if $AnimatedSprite2D.animation != "bossDown":
-							$AnimatedSprite2D.animation = "bossDown"
-				elif abs(movementDirection.x) > abs(movementDirection.y):
-					if movementDirection.x < 0:
-						if $AnimatedSprite2D.animation != "bossLeft":
-							$AnimatedSprite2D.animation = "bossLeft"
-					elif movementDirection.x > 0:
-						if $AnimatedSprite2D.animation != "bossRight":
-							$AnimatedSprite2D.animation = "bossRight"
-
+	if !Global.bossDead:
+		$AnimatedSprite2D.animation = "bossIdle"
+		player = %Player
+		position = Vector2(300, 100)
 
 
 					
@@ -52,12 +27,14 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 
 func _on_teleport_timer_timeout() -> void:
-	isTeleporting = true
 	
-	$AnimatedSprite2D.play("bossTeleportDisappear")
+	if !Global.bossDead:
+		isTeleporting = true
 	
+		$AnimatedSprite2D.play("bossTeleportDisappear")
 	
-	move_and_slide()	
+		move_and_slide()	
+
 	
 	pass
 	
@@ -84,6 +61,9 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			await $AnimatedSprite2D.animation_finished
 
 func die():
+	Global.bossDead = true
+	$AnimatedSprite2D.play("bossSkullDeath")
+	await $AnimatedSprite2D.animation_finished
 	queue_free()
 	get_tree().quit()
 
