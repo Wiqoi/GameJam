@@ -15,7 +15,6 @@ func _process(delta: float) -> void:
 		Xping = true
 	if Xping == true:
 		xpTimer += delta
-		print(xpTimer)
 		if xpTimer >= xpDuration:
 			Global.smthDying = false
 			xpTimer = 0

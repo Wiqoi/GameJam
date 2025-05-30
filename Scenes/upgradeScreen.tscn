@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://0txs8a7delse"]
 
-[ext_resource type="Script" uid="uid://dy6x1a5eceo22" path="res://Scenes/upgradeScreen.gd" id="1_fukat"]
+[ext_resource type="Script" uid="uid://dy6x1a5eceo22" path="res://Scripts/upgradeScreen.gd" id="1_fukat"]
 
 [node name="UpgradeScreen" type="Control"]
 layout_mode = 3
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fukat")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button1" type="Button" parent="."]
 layout_mode = 0
 offset_left = 147.0
 offset_top = 74.0
@@ -27,5 +27,5 @@ offset_right = 986.0
 offset_bottom = 572.0
 text = "Change a skill"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button1" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

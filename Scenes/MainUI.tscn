@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://br810wjbtd73e"]
+[gd_scene load_steps=6 format=3 uid="uid://br810wjbtd73e"]
 
 [ext_resource type="Script" uid="uid://c8sa04uh71kwy" path="res://Scripts/UIScript.gd" id="1_yd0xa"]
 [ext_resource type="Texture2D" uid="uid://pn8msrkv4lp8" path="res://Assets/OurAssets/UI/Health2.png" id="2_yd0xa"]
 [ext_resource type="Texture2D" uid="uid://bo6qy0snb2htf" path="res://Assets/OurAssets/UI/Ability1.png" id="3_3ngb3"]
 [ext_resource type="PackedScene" uid="uid://0txs8a7delse" path="res://Scenes/upgradeScreen.tscn" id="4_c3bvd"]
-[ext_resource type="Script" uid="uid://cc6va8qxdmojo" path="res://Scripts/upgradeScreen.gd" id="5_8dqd8"]
 
 [sub_resource type="Theme" id="Theme_3ngb3"]
 
@@ -113,6 +112,7 @@ scale = Vector2(1.21842, 1)
 texture = ExtResource("2_yd0xa")
 
 [node name="Ability1" type="TextureRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = -14.0
 offset_top = 27.0
@@ -122,6 +122,7 @@ scale = Vector2(1.1, 1.28)
 texture = ExtResource("3_3ngb3")
 
 [node name="Ability2" type="TextureRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 23.0
 offset_top = 27.0
@@ -131,6 +132,7 @@ scale = Vector2(1.1, 1.28)
 texture = ExtResource("3_3ngb3")
 
 [node name="Ability3" type="TextureRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 60.0
 offset_top = 27.0
@@ -291,4 +293,3 @@ text = "XP + 69"
 [node name="UpgradeScreen" parent="." instance=ExtResource("4_c3bvd")]
 visible = false
 layout_mode = 1
-script = ExtResource("5_8dqd8")

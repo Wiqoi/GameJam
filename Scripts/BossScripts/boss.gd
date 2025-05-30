@@ -11,7 +11,6 @@ var isTeleporting: bool = false
 var player : CharacterBody2D
 var movementDirection: Vector2 = Vector2.ZERO
 
-
 func _ready() -> void:
 	if !Global.bossDead:
 		$AnimatedSprite2D.animation = "bossIdle"

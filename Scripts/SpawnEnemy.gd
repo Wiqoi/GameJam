@@ -75,6 +75,9 @@ func spawn_enemy5():
 		new_morph.global_position = %SpawnPathFollow.global_position
 		new_morph.add_to_group("Phase5_Enemy")
 		add_child(new_morph)
+
+func spawnBoss():
+	get_tree().change_scene_to_file("res://Scenes/Boss/bossscene.tscn")
 	
 func _on_timer_timeout() -> void:
 	timeCount += 1
@@ -86,6 +89,7 @@ func _on_spawn_enemy_timer_timeout() -> void:
 		if get_tree().get_nodes_in_group("Phase1_Enemy").size() == 0 and phase1:
 			Global.betweenPhases = true
 			enemyCount = 0
+			Global.currentPhase = 2
 			%SpawnEnemyTimer.wait_time -= 0.2
 		elif enemyCount < 20:
 			enemyCount += 1
@@ -95,6 +99,7 @@ func _on_spawn_enemy_timer_timeout() -> void:
 		if get_tree().get_nodes_in_group("Phase2_Enemy").size() == 0 and phase2:
 			Global.betweenPhases = true
 			enemyCount = 0
+			Global.currentPhase = 3
 			%SpawnEnemyTimer.wait_time -= 0.2
 		elif enemyCount < 25:
 			enemyCount += 1
@@ -104,6 +109,7 @@ func _on_spawn_enemy_timer_timeout() -> void:
 		if get_tree().get_nodes_in_group("Phase3_Enemy").size() == 0 and phase3:
 			Global.betweenPhases = true
 			enemyCount = 0
+			Global.currentPhase = 4
 			%SpawnEnemyTimer.wait_time -= 0.2
 		elif enemyCount < 20:
 			enemyCount += 1
@@ -113,7 +119,8 @@ func _on_spawn_enemy_timer_timeout() -> void:
 		if get_tree().get_nodes_in_group("Phase4_Enemy").size() == 0 and phase4:
 			Global.betweenPhases = true
 			enemyCount = 0
-			%SpawnEnemyTimer.wait_time -= 0.2
+			Global.currentPhase = 5
+			%SpawnEnemyTimer.wait_time -= 0.1
 		elif enemyCount < 20:
 			enemyCount += 1
 			spawn_enemy4()
@@ -122,8 +129,10 @@ func _on_spawn_enemy_timer_timeout() -> void:
 		if get_tree().get_nodes_in_group("Phase5_Enemy").size() == 0 and phase5:
 			Global.betweenPhases = true
 			enemyCount = 0
-			%SpawnEnemyTimer.wait_time -= 0.2
-		elif enemyCount < 30:
+			Global.currentPhase = 6
+		elif enemyCount < 1:
 			enemyCount += 1
 			spawn_enemy5()
 			phase5 = true
+	elif Global.currentPhase == 6:
+		spawnBoss()
