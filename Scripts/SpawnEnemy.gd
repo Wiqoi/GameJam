@@ -89,6 +89,7 @@ func _on_spawn_enemy_timer_timeout() -> void:
 			enemyCount = 0
 			Global.playerHP = Global.playerMaxHP
 			Global.playerSkill = Global.playerMaxHP
+			%SpawnEnemyTimer.wait_time -= 0.2
 		elif enemyCount < 20:
 			enemyCount += 1
 			spawn_enemy1()
@@ -100,7 +101,7 @@ func _on_spawn_enemy_timer_timeout() -> void:
 			enemyCount = 0
 			Global.playerHP = Global.playerMaxHP
 			Global.playerSkill = Global.playerMaxHP
-		elif enemyCount < 20:
+		elif enemyCount < 25:
 			enemyCount += 1
 			spawn_enemy2()
 			phase2 = true
@@ -133,7 +134,7 @@ func _on_spawn_enemy_timer_timeout() -> void:
 			enemyCount = 0
 			Global.playerHP = Global.playerMaxHP
 			Global.playerSkill = Global.playerMaxHP
-		elif enemyCount < 20:
+		elif enemyCount < 30:
 			enemyCount += 1
 			spawn_enemy5()
 			phase5 = true
